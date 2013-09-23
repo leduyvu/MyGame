@@ -40,13 +40,16 @@ public:
     virtual void ccTouchesEnded(cocos2d::CCSet* touches, cocos2d::CCEvent* event);
     void update(float dt);
     
-    void addShooter(string image);
+    void addShooter();
     virtual void ccTouchesBegan(CCSet* touches, CCEvent* event);
     void createRectangularFixture(CCTMXLayer* layer, int x, int y,
                                   float width, float height);
+    void runAnimation();
+    void throwBall();
+    void showShooter();
 private:
     bool boom = false;
-    PhysicsSprite *sprite;
+    CCSprite *sprite;
     CCTMXLayer *_background;
     CCTMXTiledMap *_tileMap;
     bool checkRun = false;

@@ -295,6 +295,12 @@
 		CEE38F8317EC230400F43153 /* mapGunny2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CEE38F8217EC230400F43153 /* mapGunny2.tmx */; };
 		CEE38F8717EC2C7800F43153 /* eges.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE38F8617EC2C7800F43153 /* eges.png */; };
 		CEE38F8917EC344800F43153 /* meta_tiles_2.png in Resources */ = {isa = PBXBuildFile; fileRef = CEE38F8817EC344800F43153 /* meta_tiles_2.png */; };
+		CEEBCDD517EFF12500328D60 /* n.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD317EFF12500328D60 /* n.pvr.gz */; };
+		CEEBCDD617EFF12500328D60 /* nembong.plist in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD417EFF12500328D60 /* nembong.plist */; };
+		CEEBCDD817EFFFEB00328D60 /* nembong1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD717EFFFEB00328D60 /* nembong1.png */; };
+		CEEBCDDA17F02BFD00328D60 /* bong.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD917F02BFD00328D60 /* bong.png */; };
+		CEEBCDDC17F044F200328D60 /* bong1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDDB17F044F200328D60 /* bong1.png */; };
+		CEEBCDDE17F04E5200328D60 /* robong.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDDD17F04E5200328D60 /* robong.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -906,6 +912,12 @@
 		CEE38F8217EC230400F43153 /* mapGunny2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapGunny2.tmx; path = Resources/mapGunny2.tmx; sourceTree = "<group>"; };
 		CEE38F8617EC2C7800F43153 /* eges.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = eges.png; path = Resources/eges.png; sourceTree = "<group>"; };
 		CEE38F8817EC344800F43153 /* meta_tiles_2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = meta_tiles_2.png; path = Resources/meta_tiles_2.png; sourceTree = "<group>"; };
+		CEEBCDD317EFF12500328D60 /* n.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = n.pvr.gz; path = Resources/n.pvr.gz; sourceTree = "<group>"; };
+		CEEBCDD417EFF12500328D60 /* nembong.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = nembong.plist; path = Resources/nembong.plist; sourceTree = "<group>"; };
+		CEEBCDD717EFFFEB00328D60 /* nembong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nembong1.png; path = Resources/nembong1.png; sourceTree = "<group>"; };
+		CEEBCDD917F02BFD00328D60 /* bong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong.png; path = Resources/bong.png; sourceTree = "<group>"; };
+		CEEBCDDB17F044F200328D60 /* bong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong1.png; path = Resources/bong1.png; sourceTree = "<group>"; };
+		CEEBCDDD17F04E5200328D60 /* robong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = robong.png; path = Resources/robong.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -976,6 +988,12 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CEEBCDDD17F04E5200328D60 /* robong.png */,
+				CEEBCDDB17F044F200328D60 /* bong1.png */,
+				CEEBCDD917F02BFD00328D60 /* bong.png */,
+				CEEBCDD717EFFFEB00328D60 /* nembong1.png */,
+				CEEBCDD317EFF12500328D60 /* n.pvr.gz */,
+				CEEBCDD417EFF12500328D60 /* nembong.plist */,
 				CEE38F8817EC344800F43153 /* meta_tiles_2.png */,
 				CEE38F8617EC2C7800F43153 /* eges.png */,
 				CEE38F8217EC230400F43153 /* mapGunny2.tmx */,
@@ -2195,6 +2213,12 @@
 				CEE38F8317EC230400F43153 /* mapGunny2.tmx in Resources */,
 				CEE38F8717EC2C7800F43153 /* eges.png in Resources */,
 				CEE38F8917EC344800F43153 /* meta_tiles_2.png in Resources */,
+				CEEBCDD517EFF12500328D60 /* n.pvr.gz in Resources */,
+				CEEBCDD617EFF12500328D60 /* nembong.plist in Resources */,
+				CEEBCDD817EFFFEB00328D60 /* nembong1.png in Resources */,
+				CEEBCDDA17F02BFD00328D60 /* bong.png in Resources */,
+				CEEBCDDC17F044F200328D60 /* bong1.png in Resources */,
+				CEEBCDDE17F04E5200328D60 /* robong.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

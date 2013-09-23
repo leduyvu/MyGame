@@ -8,12 +8,23 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
-         timestampString = "401359981.179401"
+         timestampString = "401624931.499869"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "417"
-         endingLineNumber = "417"
-         landmarkName = "HelloWorld::createRectangularFixture(CCTMXLayer* layer, int x, int y, float width, float height)"
+         startingLineNumber = "272"
+         endingLineNumber = "272">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
+         timestampString = "401624931.499869"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "267"
+         endingLineNumber = "267"
+         landmarkName = "HelloWorld::scene()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -21,12 +32,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
-         timestampString = "401359981.179401"
+         timestampString = "401624931.499869"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "412"
-         endingLineNumber = "412"
-         landmarkName = "HelloWorld::createRectangularFixture(CCTMXLayer* layer, int x, int y, float width, float height)"
+         startingLineNumber = "266"
+         endingLineNumber = "266"
+         landmarkName = "HelloWorld::scene()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -34,24 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
-         timestampString = "401359981.179401"
+         timestampString = "401617737.045893"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "411"
-         endingLineNumber = "411"
-         landmarkName = "HelloWorld::createRectangularFixture(CCTMXLayer* layer, int x, int y, float width, float height)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
-         timestampString = "401357171.014105"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "89"
-         endingLineNumber = "89"
+         startingLineNumber = "88"
+         endingLineNumber = "88"
          landmarkName = "HelloWorld::HelloWorld()"
          landmarkType = "5">
       </FileBreakpoint>

@@ -75,7 +75,6 @@ HelloWorld::HelloWorld()
     _tileMap = new CCTMXTiledMap();
     _tileMap->initWithTMXFile("mapGunny2.tmx");
     _background = _tileMap->layerNamed("mapWall");
-//    _background->setVisible(false);
     
     // create all the rectangular fixtures for each tile in the level
     CCSize layerSize = _background->getLayerSize();
@@ -95,12 +94,11 @@ HelloWorld::HelloWorld()
     
     setTouchEnabled( true );
     setAccelerometerEnabled( true );
+//====================add Player =================
+    addShooter();
+//================================================
 
-    CCSize s = CCDirector::sharedDirector()->getWinSize();
-   
-    addShooter("donal-duck.png");
-    
-    //Shoot power
+//========== Shoot power =========================
     CCSprite *timer = CCSprite::create("bt_progressbar1.png");
     timer->setAnchorPoint(ccp(0, 0));
     timerBar = CCProgressTimer::create(timer);
@@ -108,28 +106,29 @@ HelloWorld::HelloWorld()
     timerBar->setType(kCCProgressTimerTypeBar);
     timerBar->setAnchorPoint(ccp(0, 0));
     
-    timerBar->setPosition(100, 402);
+    timerBar->setPosition(100, 100);
     timerBar->setMidpoint(ccp(0, 0));
     timerBar->setBarChangeRate(ccp(1, 0));
     
     timerBar->setTag(405);
     this->addChild(timerBar, 10);
     timerBar->setPercentage(0);
-
+//=================================================
     
-    CCSpriteBatchNode *parent = CCSpriteBatchNode::create("blocks.png", 100);
-    m_pSpriteTexture = parent->getTexture();
-
-    addChild(parent, 0, kTagParentNode);
-
-
-   // addNewSpriteAtPosition(ccp(s.width/2, s.height/2));
-
-    CCLabelTTF *label = CCLabelTTF::create("Tap screen", "Marker Felt", 32);
-    addChild(label, 0);
-    label->setColor(ccc3(0,0,255));
-    label->setPosition(ccp( s.width/2, s.height-50));
+//======================= BALL =========================
+    CCSpriteBatchNode *sprBoom = CCSpriteBatchNode::create("bong1.png", 100);
+    //sprBoom->setScale(0.3);
+    textture = sprBoom->getTexture();
+    addChild(sprBoom, 0, 222);
     
+    CCSprite* ro = CCSprite::create("robong.png");
+    ro->setPosition(ccp(200,455));
+    ro->setScale(3);
+    ro->setFlipX(true);
+    this->addChild(ro,4);
+    
+//========================================================
+
     scheduleUpdate();
 }
 
@@ -137,50 +136,27 @@ HelloWorld::~HelloWorld()
 {
     delete world;
     world = NULL;
-    
-    //delete m_debugDraw;
 }
 
 void HelloWorld::initPhysics()
 {
-
     CCSize s = CCDirector::sharedDirector()->getWinSize();
-
     b2Vec2 gravity;
     gravity.Set(0.0f, -10.0f);
     world = new b2World(gravity);
-
     // Do we want to let bodies sleep?
     world->SetAllowSleeping(true);
-
     world->SetContinuousPhysics(true);
-
-//     m_debugDraw = new GLESDebugDraw( PTM_RATIO );
-//     world->SetDebugDraw(m_debugDraw);
-
     uint32 flags = 0;
     flags += b2Draw::e_shapeBit;
-    //        flags += b2Draw::e_jointBit;
-    //        flags += b2Draw::e_aabbBit;
-    //        flags += b2Draw::e_pairBit;
-    //        flags += b2Draw::e_centerOfMassBit;
-    //m_debugDraw->SetFlags(flags);
-
-
     // Define the ground body.
     b2BodyDef groundBodyDef;
     groundBodyDef.position.Set(0, 0); // bottom-left corner
-
-    // Call the body factory which allocates memory for the ground body
-    // from a pool and creates the ground box shape (also from a pool).
-    // The body is also added to the world.
     b2Body* groundBody = world->CreateBody(&groundBodyDef);
-
     // Define the ground box shape.
     b2EdgeShape groundBox;
 
     // bottom
-
     groundBox.Set(b2Vec2(0,0), b2Vec2(s.width/PTM_RATIO,0));
     groundBody->CreateFixture(&groundBox,0);
 
@@ -197,89 +173,25 @@ void HelloWorld::initPhysics()
     groundBody->CreateFixture(&groundBox,0);
 }
 
-void HelloWorld::addShooter(string image)
+void HelloWorld::addShooter()
 {
-    PhysicsSprite *sprite = new PhysicsSprite();
-    sprite->initWithTexture((CCSprite::create(image.c_str()))->getTexture());
-    sprite->autorelease();
+    sprite = CCSprite::create("nembong1.png");
+    sprite->setScale(0.3);
     this->addChild(sprite);
+    sprite->setPosition(ccp(800, 150));
     
-    
-    sprite->setPosition(ccp(100, 150));
-    
-    // Define the dynamic body.
-    //Set up a 1m squared box in the physics world
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(sprite->getPosition().x/PTM_RATIO, sprite->getPosition().y/PTM_RATIO);
-    
-    b2Body *body = world->CreateBody(&bodyDef);
-    
-    // Define another box shape for our dynamic body.
-    b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(1.5f, 1.7f);//These are mid points for our 1m box
-    
-    // Define the dynamic body fixture.
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &dynamicBox;
-    fixtureDef.density = 1.0f;
-    fixtureDef.friction = 0.3f;
-    body->CreateFixture(&fixtureDef);
-    sprite->setPhysicsBody(body);
 }
 
 void HelloWorld::draw()
 {
     CCLayer::draw();
-
     ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
-
     kmGLPushMatrix();
-
     world->DrawDebugData();
-
     kmGLPopMatrix();
 }
 
-void HelloWorld::addNewSpriteAtPosition(CCPoint p)
-{
-    CCLOG("Add sprite %0.2f x %02.f",p.x,p.y);
-    CCNode* parent = getChildByTag(kTagParentNode);
-    
-    //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
-    //just randomly picking one of the images
-    int idx = (CCRANDOM_0_1() > .5 ? 0:1);
-    int idy = (CCRANDOM_0_1() > .5 ? 0:1);
-    PhysicsSprite *sprite = new PhysicsSprite();
-    sprite->initWithTexture(m_pSpriteTexture, CCRectMake(32 * idx,32 * idy,32,32));
-    sprite->autorelease();
-    
-    parent->addChild(sprite);
-    
-    sprite->setPosition( CCPointMake( p.x, p.y) );
-    
-    // Define the dynamic body.
-    //Set up a 1m squared box in the physics world
-    b2BodyDef bodyDef;
-    bodyDef.type = b2_dynamicBody;
-    bodyDef.position.Set(p.x/PTM_RATIO, p.y/PTM_RATIO);
-    
-    b2Body *body = world->CreateBody(&bodyDef);
-    
-    // Define another box shape for our dynamic body.
-    b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(.5f, .5f);//These are mid points for our 1m box
-    
-    // Define the dynamic body fixture.
-    b2FixtureDef fixtureDef;
-    fixtureDef.shape = &dynamicBox;    
-    fixtureDef.density = 1.0f;
-    fixtureDef.friction = 0.3f;
-    body->CreateFixture(&fixtureDef);
-    
-    sprite->setPhysicsBody(body);
-}
-
+void HelloWorld::addNewSpriteAtPosition(CCPoint p){}
 
 void HelloWorld::update(float dt)
 {
@@ -288,55 +200,13 @@ void HelloWorld::update(float dt)
         time = time + dt;
         timerBar->setPercentage(5 + time * 50);
     }
-    
     if(checkRun)
     {
-        float prercent = timerBar->getPercentage();
-        CCNode* parent = getChildByTag(kTagParentNode);
-        
-        //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
-        //just randomly picking one of the images
-        int idx = (CCRANDOM_0_1() > .5 ? 0:1);
-        int idy = (CCRANDOM_0_1() > .5 ? 0:1);
-        PhysicsSprite* sprite = new PhysicsSprite();
-        sprite->initWithTexture(m_pSpriteTexture, CCRectMake(32 * idx,32 * idy,32,32));
-        sprite->autorelease();
-        
-        parent->addChild(sprite);
-        
-        sprite->setPosition(ccp(120,160));
-        
-        // Define the dynamic body.
-        //Set up a 1m squared box in the physics world
-        b2BodyDef bodyDef;
-        bodyDef.type = b2_dynamicBody;
-        bodyDef.position.Set(sprite->getPosition().x/PTM_RATIO, sprite->getPosition().y/PTM_RATIO);
-        
-        b2Body *body = world->CreateBody(&bodyDef);
-        
-        // Define another box shape for our dynamic body.
-        b2PolygonShape dynamicBox;
-        dynamicBox.SetAsBox(.4f, .4f);//These are mid points for our 1m box
-        
-        // Define the dynamic body fixture.
-        b2FixtureDef fixtureDef;
-        fixtureDef.shape = &dynamicBox;
-        fixtureDef.density = 1.0f;
-        fixtureDef.friction = 0.3f;
-        body->CreateFixture(&fixtureDef);
-        sprite->setPhysicsBody(body);
-        
-        //set velocity
-        float X = location.x;
-        float Y = location.y;
-        float x = prercent/4 * X/(sqrt(X * X + Y * Y));
-        float y = prercent/4 * Y/(sqrt(X * X + Y * Y));
-        b2Vec2 ex = b2Vec2();
-        ex.Set(x, y);
-        time = 0;
-        body->SetLinearVelocity(ex);
-        
-        //restart
+        this->runAction(CCSequence::create(CCCallFunc::create(this, callfunc_selector(HelloWorld::runAnimation)),
+                                           CCDelayTime::create(1.6),
+                                           CCCallFunc::create(this, callfunc_selector(HelloWorld::throwBall)),
+                                           CCCallFunc::create(this, callfunc_selector(HelloWorld::showShooter)),
+                                           NULL));
         checkRun = false;
         boom = true;
     }
@@ -379,7 +249,6 @@ void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event)
         location = touch->getLocationInView();
         location = CCDirector::sharedDirector()->convertToGL(location);
     }
-    
     if(!checkRun)
     {
         checkRun = true;
@@ -429,4 +298,84 @@ void HelloWorld::createRectangularFixture(CCTMXLayer* layer, int x, int y,
     //    fixtureDef.filter.categoryBits = kFilterCategoryLevel;
     fixtureDef.filter.maskBits = 0xffff;
     body->CreateFixture(&fixtureDef);
+}
+
+void HelloWorld::runAnimation()
+{
+    CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+    cache->addSpriteFramesWithFile("nembong.plist");
+    CCArray* animFrames = new CCArray;
+    animFrames->autorelease();
+    char str[100] = {0};
+    for(int i = 1; i < 6; i++) {
+        sprintf(str, "nembong%d.png", i);
+        CCSpriteFrame* frame = cache->spriteFrameByName( str );
+        animFrames->addObject(frame);
+    }
+    CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.3);
+    CCSprite *popSprite = CCSprite::create();
+    popSprite->setScale(0.3);
+    popSprite->setPosition(sprite->getPosition());
+    sprite->setVisible(false);
+    animation->setLoops(1);
+    this->addChild(popSprite, 8);
+    popSprite->runAction(CCSequence::create(CCAnimate::create(animation),
+                                            CCRemoveSelf::create(),
+                                            NULL));
+
+}
+void HelloWorld::throwBall()
+{
+    float prercent = timerBar->getPercentage();
+    CCNode* parent = getChildByTag(222);
+    
+    //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
+    //just randomly picking one of the images
+
+    PhysicsSprite* sprite = new PhysicsSprite();
+    //        sprite->initWithTexture(m_pSpriteTexture, CCRectMake(32 * idx,32 * idy,32,32));
+    sprite->initWithTexture(textture);
+    sprite->autorelease();
+    
+    parent->addChild(sprite);
+    
+    sprite->setPosition(this->sprite->getPosition());
+
+    // Define the dynamic body.
+    //Set up a 1m squared box in the physics world
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_dynamicBody;
+    bodyDef.position.Set(this->sprite->getPosition().x/PTM_RATIO, this->sprite->getPosition().y/PTM_RATIO);
+    
+    b2Body *body = world->CreateBody(&bodyDef);
+    
+    // Define another box shape for our dynamic body.
+    b2CircleShape dynamicBox;
+//    dynamicBox.SetAsBox(.4f, .4f);//These are mid points for our 1m box
+    dynamicBox.m_radius = 0.3f;
+    
+    // Define the dynamic body fixture.
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &dynamicBox;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 0.3f;
+    body->CreateFixture(&fixtureDef);
+    sprite->setPhysicsBody(body);
+    
+    //set velocity
+    float X = location.x - this->sprite->getPosition().x;
+    float Y = location.y - this->sprite->getPosition().y;
+    float x = prercent/4 * X/(sqrt(X * X + Y * Y));
+    float y = prercent/4 * Y/(sqrt(X * X + Y * Y));
+    b2Vec2 ex = b2Vec2();
+    ex.Set(x, y);
+    time = 0;
+    body->SetLinearVelocity(ex);
+    
+    //restart
+    
+}
+void HelloWorld::showShooter()
+{
+    sprite->setVisible(true);
 }
