@@ -8,22 +8,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
-         timestampString = "401624931.499869"
+         timestampString = "401709683.738343"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "272"
-         endingLineNumber = "272">
+         startingLineNumber = "344"
+         endingLineNumber = "344">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
-         timestampString = "401624931.499869"
+         timestampString = "401709683.738343"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "267"
-         endingLineNumber = "267"
+         startingLineNumber = "339"
+         endingLineNumber = "339"
          landmarkName = "HelloWorld::scene()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -32,11 +32,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
-         timestampString = "401624931.499869"
+         timestampString = "401709683.738343"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "266"
-         endingLineNumber = "266"
+         startingLineNumber = "338"
+         endingLineNumber = "338"
          landmarkName = "HelloWorld::scene()"
          landmarkType = "5">
       </FileBreakpoint>
@@ -64,6 +64,58 @@
          startingLineNumber = "197"
          endingLineNumber = "197"
          landmarkName = "CCTMXLayer::setupTiles()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
+         timestampString = "401709361.085512"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "290"
+         endingLineNumber = "290"
+         landmarkName = "HelloWorld::ccTouchesMoved (CCSet *touches, CCEvent *event)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
+         timestampString = "401709361.085512"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "291"
+         endingLineNumber = "291"
+         landmarkName = "HelloWorld::ccTouchesMoved (CCSet *touches, CCEvent *event)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
+         timestampString = "401709361.085512"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "280"
+         endingLineNumber = "280"
+         landmarkName = "HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GunnyGame/Classes/HelloWorldScene.cpp"
+         timestampString = "401709361.085512"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "277"
+         endingLineNumber = "277"
+         landmarkName = "HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

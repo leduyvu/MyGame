@@ -42,12 +42,17 @@ public:
     
     void addShooter();
     virtual void ccTouchesBegan(CCSet* touches, CCEvent* event);
+    virtual void ccTouchesMoved (CCSet *touches, CCEvent *event);
     void createRectangularFixture(CCTMXLayer* layer, int x, int y,
                                   float width, float height);
     void runAnimation();
     void throwBall();
     void showShooter();
+    void runBoot();
 private:
+    bool checkRunAnimation = false;
+    bool transfer = false;
+    CCPoint touchBegin;
     bool boom = false;
     CCSprite *sprite;
     CCTMXLayer *_background;

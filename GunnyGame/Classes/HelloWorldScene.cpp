@@ -7,7 +7,7 @@
 //
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
-
+#include "math.h"
 using namespace cocos2d;
 using namespace CocosDenshion;
 
@@ -127,9 +127,35 @@ HelloWorld::HelloWorld()
     ro->setFlipX(true);
     this->addChild(ro,4);
     
+    CCSize tileSize = this->_tileMap->getTileSize();
+    const float pixelsPerMeter = 32.0f;
+    
+    // create the body
+    b2BodyDef bodyDef;
+    bodyDef.type = b2_staticBody;
+    bodyDef.position.Set(200/pixelsPerMeter,
+                         (200/ 2.0f)/pixelsPerMeter);
+    b2Body *body = world->CreateBody(&bodyDef);
+    
+    // define the shape
+    b2PolygonShape shape;
+    shape.SetAsBox(60 / pixelsPerMeter,
+                   60/ pixelsPerMeter);
+    
+    // create the fixture
+    b2FixtureDef fixtureDef;
+    fixtureDef.shape = &shape;
+    fixtureDef.density = 1.0f;
+    fixtureDef.friction = 1.0f;
+    fixtureDef.restitution = 0.0f;
+    //    fixtureDef.filter.categoryBits = kFilterCategoryLevel;
+    fixtureDef.filter.maskBits = 0xffff;
+    body->CreateFixture(&fixtureDef);
+    
 //========================================================
 
     scheduleUpdate();
+    this->schedule(schedule_selector(HelloWorld::runBoot), 2.55);
 }
 
 HelloWorld::~HelloWorld()
@@ -195,12 +221,15 @@ void HelloWorld::addNewSpriteAtPosition(CCPoint p){}
 
 void HelloWorld::update(float dt)
 {
+    CCNode *ex = this->getChildByTag(222);
+    if(ex != NULL && ex->getChildByTag(1120) != NULL &&  ex->getChildByTag(1120)->getPosition().x < 50)
+        ex->removeChildByTag(1120);
     if(touchBool)
     {
         time = time + dt;
         timerBar->setPercentage(5 + time * 50);
     }
-    if(checkRun)
+    if(checkRun && !checkRunAnimation)
     {
         this->runAction(CCSequence::create(CCCallFunc::create(this, callfunc_selector(HelloWorld::runAnimation)),
                                            CCDelayTime::create(1.6),
@@ -231,29 +260,72 @@ void HelloWorld::update(float dt)
 
 void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)
 {
-    timerBar->setPercentage(0);
+    CCSize s = CCDirector::sharedDirector()->getWinSize();
+//    timerBar->setPercentage(0);
     time = 0;
-    touchBool = true;
-    
-}
-void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event)
-{
     CCSetIterator it;
     CCTouch* touch;
+    it = touches->begin();
+    touch = (CCTouch*)(*it);
+    touchBegin = touch->getLocationInView();
+//    touchBegin = CCDirector::sharedDirector()->convertToGL(location);
+//    CCLOG("sprite Location x:: %f",sprite->getPosition().x);
+    CCLOG("touchBegin Location x:: %f",touchBegin.x);
+//    CCLOG("sprite Location y:: %f",sprite->getPosition().y);
+    CCLOG("touchBegin Location y:: %f",s.height - touchBegin.y);
+
+    if(fabs(touchBegin.x - sprite->getPosition().x) < 100 && fabs(s.height - touchBegin.y - sprite->getPosition().y) < 100)
+    {
+        transfer = true;
+        touchBool = false;
+    }
+    else  if(!checkRunAnimation) touchBool = true;
     
-    for( it = touches->begin(); it != touches->end(); it++)
+}
+
+void HelloWorld::ccTouchesMoved (CCSet *touches, CCEvent *event) {
+    CCTouch *touch = (CCTouch*)touches->anyObject();
+    CCPoint touchLoc = this->getParent()->convertTouchToNodeSpace(touch);
+    if(transfer)
     {
-        touch = (CCTouch*)(*it);
-        if(!touch)
-            break;
-        location = touch->getLocationInView();
-        location = CCDirector::sharedDirector()->convertToGL(location);
+        if(touchLoc.x > touchBegin.x && touchBegin.x > 0)
+        {
+            sprite->runAction(CCMoveBy::create(1, ccp(90,0)));
+            transfer = false;
+            touchBegin = ccp(0,0);
+
+        }
+        else if(touchLoc.x < touchBegin.x && touchBegin.x > 0)
+        {
+            sprite->runAction(CCMoveBy::create(1, ccp(-90,0)));
+            transfer = false;
+            touchBegin = ccp(0,0);
+        }
     }
-    if(!checkRun)
+    
+}
+
+
+void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event)
+{
+    if(!checkRunAnimation)
     {
-        checkRun = true;
+        CCSetIterator it;
+        CCTouch* touch;
+        for( it = touches->begin(); it != touches->end(); it++)
+        {
+            touch = (CCTouch*)(*it);
+            if(!touch)
+                break;
+            location = touch->getLocationInView();
+            location = CCDirector::sharedDirector()->convertToGL(location);
+        }
+        if(!checkRun && touchBool)
+        {
+            checkRun = true;
+        }
+        touchBool = false;
     }
-    touchBool = false;
 }
 
 CCScene* HelloWorld::scene()
@@ -302,6 +374,7 @@ void HelloWorld::createRectangularFixture(CCTMXLayer* layer, int x, int y,
 
 void HelloWorld::runAnimation()
 {
+    checkRunAnimation = true;
     CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("nembong.plist");
     CCArray* animFrames = new CCArray;
@@ -324,6 +397,33 @@ void HelloWorld::runAnimation()
                                             NULL));
 
 }
+
+void HelloWorld::runBoot()
+{
+    CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
+    cache->addSpriteFramesWithFile("quaivat.plist");
+    CCArray* animFrames = new CCArray;
+    animFrames->autorelease();
+    char str[100] = {0};
+    for(int i = 1; i < 6; i++) {
+        sprintf(str, "no%d.png", i);
+        CCSpriteFrame* frame = cache->spriteFrameByName( str );
+        animFrames->addObject(frame);
+    }
+    CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.4);
+    CCSprite *popSprite = CCSprite::create();
+    //popSprite->setScale();
+    animation->setLoops(7);
+    popSprite->setPosition(ccp(150, 150));
+    animation->setLoops(1);
+    this->addChild(popSprite, 28);
+    popSprite->runAction(CCSequence::create(CCAnimate::create(animation),
+                                            CCRemoveSelf::create(),
+                                            NULL));
+    
+}
+
+
 void HelloWorld::throwBall()
 {
     float prercent = timerBar->getPercentage();
@@ -333,6 +433,7 @@ void HelloWorld::throwBall()
     //just randomly picking one of the images
 
     PhysicsSprite* sprite = new PhysicsSprite();
+    sprite->setTag(1120);
     //        sprite->initWithTexture(m_pSpriteTexture, CCRectMake(32 * idx,32 * idy,32,32));
     sprite->initWithTexture(textture);
     sprite->autorelease();
@@ -346,9 +447,7 @@ void HelloWorld::throwBall()
     b2BodyDef bodyDef;
     bodyDef.type = b2_dynamicBody;
     bodyDef.position.Set(this->sprite->getPosition().x/PTM_RATIO, this->sprite->getPosition().y/PTM_RATIO);
-    
     b2Body *body = world->CreateBody(&bodyDef);
-    
     // Define another box shape for our dynamic body.
     b2CircleShape dynamicBox;
 //    dynamicBox.SetAsBox(.4f, .4f);//These are mid points for our 1m box
@@ -372,10 +471,13 @@ void HelloWorld::throwBall()
     time = 0;
     body->SetLinearVelocity(ex);
     
+    
     //restart
     
 }
 void HelloWorld::showShooter()
 {
     sprite->setVisible(true);
+    checkRunAnimation = false;
+    timerBar->setPercentage(0);
 }
