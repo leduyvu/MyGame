@@ -1,5 +1,5 @@
 //
-//  HelloWorldScene.h
+//  MyGameScene.h
 //  GunnyGame
 //
 //  Created by macbook_006 on 13/09/19.
@@ -11,6 +11,7 @@
 // When you import this file, you import all the cocos2d classes
 #include "cocos2d.h"
 #include "Box2D.h"
+#include "RoadTransfer.h"
 USING_NS_CC;
 
 class PhysicsSprite : public cocos2d::CCSprite
@@ -24,12 +25,12 @@ private:
     b2Body* m_pBody;    // strong ref
 };
 
-class HelloWorld : public cocos2d::CCLayer {
+class MyGame : public cocos2d::CCLayer {
 public:
-    ~HelloWorld();
-    HelloWorld();
+    ~MyGame();
+    MyGame();
     
-    // returns a Scene that contains the HelloWorld as the only child
+    // returns a Scene that contains the MyGame as the only child
     static cocos2d::CCScene* scene();
     
     void initPhysics();
@@ -48,8 +49,9 @@ public:
     void runAnimation();
     void throwBall();
     void showShooter();
-    void runBoot();
+    void runBoot(float delta);
 private:
+    float deltaTime = 0;
     bool checkRunAnimation = false;
     bool transfer = false;
     CCPoint touchBegin;

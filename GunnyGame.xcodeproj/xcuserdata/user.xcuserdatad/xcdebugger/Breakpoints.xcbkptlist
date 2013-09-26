@@ -24,7 +24,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "339"
          endingLineNumber = "339"
-         landmarkName = "HelloWorld::scene()"
+         landmarkName = "MyGame::scene()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -37,7 +37,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "338"
          endingLineNumber = "338"
-         landmarkName = "HelloWorld::scene()"
+         landmarkName = "MyGame::scene()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -50,7 +50,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "88"
          endingLineNumber = "88"
-         landmarkName = "HelloWorld::HelloWorld()"
+         landmarkName = "MyGame::MyGame()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -76,7 +76,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "290"
          endingLineNumber = "290"
-         landmarkName = "HelloWorld::ccTouchesMoved (CCSet *touches, CCEvent *event)"
+         landmarkName = "MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -89,7 +89,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "291"
          endingLineNumber = "291"
-         landmarkName = "HelloWorld::ccTouchesMoved (CCSet *touches, CCEvent *event)"
+         landmarkName = "MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -102,7 +102,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "280"
          endingLineNumber = "280"
-         landmarkName = "HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)"
+         landmarkName = "MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -115,7 +115,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "277"
          endingLineNumber = "277"
-         landmarkName = "HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)"
+         landmarkName = "MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

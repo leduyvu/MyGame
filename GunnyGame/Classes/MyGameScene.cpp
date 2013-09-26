@@ -1,11 +1,11 @@
 //
-//  HelloWorldScene.cpp
+//  MyGameScene.cpp
 //  GunnyGame
 //
 //  Created by macbook_006 on 13/09/19.
 //  Copyright __MyCompanyName__ 2013年. All rights reserved.
 //
-#include "HelloWorldScene.h"
+#include "MyGameScene.h"
 #include "SimpleAudioEngine.h"
 #include "math.h"
 using namespace cocos2d;
@@ -67,7 +67,7 @@ CCAffineTransform PhysicsSprite::nodeToParentTransform(void)
     return m_sTransform;
 }
 
-HelloWorld::HelloWorld()
+MyGame::MyGame()
 {
     // init physics
     this->initPhysics();
@@ -106,8 +106,8 @@ HelloWorld::HelloWorld()
     timerBar->setType(kCCProgressTimerTypeBar);
     timerBar->setAnchorPoint(ccp(0, 0));
     
-    timerBar->setPosition(100, 100);
-    timerBar->setMidpoint(ccp(0, 0));
+    timerBar->setPosition(0, 0);
+    timerBar->setMidpoint(ccp(0,0));
     timerBar->setBarChangeRate(ccp(1, 0));
     
     timerBar->setTag(405);
@@ -154,17 +154,23 @@ HelloWorld::HelloWorld()
     
 //========================================================
 
+    RoadTransfer *rf = new RoadTransfer();
+    rf->createBar(ccp(0,0));
+    
+    this->addChild(rf->getSprite(),9);
+    rf->getSprite()->runAction(CCRotateTo::create(3, 90));
+    rf->getSprite()->setAnchorPoint(ccp(0,0));
     scheduleUpdate();
-    this->schedule(schedule_selector(HelloWorld::runBoot), 2.55);
+    this->schedule(schedule_selector(MyGame::runBoot), 2.55);
 }
 
-HelloWorld::~HelloWorld()
+MyGame::~MyGame()
 {
     delete world;
     world = NULL;
 }
 
-void HelloWorld::initPhysics()
+void MyGame::initPhysics()
 {
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     b2Vec2 gravity;
@@ -199,7 +205,7 @@ void HelloWorld::initPhysics()
     groundBody->CreateFixture(&groundBox,0);
 }
 
-void HelloWorld::addShooter()
+void MyGame::addShooter()
 {
     sprite = CCSprite::create("nembong1.png");
     sprite->setScale(0.3);
@@ -208,7 +214,7 @@ void HelloWorld::addShooter()
     
 }
 
-void HelloWorld::draw()
+void MyGame::draw()
 {
     CCLayer::draw();
     ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
@@ -217,9 +223,9 @@ void HelloWorld::draw()
     kmGLPopMatrix();
 }
 
-void HelloWorld::addNewSpriteAtPosition(CCPoint p){}
+void MyGame::addNewSpriteAtPosition(CCPoint p){}
 
-void HelloWorld::update(float dt)
+void MyGame::update(float dt)
 {
     CCNode *ex = this->getChildByTag(222);
     if(ex != NULL && ex->getChildByTag(1120) != NULL &&  ex->getChildByTag(1120)->getPosition().x < 50)
@@ -231,10 +237,10 @@ void HelloWorld::update(float dt)
     }
     if(checkRun && !checkRunAnimation)
     {
-        this->runAction(CCSequence::create(CCCallFunc::create(this, callfunc_selector(HelloWorld::runAnimation)),
+        this->runAction(CCSequence::create(CCCallFunc::create(this, callfunc_selector(MyGame::runAnimation)),
                                            CCDelayTime::create(1.6),
-                                           CCCallFunc::create(this, callfunc_selector(HelloWorld::throwBall)),
-                                           CCCallFunc::create(this, callfunc_selector(HelloWorld::showShooter)),
+                                           CCCallFunc::create(this, callfunc_selector(MyGame::throwBall)),
+                                           CCCallFunc::create(this, callfunc_selector(MyGame::showShooter)),
                                            NULL));
         checkRun = false;
         boom = true;
@@ -258,7 +264,7 @@ void HelloWorld::update(float dt)
     }
 }
 
-void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)
+void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
 {
     CCSize s = CCDirector::sharedDirector()->getWinSize();
 //    timerBar->setPercentage(0);
@@ -280,10 +286,9 @@ void HelloWorld::ccTouchesBegan(CCSet* touches, CCEvent* event)
         touchBool = false;
     }
     else  if(!checkRunAnimation) touchBool = true;
-    
 }
 
-void HelloWorld::ccTouchesMoved (CCSet *touches, CCEvent *event) {
+void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
     CCTouch *touch = (CCTouch*)touches->anyObject();
     CCPoint touchLoc = this->getParent()->convertTouchToNodeSpace(touch);
     if(transfer)
@@ -306,7 +311,7 @@ void HelloWorld::ccTouchesMoved (CCSet *touches, CCEvent *event) {
 }
 
 
-void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event)
+void MyGame::ccTouchesEnded(CCSet* touches, CCEvent* event)
 {
     if(!checkRunAnimation)
     {
@@ -328,20 +333,20 @@ void HelloWorld::ccTouchesEnded(CCSet* touches, CCEvent* event)
     }
 }
 
-CCScene* HelloWorld::scene()
+CCScene* MyGame::scene()
 {
     // 'scene' is an autorelease object
     CCScene *scene = CCScene::create();
     
     // add layer as a child to scene
-    CCLayer* layer = new HelloWorld();
+    CCLayer* layer = new MyGame();
     scene->addChild(layer);
     layer->release();
     
     return scene;
 }
 
-void HelloWorld::createRectangularFixture(CCTMXLayer* layer, int x, int y,
+void MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y,
                                           float width, float height)
 {
     // get position & size
@@ -372,7 +377,7 @@ void HelloWorld::createRectangularFixture(CCTMXLayer* layer, int x, int y,
     body->CreateFixture(&fixtureDef);
 }
 
-void HelloWorld::runAnimation()
+void MyGame::runAnimation()
 {
     checkRunAnimation = true;
     CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
@@ -398,8 +403,9 @@ void HelloWorld::runAnimation()
 
 }
 
-void HelloWorld::runBoot()
+void MyGame::runBoot(float delta)
 {
+    deltaTime = deltaTime + delta;
     CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("quaivat.plist");
     CCArray* animFrames = new CCArray;
@@ -414,7 +420,8 @@ void HelloWorld::runBoot()
     CCSprite *popSprite = CCSprite::create();
     //popSprite->setScale();
     animation->setLoops(7);
-    popSprite->setPosition(ccp(150, 150));
+    
+    popSprite->setPosition(ccp(150 + deltaTime* 20, 150));
     animation->setLoops(1);
     this->addChild(popSprite, 28);
     popSprite->runAction(CCSequence::create(CCAnimate::create(animation),
@@ -424,7 +431,7 @@ void HelloWorld::runBoot()
 }
 
 
-void HelloWorld::throwBall()
+void MyGame::throwBall()
 {
     float prercent = timerBar->getPercentage();
     CCNode* parent = getChildByTag(222);
@@ -475,7 +482,7 @@ void HelloWorld::throwBall()
     //restart
     
 }
-void HelloWorld::showShooter()
+void MyGame::showShooter()
 {
     sprite->setVisible(true);
     checkRunAnimation = false;

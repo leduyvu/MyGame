@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		CE1431DE17F16F6A00F026C1 /* quaivat.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1431DC17F16F6A00F026C1 /* quaivat.plist */; };
 		CE1431DF17F16F6A00F026C1 /* quaivat.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */; };
+		CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7F59C517F2910C00DB8E03 /* thanh.png */; };
+		CE7F59CC17F291E600DB8E03 /* RoadTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F59CA17F291E600DB8E03 /* RoadTransfer.cpp */; };
 		CE7FD03317EAA3C20038B094 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FD03217EAA3C20038B094 /* QuartzCore.framework */; };
 		CE7FD03517EAA3C20038B094 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FD03417EAA3C20038B094 /* OpenGLES.framework */; };
 		CE7FD03717EAA3C20038B094 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE7FD03617EAA3C20038B094 /* OpenAL.framework */; };
@@ -283,7 +285,7 @@
 		CE7FD3CE17EAA3D80038B094 /* b2WheelJoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7FD3CD17EAA3D80038B094 /* b2WheelJoint.cpp */; };
 		CE7FD3D217EAA3D80038B094 /* b2Rope.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7FD3D117EAA3D80038B094 /* b2Rope.cpp */; };
 		CE7FD3D917EAA3D80038B094 /* AppDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7FD3D817EAA3D80038B094 /* AppDelegate.cpp */; };
-		CE7FD3DC17EAA3D80038B094 /* HelloWorldScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7FD3DB17EAA3D80038B094 /* HelloWorldScene.cpp */; };
+		CE7FD3DC17EAA3D80038B094 /* MyGameScene.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7FD3DB17EAA3D80038B094 /* MyGameScene.cpp */; };
 		CE7FD3DE17EAA3D80038B094 /* blocks.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7FD3DD17EAA3D80038B094 /* blocks.png */; };
 		CE7FD3E617EAA54E0038B094 /* bt_progressbar.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7FD3E417EAA54E0038B094 /* bt_progressbar.png */; };
 		CE7FD3E717EAA54E0038B094 /* bt_progressbarborder.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7FD3E517EAA54E0038B094 /* bt_progressbarborder.png */; };
@@ -308,6 +310,9 @@
 /* Begin PBXFileReference section */
 		CE1431DC17F16F6A00F026C1 /* quaivat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = quaivat.plist; path = Resources/quaivat.plist; sourceTree = "<group>"; };
 		CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = quaivat.pvr.gz; path = Resources/quaivat.pvr.gz; sourceTree = "<group>"; };
+		CE7F59C517F2910C00DB8E03 /* thanh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thanh.png; path = Resources/thanh.png; sourceTree = "<group>"; };
+		CE7F59CA17F291E600DB8E03 /* RoadTransfer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RoadTransfer.cpp; sourceTree = "<group>"; };
+		CE7F59CB17F291E600DB8E03 /* RoadTransfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RoadTransfer.h; sourceTree = "<group>"; };
 		CE7FD02F17EAA3C20038B094 /* GunnyGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GunnyGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE7FD03217EAA3C20038B094 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		CE7FD03417EAA3C20038B094 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -901,8 +906,8 @@
 		CE7FD3D517EAA3D80038B094 /* Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		CE7FD3D717EAA3D80038B094 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = Classes/AppDelegate.h; sourceTree = "<group>"; };
 		CE7FD3D817EAA3D80038B094 /* AppDelegate.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = AppDelegate.cpp; path = Classes/AppDelegate.cpp; sourceTree = "<group>"; };
-		CE7FD3DA17EAA3D80038B094 /* HelloWorldScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = HelloWorldScene.h; path = Classes/HelloWorldScene.h; sourceTree = "<group>"; };
-		CE7FD3DB17EAA3D80038B094 /* HelloWorldScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = HelloWorldScene.cpp; path = Classes/HelloWorldScene.cpp; sourceTree = "<group>"; };
+		CE7FD3DA17EAA3D80038B094 /* MyGameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MyGameScene.h; path = Classes/MyGameScene.h; sourceTree = "<group>"; };
+		CE7FD3DB17EAA3D80038B094 /* MyGameScene.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = MyGameScene.cpp; path = Classes/MyGameScene.cpp; sourceTree = "<group>"; };
 		CE7FD3DD17EAA3D80038B094 /* blocks.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = blocks.png; path = Resources/blocks.png; sourceTree = "<group>"; };
 		CE7FD3E417EAA54E0038B094 /* bt_progressbar.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bt_progressbar.png; path = Resources/bt_progressbar.png; sourceTree = "<group>"; };
 		CE7FD3E517EAA54E0038B094 /* bt_progressbarborder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bt_progressbarborder.png; path = Resources/bt_progressbarborder.png; sourceTree = "<group>"; };
@@ -992,6 +997,7 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE7F59C517F2910C00DB8E03 /* thanh.png */,
 				CE1431DC17F16F6A00F026C1 /* quaivat.plist */,
 				CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */,
 				CEEBCDDD17F04E5200328D60 /* robong.png */,
@@ -2137,8 +2143,10 @@
 			children = (
 				CE7FD3D717EAA3D80038B094 /* AppDelegate.h */,
 				CE7FD3D817EAA3D80038B094 /* AppDelegate.cpp */,
-				CE7FD3DA17EAA3D80038B094 /* HelloWorldScene.h */,
-				CE7FD3DB17EAA3D80038B094 /* HelloWorldScene.cpp */,
+				CE7FD3DA17EAA3D80038B094 /* MyGameScene.h */,
+				CE7FD3DB17EAA3D80038B094 /* MyGameScene.cpp */,
+				CE7F59CA17F291E600DB8E03 /* RoadTransfer.cpp */,
+				CE7F59CB17F291E600DB8E03 /* RoadTransfer.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2227,6 +2235,7 @@
 				CEEBCDDE17F04E5200328D60 /* robong.png in Resources */,
 				CE1431DE17F16F6A00F026C1 /* quaivat.plist in Resources */,
 				CE1431DF17F16F6A00F026C1 /* quaivat.pvr.gz in Resources */,
+				CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2488,7 +2497,8 @@
 				CE7FD3CE17EAA3D80038B094 /* b2WheelJoint.cpp in Sources */,
 				CE7FD3D217EAA3D80038B094 /* b2Rope.cpp in Sources */,
 				CE7FD3D917EAA3D80038B094 /* AppDelegate.cpp in Sources */,
-				CE7FD3DC17EAA3D80038B094 /* HelloWorldScene.cpp in Sources */,
+				CE7FD3DC17EAA3D80038B094 /* MyGameScene.cpp in Sources */,
+				CE7F59CC17F291E600DB8E03 /* RoadTransfer.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
