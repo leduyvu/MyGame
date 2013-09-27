@@ -21,6 +21,7 @@ public:
     void setPhysicsBody(b2Body * body);
     virtual bool isDirty(void);
     virtual cocos2d::CCAffineTransform nodeToParentTransform(void);
+    b2Body* getBody();
 private:
     b2Body* m_pBody;    // strong ref
 };
@@ -51,6 +52,7 @@ public:
     void showShooter();
     void runBoot(float delta);
 private:
+    CCSprite* road;
     float deltaTime = 0;
     bool checkRunAnimation = false;
     bool transfer = false;
@@ -67,6 +69,7 @@ private:
     b2World* world;
     cocos2d::CCTexture2D* m_pSpriteTexture; // weak ref
     cocos2d::CCTexture2D* textture; // weak ref
+    PhysicsSprite *throwBalls = new PhysicsSprite();
 
 };
 

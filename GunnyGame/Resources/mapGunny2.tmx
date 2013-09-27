@@ -10,7 +10,7 @@
  </layer>
  <layer name="mapWall" width="35" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYBcMB3KEzHipuAQBgIzAh
+   eJxjYBgFo2AUjIJRMApGwSgYWuAOEXgKFkyMPmx41C1D2y0AochaoQ==
   </data>
  </layer>
 </map>

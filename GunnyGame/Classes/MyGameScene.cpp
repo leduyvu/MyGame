@@ -28,6 +28,11 @@ void PhysicsSprite::setPhysicsBody(b2Body * body)
     m_pBody = body;
 }
 
+b2Body* PhysicsSprite::getBody()
+{
+    return this->m_pBody;
+}
+
 // this method will only get called if the sprite is batched.
 // return YES if the physics values (angles, position ) changed
 // If you return NO, then nodeToParentTransform won't be called.
@@ -153,13 +158,37 @@ MyGame::MyGame()
     body->CreateFixture(&fixtureDef);
     
 //========================================================
-
+    
+//=============== road ================================
     RoadTransfer *rf = new RoadTransfer();
     rf->createBar(ccp(0,0));
-    
     this->addChild(rf->getSprite(),9);
     rf->getSprite()->runAction(CCRotateTo::create(3, 90));
-    rf->getSprite()->setAnchorPoint(ccp(0,0));
+    this->road = rf->getSprite();
+    road->setAnchorPoint(ccp(0,0));
+//=====================================================
+    
+    throwBalls->setTag(1120);
+    throwBalls->initWithTexture(textture);
+    throwBalls->autorelease();
+    throwBalls->setPosition(ccp(300,200));
+    this->addChild(throwBalls);
+    b2BodyDef bodyDef1;
+    bodyDef1.type = b2_dynamicBody;
+    bodyDef1.position.Set(this->sprite->getPosition().x/PTM_RATIO, this->sprite->getPosition().y/PTM_RATIO);
+    b2Body *body1 = world->CreateBody(&bodyDef1);
+    b2CircleShape dynamicBox;
+    dynamicBox.m_radius = 0.3f;
+    
+    b2FixtureDef fixtureDef1;
+    fixtureDef1.shape = &dynamicBox;
+    fixtureDef1.density = 1.0f;
+    fixtureDef1.friction = 0.3f;
+    body1->CreateFixture(&fixtureDef1);
+    throwBalls->setPhysicsBody(body1);
+    
+    
+    
     scheduleUpdate();
     this->schedule(schedule_selector(MyGame::runBoot), 2.55);
 }
@@ -262,6 +291,12 @@ void MyGame::update(float dt)
             myActor->setRotation( -1 * CC_RADIANS_TO_DEGREES(b->GetAngle()) );
         }    
     }
+    
+    if(throwBalls->getBody()->GetPosition().y * 32 > road->getPosition().y)
+    {
+        CCLOG("dadadadad");
+    }
+    CCLOG("throw ball * %f",throwBalls->getBody()->GetPosition().y );
 }
 
 void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
@@ -433,21 +468,10 @@ void MyGame::runBoot(float delta)
 
 void MyGame::throwBall()
 {
+    
     float prercent = timerBar->getPercentage();
-    CCNode* parent = getChildByTag(222);
-    
-    //We have a 64x64 sprite sheet with 4 different 32x32 images.  The following code is
-    //just randomly picking one of the images
 
-    PhysicsSprite* sprite = new PhysicsSprite();
-    sprite->setTag(1120);
-    //        sprite->initWithTexture(m_pSpriteTexture, CCRectMake(32 * idx,32 * idy,32,32));
-    sprite->initWithTexture(textture);
-    sprite->autorelease();
-    
-    parent->addChild(sprite);
-    
-    sprite->setPosition(this->sprite->getPosition());
+    throwBalls->setPosition(this->sprite->getPosition());
 
     // Define the dynamic body.
     //Set up a 1m squared box in the physics world
@@ -466,7 +490,7 @@ void MyGame::throwBall()
     fixtureDef.density = 1.0f;
     fixtureDef.friction = 0.3f;
     body->CreateFixture(&fixtureDef);
-    sprite->setPhysicsBody(body);
+    throwBalls->setPhysicsBody(body);
     
     //set velocity
     float X = location.x - this->sprite->getPosition().x;
