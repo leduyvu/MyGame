@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CE1431DE17F16F6A00F026C1 /* quaivat.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1431DC17F16F6A00F026C1 /* quaivat.plist */; };
 		CE1431DF17F16F6A00F026C1 /* quaivat.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */; };
+		CE1A032917F959BB003D1BFA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032717F959BB003D1BFA /* Player.cpp */; };
+		CE1A032C17F95BE9003D1BFA /* PhysicsSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */; };
+		CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE29B18F17F975B7009E20D5 /* Ball.cpp */; };
 		CE7F06AB17F588620058D0D0 /* MyContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F06A917F588620058D0D0 /* MyContactListener.cpp */; };
 		CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7F59C517F2910C00DB8E03 /* thanh.png */; };
 		CE7F59CC17F291E600DB8E03 /* RoadTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F59CA17F291E600DB8E03 /* RoadTransfer.cpp */; };
@@ -311,6 +314,12 @@
 /* Begin PBXFileReference section */
 		CE1431DC17F16F6A00F026C1 /* quaivat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = quaivat.plist; path = Resources/quaivat.plist; sourceTree = "<group>"; };
 		CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = quaivat.pvr.gz; path = Resources/quaivat.pvr.gz; sourceTree = "<group>"; };
+		CE1A032717F959BB003D1BFA /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Classes/Player.cpp; sourceTree = "<group>"; };
+		CE1A032817F959BB003D1BFA /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Classes/Player.h; sourceTree = "<group>"; };
+		CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsSprite.cpp; sourceTree = "<group>"; };
+		CE1A032B17F95BE9003D1BFA /* PhysicsSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
+		CE29B18F17F975B7009E20D5 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = Classes/Ball.cpp; sourceTree = "<group>"; };
+		CE29B19017F975B8009E20D5 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = Classes/Ball.h; sourceTree = "<group>"; };
 		CE7F06A917F588620058D0D0 /* MyContactListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyContactListener.cpp; path = Classes/MyContactListener.cpp; sourceTree = "<group>"; };
 		CE7F06AA17F588620058D0D0 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyContactListener.h; path = Classes/MyContactListener.h; sourceTree = "<group>"; };
 		CE7F59C517F2910C00DB8E03 /* thanh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thanh.png; path = Resources/thanh.png; sourceTree = "<group>"; };
@@ -2152,6 +2161,12 @@
 				CE7F59CB17F291E600DB8E03 /* RoadTransfer.h */,
 				CE7F06A917F588620058D0D0 /* MyContactListener.cpp */,
 				CE7F06AA17F588620058D0D0 /* MyContactListener.h */,
+				CE1A032717F959BB003D1BFA /* Player.cpp */,
+				CE1A032817F959BB003D1BFA /* Player.h */,
+				CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */,
+				CE1A032B17F95BE9003D1BFA /* PhysicsSprite.h */,
+				CE29B18F17F975B7009E20D5 /* Ball.cpp */,
+				CE29B19017F975B8009E20D5 /* Ball.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2505,6 +2520,9 @@
 				CE7FD3DC17EAA3D80038B094 /* MyGameScene.cpp in Sources */,
 				CE7F59CC17F291E600DB8E03 /* RoadTransfer.cpp in Sources */,
 				CE7F06AB17F588620058D0D0 /* MyContactListener.cpp in Sources */,
+				CE1A032917F959BB003D1BFA /* Player.cpp in Sources */,
+				CE1A032C17F95BE9003D1BFA /* PhysicsSprite.cpp in Sources */,
+				CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

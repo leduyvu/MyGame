@@ -21,6 +21,7 @@ void RoadTransfer::createBar(CCPoint point)
 
 void RoadTransfer::swivelBar(int degree)
 {
+    
 }
 CCSprite* RoadTransfer::getSprite()
 {

@@ -5,12 +5,17 @@
  </tileset>
  <layer name="mapMain" width="35" height="20">
   <data encoding="base64" compression="zlib">
-   eJyl1PmzT2UcB/BvFBcRtyxlKbIVMqKUtaxjCaFkqSZFZcmSGLKr7Iw9S3YZS9mirE0qJEtRDGVJKvde5V/wMsPMd07nfO+9xw+v+Z7n8zzvz/c5zzlz0hOJxL3cR3FKUJJSpIfMBWu3xumB67CeyfWwNXcmuSswvl03+uUjP2k3RdXTkuqpeoTVwnol13Kzj1SZtJB1yfvKyb2HzWd3T3eQh7wRawvkoEfw91auIIW4m8IRfZLHwbmw80l1blHnkyoT9bxyc8ZRfYNzYb2Czyq7ek7fgdvZZ6oeuX1Psvu/sPekCPdQlGKJ6O9PacpQlnI8yEOUpwIPU5FKVOZ+HoiRq0JVHuFRqlGdGjxGTWpThyd4kro8xdPUoz4NaEgjavF4jFxjnuFZmtCUZjSnBS1pQ1ueox3t6cDzdKQTnXmBF2lF6xi5LrxEV7rRnR68zCu8yuu8QS968yZv8TZ96Es/+vMOr9EzRm4AAxnEYN5lCO8xlGG8z0hGMZoxjGUc45nAB3zIRwxnRIzcRCYxmSlMZRrTmcFM5jCXecxnAR+zkEUsZgmfsJRZzM5l7sbel7GcFaxkFatZw6esZQMb+YzP2cRmtrCVbXzBdnawjvUxcl/yFTvZxW72sJd9fM23fMf3HOAgh/iBw/zIEY5yjG/YHyN3nJ/4mROc5Bd+5RSn+Y3fOcd5LnCRP7jEn1zmL/7mDGdj5P7hChlkksVV/uU/riXNZcSQGegdvI5aE1YP7iEz8f+9RV2H5VLVgn2yQuavA0/o6sQ=
+   eJyl1Pm3TWUYB/CD6CqUS4oKZczUSqYkc6zIEJGEVkIyz1YZyjxkWChTZmKhopkGfkCZpww/mIeGe03/go+17l3rrG3vc88994fPOmc/7/t9zrPfvddJj8ViJSjJY5TicZ4gPWQtWMu+Tg98D+sZXw/b80CcgoHrvLrXrxAPkpYlqp4WV0/UI6wW1iu+lps5EmXSQvbFz5XMvYet53RP+chPgYi9hZPoEfzMzj3EwxShaESf+OvgWtj5JDq3qPNJlIl6Xrk546i+wbWwXsFnlVM92XcgL3Mm6pHb9ySn3wt7T4rxCI9SPBb9//MkT/E0ZSlHeZ7hWSpQkUpUpjRlUshVoSrPUY3q1KAmtXieF6lDXepRnwa8RENephGv0JgXqJ1CrglNaUZzWtCSV2lFa9ryOu1oTwc68gad6MybdKErr9EmhdxbdONtuvMOPehJL97lffrQl358QH8+ZAADGcRghvAevVPIDWUYwxnBSEYxmjGMZRzjmcBEPuFTJjGZKUxlGtP5iI9TyM1gJrOYzWfMYS7zmM8iPucLFrOEpSxjOV+ygpWsYgELc5m7N/tq1rCWdaxnA1+xkU1s5Wu+4Vu2sZ3v+J4f+JGf+JnNbEkh9ws72Mmv/Mbv/MEudrOHvezjT/5iPwc4yKGs+wpKJneYIxzlGMc5wUn+5hSnOcNZznGeC1zkEpe5wlWuRcySTO46//Av//E/GWRyg5vc4jZ34tYyEgibJT6X3Tv4PWpPWD04Q2bs/tkyE8wSzCWqBXveCFm/C3gd4uU=
   </data>
  </layer>
  <layer name="mapWall" width="35" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwSgYWuAOEXgKFkyMPmx41C1D2y0AochaoQ==
+   eJxjYBgFo2AUjIJRMApGwSgYWuAOEZhcfcSaNeqWoeMWAM7WTxE=
+  </data>
+ </layer>
+ <layer name="mapRoad" width="35" height="20" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJxjYBgFo2AUjIKBA3ew4FG3jLplFIyCUTAKqAkAzeERMQ==
   </data>
  </layer>
 </map>

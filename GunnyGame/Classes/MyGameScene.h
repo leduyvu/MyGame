@@ -12,25 +12,15 @@
 #include "cocos2d.h"
 #include "Box2D.h"
 #include "RoadTransfer.h"
+#include "PhysicsSprite.h"
+#include "Player.h"
+#include "Ball.h"
 USING_NS_CC;
-
-class PhysicsSprite : public cocos2d::CCSprite
-{
-public:
-    PhysicsSprite();
-    void setPhysicsBody(b2Body * body);
-    virtual bool isDirty(void);
-    virtual cocos2d::CCAffineTransform nodeToParentTransform(void);
-    b2Body* getBody();
-private:
-    b2Body* m_pBody;    // strong ref
-};
-
 class MyGame : public cocos2d::CCLayer {
 public:
     ~MyGame();
     MyGame();
-    
+    bool init();
     // returns a Scene that contains the MyGame as the only child
     static cocos2d::CCScene* scene();
     
@@ -47,11 +37,17 @@ public:
     virtual void ccTouchesMoved (CCSet *touches, CCEvent *event);
     void createRectangularFixture(CCTMXLayer* layer, int x, int y,
                                   float width, float height);
+    void createDynamicFixture(CCTMXLayer* layer, int x, int y,
+                              float width, float height);
     void runAnimation();
     void throwBall();
     void showShooter();
     void runBoot(float delta);
+    
 private:
+    Ball* ball;
+    Player *player;
+    bool checkRoad;
     CCSprite* road;
     float deltaTime = 0;
     bool checkRunAnimation = false;
@@ -59,7 +55,7 @@ private:
     CCPoint touchBegin;
     bool boom = false;
     CCSprite *sprite;
-    CCTMXLayer *_background;
+    CCTMXLayer *_background, *_background1;
     CCTMXTiledMap *_tileMap;
     bool checkRun = false;
     bool touchBool = false;
