@@ -20,7 +20,7 @@ public:
     ~Player();
     void createPlayer(string str, CCPoint location);
     void movingPlayer(CCPoint location);
-    void throwPlayer(CCPoint location);
+    void throwPlayer(CCLayer* layer, CCPoint location);
     CCPoint getLocation();
     CCSprite* getSprite();
 private:

@@ -15,7 +15,7 @@
 #include "PhysicsSprite.h"
 USING_NS_CC;
 using namespace std;
-class Ball : public cocos2d::CCNode{
+class Ball : public PhysicsSprite{
 public:
     Ball();
     ~Ball();
@@ -26,8 +26,11 @@ public:
     CCPoint getLocation();
     CCSprite* getSprite();
     b2Body* getBody();
+    PhysicsSprite* getPhysicsSprite();
+    void setBody(b2Body *b);
 private:
-    PhysicsSprite* sprBall;
+    PhysicsSprite* sprPhysicsBall;
+    CCSprite* sprBall;
     b2Body *body;
     CCPoint location;
     

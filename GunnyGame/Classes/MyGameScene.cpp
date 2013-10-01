@@ -12,6 +12,7 @@
 #include "math.h"
 #include "Player.h"
 #include "Ball.h"
+#include "Boot.h"
 MyGame::MyGame()
 {
     MyGame::init();
@@ -59,16 +60,16 @@ MyGame::MyGame()
 //=================================================
     
 //======================= BALL =========================
-    this->ball = new Ball();
-    ball->autorelease();
-    ball->createBall(world, "bong1.png", player->getLocation());
+//    this->ball = new Ball();
+//    ball->createBall(world, "bong1.png", player->getLocation());
+//    this->addChild(this->ball->getPhysicsSprite(),10);
 //========================================================
     
 //=============== road ================================
     RoadTransfer *rf = new RoadTransfer();
     rf->createBar(ccp(0,0));
     this->addChild(rf->getSprite(),9);
-    rf->getSprite()->runAction(CCRotateTo::create(3, 90));
+    rf->getSprite()->setRotation(90);
     this->road = rf->getSprite();
     road->setAnchorPoint(ccp(0,0));
 //=====================================================
@@ -83,6 +84,7 @@ MyGame::~MyGame()
 }
 
 bool MyGame::init(){
+    arrBalls = new CCArray();
     this->player = new Player();
     this->checkRoad = false;
     this->deltaTime = 0;
@@ -219,7 +221,7 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
         }
         else if(touchLoc.x < touchBegin.x && touchBegin.x > 0)
         {
-            sprite->runAction(CCMoveBy::create(1, ccp(-90,0)));
+            player->getSprite()->runAction(CCMoveBy::create(1, ccp(-90,0)));
             transfer = false;
             touchBegin = ccp(0,0);
         }
@@ -297,8 +299,8 @@ void MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y,
 void MyGame::runAnimation()
 {
     checkRunAnimation = true;
-    this->player->throwPlayer(player->getLocation());
-    this->player->setVisible(false);
+    this->player->getSprite()->setVisible(false);
+    this->player->throwPlayer(this, player->getLocation());
 }
 
 void MyGame::runBoot(float delta)
@@ -331,17 +333,19 @@ void MyGame::runBoot(float delta)
 
 void MyGame::throwBall()
 {
-    Ball *balls= new Ball();
-    balls->createBall(world, "bong1.png", player->getLocation());
+    Ball *ball = new Ball();
+    ball->createBall(this->world, "bong1.png", player->getLocation());
+    arrBalls->addObject(ball);
+    this->addChild(ball->getPhysicsSprite(), 10);
     float prercent = timerBar->getPercentage();
     float X = location.x - this->player->getLocation().x;
     float Y = location.y - this->player->getLocation().y;
     float x = prercent/4 * X/(sqrt(X * X + Y * Y));
     float y = prercent/4 * Y/(sqrt(X * X + Y * Y));
     b2Vec2 ex = b2Vec2();
-    ex.Set(10, 3);
+    ex.Set(x, y);
+    ball->throwBall(ex);
     time = 0;
-    balls->getBody()->SetLinearVelocity(ex);
 }
 void MyGame::showShooter()
 {

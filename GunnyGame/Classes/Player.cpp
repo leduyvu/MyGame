@@ -29,7 +29,7 @@ CCSprite* Player::getSprite(){
 CCPoint Player::getLocation(){
     return this->location;
 }
-void Player::throwPlayer(CCPoint location){
+void Player::throwPlayer(CCLayer* layer, CCPoint location){
     CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("nembong.plist");
     CCArray* animFrames = new CCArray;
@@ -45,7 +45,7 @@ void Player::throwPlayer(CCPoint location){
     popSprite->setScale(0.3);
     popSprite->setPosition(location);
     animation->setLoops(1);
-    this->addChild(popSprite, 8);
+    layer->addChild(popSprite, 8);
     popSprite->runAction(CCSequence::create(CCAnimate::create(animation),
                                             CCRemoveSelf::create(),
                                             NULL));

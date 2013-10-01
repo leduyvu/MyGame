@@ -45,6 +45,7 @@ public:
     void runBoot(float delta);
     
 private:
+    CCArray* arrBalls;
     Ball* ball;
     Player *player;
     bool checkRoad;
