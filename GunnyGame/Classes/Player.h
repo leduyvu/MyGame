@@ -11,19 +11,22 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "PhysicsSprite.h"
 
 USING_NS_CC;
 using namespace std;
-class Player : public cocos2d::CCNode {
+class Player : public cocos2d::CCObject {
 public:
     Player();
     ~Player();
-    void createPlayer(string str, CCPoint location);
+    void createPlayer(b2World * world, string str, CCPoint location);
     void movingPlayer(CCPoint location);
     void throwPlayer(CCLayer* layer, CCPoint location);
     CCPoint getLocation();
     CCSprite* getSprite();
 private:
+    PhysicsSprite* sprPhysicPlayer;
+    b2Body* body;
     CCSprite* sprPlayer;
     CCPoint location;
     

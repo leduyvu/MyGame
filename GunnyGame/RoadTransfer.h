@@ -12,7 +12,7 @@
 #include <iostream>
 #include "cocos2d.h"
 USING_NS_CC;
-class RoadTransfer : public cocos2d::CCLayer {
+class RoadTransfer : public cocos2d::CCNode {
 public:
     ~RoadTransfer();
     RoadTransfer();

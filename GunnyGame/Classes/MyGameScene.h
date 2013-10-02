@@ -43,8 +43,17 @@ public:
     void throwBall();
     void showShooter();
     void runBoot(float delta);
+    void impactBall();
     
 private:
+    CCPoint movingSwipePoint;
+    bool swipeRecognized = false;
+    bool spriteContained = false;
+    bool swiping = false;
+    bool swipeRight;
+    bool swipeLeft;
+    bool swipeUp;
+    bool swipeDown;
     CCArray* arrBalls;
     Ball* ball;
     Player *player;
