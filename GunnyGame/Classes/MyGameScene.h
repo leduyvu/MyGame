@@ -44,6 +44,7 @@ public:
     void showShooter();
     void runBoot(float delta);
     void impactBall();
+    void mapPosition(CCPoint point);
     
 private:
     CCPoint movingSwipePoint;
@@ -54,7 +55,7 @@ private:
     bool swipeLeft;
     bool swipeUp;
     bool swipeDown;
-    CCArray* arrBalls;
+    CCArray* arrBalls, *arrWall;
     Ball* ball;
     Player *player;
     bool checkRoad;
@@ -73,6 +74,7 @@ private:
     CCPoint location;
     CCProgressTimer* timerBar;
     b2World* world;
+    b2World* wall;
     cocos2d::CCTexture2D* m_pSpriteTexture; // weak ref
     cocos2d::CCTexture2D* textture; // weak ref
     PhysicsSprite *throwBalls = new PhysicsSprite();
