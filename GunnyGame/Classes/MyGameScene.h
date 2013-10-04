@@ -78,6 +78,7 @@ private:
     cocos2d::CCTexture2D* m_pSpriteTexture; // weak ref
     cocos2d::CCTexture2D* textture; // weak ref
     PhysicsSprite *throwBalls = new PhysicsSprite();
+    RoadTransfer *rf;
 
 };
 

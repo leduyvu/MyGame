@@ -33,7 +33,6 @@ MyGame::MyGame()
             CCSprite* tileSprite = _background->tileAt(ccp(x, y));
             if( tileSprite )
             {
-                tileSprite->setTag(1102);
                 //create static-Body
                 this->createRectangularFixture(_background, x, y, 1.0f, 1.0f);
             }
@@ -68,12 +67,16 @@ MyGame::MyGame()
 //========================================================
     
 //=============== road ================================
-    RoadTransfer *rf = new RoadTransfer();
-    rf->createBar(ccp(0,0));
-    this->addChild(rf->getSprite(),9);
-    rf->getSprite()->setRotation(90);
-    this->road = rf->getSprite();
-    road->setAnchorPoint(ccp(0,0));
+    rf = new RoadTransfer();
+    rf->createRoad(world, ccp(370, 400));
+    this->addChild(rf,9);
+    CCLOG("Ball ,%f - %f", rf->getSprite()->getPosition().x, rf->getSprite()->getPosition().x);
+//    b2Vec2 ex = b2Vec2();
+//    ex.Set(0, -5);
+//    rf->getBody()->SetLinearVelocity(ex);
+    //rf->setScales(this->world);
+    
+//    rf->getSprite()->setRotation(90);
 //=====================================================
     scheduleUpdate();
     this->schedule(schedule_selector(MyGame::runBoot), 2.55);
@@ -155,31 +158,7 @@ void MyGame::draw()
 }
 
 void MyGame::addNewSpriteAtPosition(CCPoint p){
-    CCNode *ex = this->getChildByTag(222);
-    if(ex != NULL && ex->getChildByTag(1120) != NULL &&  ex->getChildByTag(1120)->getPosition().x < 50)
-        ex->removeChildByTag(1120);
-    if(touchBool)
-    {
-        timerBar->setPercentage(5 + time * 50);
-    }
-    if(checkRun && !checkRunAnimation)
-    {
-        this->runAction(CCSequence::create(
-                                           CCCallFunc::create(this, callfunc_selector(MyGame::runAnimation)),
-                                           CCDelayTime::create(1.6),
-                                           CCCallFunc::create(this, callfunc_selector(MyGame::throwBall)),
-                                           CCCallFunc::create(this, callfunc_selector(MyGame::showShooter)),
-                                           NULL));
-        checkRun = false;
-        boom = true;
-    }
-    int velocityIterations = 8;
-    int positionIterations = 1;
-    
-    // Instruct the world to perform a single step of simulation. It is
-    // generally best to keep the time step and iterations fixed.
-//    world->Step(dt, velocityIterations, positionIterations);
-//    wall->Step(dt, velocityIterations, positionIterations);
+   
 }
 
 void MyGame::update(float dt)
@@ -234,28 +213,24 @@ void MyGame::update(float dt)
 
 void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
 {
-    CCSize s = CCDirector::sharedDirector()->getWinSize();
-//    timerBar->setPercentage(0);
     time = 0;
     CCSetIterator it;
-    CCTouch* touch;
-    it = touches->begin();
-    touch = (CCTouch*)(*it);
-    touchBegin = touch->getLocationInView();
-//    touchBegin = CCDirector::sharedDirector()->convertToGL(location);
-//    CCLOG("sprite Location x:: %f",sprite->getPosition().x);
-    CCLOG("touchBegin Location x:: %f",touchBegin.x);
-//    CCLOG("sprite Location y:: %f",sprite->getPosition().y);
-    CCLOG("player .x:: %f", player->getLocation().x);
+    CCTouch *touch = (CCTouch*)touches->anyObject();
+    this->touchBegin = this->getParent()->convertTouchToNodeSpace(touch);
+    CCLOG("touch Begin : %f - %f", touchBegin.x, touchBegin.y);
 
-    if(fabs(touchBegin.x - player->getLocation().x) < 100 && fabs(s.height - touchBegin.y - player->getLocation().y) < 100)
+    if(fabs(touchBegin.x - player->getLocation().x) < 100 && fabs(touchBegin.y - player->getLocation().y) < 100)
     {
         transfer = true;
         touchBool = false;
         swipeRecognized = false;
         spriteContained = true;
     }
-    else  if(!checkRunAnimation) touchBool = true;
+    else  if(!checkRunAnimation)
+    {
+        touchBool = true;
+        transfer = false;
+    }
 }
 
 void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
@@ -370,7 +345,7 @@ void MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y,
     bodyDef.type = b2_staticBody;
     bodyDef.position.Set((p.x + (tileSize.width / 2.0f))/pixelsPerMeter,
                          (p.y + (tileSize.height / 2.0f))/pixelsPerMeter);
-    b2Body *body = wall->CreateBody(&bodyDef);
+    b2Body *body = world->CreateBody(&bodyDef);
     // define the shape
     b2PolygonShape shape;
     shape.SetAsBox((tileSize.width / pixelsPerMeter) * 0.5f * width,
@@ -426,7 +401,7 @@ void MyGame::throwBall()
 {
     Ball *ball = new Ball();
     ball->createBall(this->world, "bong1.png", player->getLocation());
-    this->addChild(ball->getPhysicsSprite(), 10);
+    this->addChild(ball, 10);
     float prercent = timerBar->getPercentage();
     float X = location.x - this->player->getLocation().x;
     float Y = location.y - this->player->getLocation().y;
@@ -456,11 +431,16 @@ void MyGame::impactBall(){
     CCARRAY_FOREACH(this->arrBalls, obj)
     {
         Ball* ball = dynamic_cast<Ball*>(obj);
-        CCLOG("ball ->position.y :: %f", ball->getBody()->GetPosition().y);
-        if(ball->getBody()->GetPosition().y *32 < 130 && ball->getBody()->GetPosition().x *32 < 700)
+        CCLOG("ball.x %f", ball->getBody()->GetPosition().x);
+        if(ball != NULL && ball->getBody()->GetPosition().y > 350/32 && ball->getBody()->GetPosition().y < 440/32 && ball->getBody()->GetPosition().x > 330/32 && ball->getBody()->GetPosition().y < 410/32)
+        {
+            rf->getBody()->SetGravityScale(10);
+        }
+
+        if(ball->getBody()->GetPosition().y *32 < 10 && ball->getBody()->GetPosition().x *32 < 700)
         {
             arrBalls->removeObject(ball);
-            this->removeChild(ball->getPhysicsSprite());
+            this->removeChild(ball);
             ball->autorelease();
         }
     }

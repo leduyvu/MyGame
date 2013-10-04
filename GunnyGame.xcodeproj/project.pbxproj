@@ -11,6 +11,7 @@
 		CE1431DF17F16F6A00F026C1 /* quaivat.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */; };
 		CE1A032917F959BB003D1BFA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032717F959BB003D1BFA /* Player.cpp */; };
 		CE1A032C17F95BE9003D1BFA /* PhysicsSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */; };
+		CE1AD9EE17FE5D9200C373DE /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1AD9ED17FE5D9200C373DE /* road.png */; };
 		CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE29B18F17F975B7009E20D5 /* Ball.cpp */; };
 		CE7F06AB17F588620058D0D0 /* MyContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F06A917F588620058D0D0 /* MyContactListener.cpp */; };
 		CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7F59C517F2910C00DB8E03 /* thanh.png */; };
@@ -308,7 +309,6 @@
 		CEEBCDD817EFFFEB00328D60 /* nembong1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD717EFFFEB00328D60 /* nembong1.png */; };
 		CEEBCDDA17F02BFD00328D60 /* bong.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD917F02BFD00328D60 /* bong.png */; };
 		CEEBCDDC17F044F200328D60 /* bong1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDDB17F044F200328D60 /* bong1.png */; };
-		CEEBCDDE17F04E5200328D60 /* robong.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDDD17F04E5200328D60 /* robong.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -318,6 +318,7 @@
 		CE1A032817F959BB003D1BFA /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = Classes/Player.h; sourceTree = "<group>"; };
 		CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsSprite.cpp; sourceTree = "<group>"; };
 		CE1A032B17F95BE9003D1BFA /* PhysicsSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
+		CE1AD9ED17FE5D9200C373DE /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = road.png; path = Resources/road.png; sourceTree = "<group>"; };
 		CE29B18F17F975B7009E20D5 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = Classes/Ball.cpp; sourceTree = "<group>"; };
 		CE29B19017F975B8009E20D5 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = Classes/Ball.h; sourceTree = "<group>"; };
 		CE7F06A917F588620058D0D0 /* MyContactListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyContactListener.cpp; path = Classes/MyContactListener.cpp; sourceTree = "<group>"; };
@@ -938,7 +939,6 @@
 		CEEBCDD717EFFFEB00328D60 /* nembong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nembong1.png; path = Resources/nembong1.png; sourceTree = "<group>"; };
 		CEEBCDD917F02BFD00328D60 /* bong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong.png; path = Resources/bong.png; sourceTree = "<group>"; };
 		CEEBCDDB17F044F200328D60 /* bong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong1.png; path = Resources/bong1.png; sourceTree = "<group>"; };
-		CEEBCDDD17F04E5200328D60 /* robong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = robong.png; path = Resources/robong.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1009,10 +1009,10 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE1AD9ED17FE5D9200C373DE /* road.png */,
 				CE7F59C517F2910C00DB8E03 /* thanh.png */,
 				CE1431DC17F16F6A00F026C1 /* quaivat.plist */,
 				CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */,
-				CEEBCDDD17F04E5200328D60 /* robong.png */,
 				CEEBCDDB17F044F200328D60 /* bong1.png */,
 				CEEBCDD917F02BFD00328D60 /* bong.png */,
 				CEEBCDD717EFFFEB00328D60 /* nembong1.png */,
@@ -2252,10 +2252,10 @@
 				CEEBCDD817EFFFEB00328D60 /* nembong1.png in Resources */,
 				CEEBCDDA17F02BFD00328D60 /* bong.png in Resources */,
 				CEEBCDDC17F044F200328D60 /* bong1.png in Resources */,
-				CEEBCDDE17F04E5200328D60 /* robong.png in Resources */,
 				CE1431DE17F16F6A00F026C1 /* quaivat.plist in Resources */,
 				CE1431DF17F16F6A00F026C1 /* quaivat.pvr.gz in Resources */,
 				CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */,
+				CE1AD9EE17FE5D9200C373DE /* road.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

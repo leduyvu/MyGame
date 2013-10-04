@@ -21,19 +21,9 @@ public:
     ~Ball();
     void createBall(b2World * world, string str, CCPoint location);
     void throwBall(b2Vec2 vector);
-    void setLocation(CCPoint location);
-
-    CCPoint getLocation();
     CCSprite* getSprite();
-    b2Body* getBody();
-    PhysicsSprite* getPhysicsSprite();
-    void setBody(b2Body *b);
 private:
-    PhysicsSprite* sprPhysicsBall;
-    CCSprite* sprBall;
-    b2Body *body;
-    CCPoint location;
-    
+    CCSprite* sprBall;    
 };
 
 #endif /* defined(__GunnyGame__Ball__) */
