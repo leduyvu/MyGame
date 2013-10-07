@@ -309,6 +309,7 @@
 		CEEBCDD817EFFFEB00328D60 /* nembong1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD717EFFFEB00328D60 /* nembong1.png */; };
 		CEEBCDDA17F02BFD00328D60 /* bong.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDD917F02BFD00328D60 /* bong.png */; };
 		CEEBCDDC17F044F200328D60 /* bong1.png in Resources */ = {isa = PBXBuildFile; fileRef = CEEBCDDB17F044F200328D60 /* bong1.png */; };
+		CEEF6253180263FF0041C709 /* Map.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CEEF6251180263FF0041C709 /* Map.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -939,6 +940,8 @@
 		CEEBCDD717EFFFEB00328D60 /* nembong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = nembong1.png; path = Resources/nembong1.png; sourceTree = "<group>"; };
 		CEEBCDD917F02BFD00328D60 /* bong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong.png; path = Resources/bong.png; sourceTree = "<group>"; };
 		CEEBCDDB17F044F200328D60 /* bong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong1.png; path = Resources/bong1.png; sourceTree = "<group>"; };
+		CEEF6251180263FF0041C709 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
+		CEEF6252180263FF0041C709 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -2167,6 +2170,8 @@
 				CE1A032B17F95BE9003D1BFA /* PhysicsSprite.h */,
 				CE29B18F17F975B7009E20D5 /* Ball.cpp */,
 				CE29B19017F975B8009E20D5 /* Ball.h */,
+				CEEF6251180263FF0041C709 /* Map.cpp */,
+				CEEF6252180263FF0041C709 /* Map.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2523,6 +2528,7 @@
 				CE1A032917F959BB003D1BFA /* Player.cpp in Sources */,
 				CE1A032C17F95BE9003D1BFA /* PhysicsSprite.cpp in Sources */,
 				CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */,
+				CEEF6253180263FF0041C709 /* Map.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

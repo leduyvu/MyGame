@@ -38,13 +38,15 @@ MyGame::MyGame()
             }
         }
     }
-    this->addChild(_tileMap);
+    map->addChild(_tileMap);
+    this->addChild(map);
 //=====================
 
 //====================add Player =================
-    this->player->createPlayer(this->world, "nembong1.png", ccp(800, 150));
+    this->player->createPlayer(this->world, "nembong1.png", ccp(20, 150));
     this->addChild(player->getSprite(),9);
     player->getSprite()->setScale(0.3);
+    player->getSprite()->runAction(CCMoveBy::create(4, ccp(300,0)));
 //================================================
 
 //========== Shoot power =========================
@@ -71,12 +73,7 @@ MyGame::MyGame()
     rf->createRoad(world, ccp(370, 400));
     this->addChild(rf,9);
     CCLOG("Ball ,%f - %f", rf->getSprite()->getPosition().x, rf->getSprite()->getPosition().x);
-//    b2Vec2 ex = b2Vec2();
-//    ex.Set(0, -5);
-//    rf->getBody()->SetLinearVelocity(ex);
-    //rf->setScales(this->world);
-    
-//    rf->getSprite()->setRotation(90);
+
 //=====================================================
     scheduleUpdate();
     this->schedule(schedule_selector(MyGame::runBoot), 2.55);
@@ -90,6 +87,7 @@ MyGame::~MyGame()
 }
 
 bool MyGame::init(){
+    map = new CCLayer();
     arrWall = new CCArray();
     arrBalls = new CCArray();
     this->swipeRecognized = false;
@@ -113,10 +111,7 @@ void MyGame::initPhysics()
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     b2Vec2 gravity;
     gravity.Set(0.0f, -10.0f);
-    world = new b2World(gravity);
-    wall = new b2World(gravity);
-    wall->SetAllowSleeping(true);
-    wall->SetContinuousPhysics(true);
+    world = new b2World(gravity);;
     // Do we want to let bodies sleep?
     world->SetAllowSleeping(true);
     world->SetContinuousPhysics(true);
@@ -138,12 +133,12 @@ void MyGame::initPhysics()
 //    groundBody->CreateFixture(&groundBox,0);
 
     // left
-    groundBox.Set(b2Vec2(0,s.height/32), b2Vec2(0,0));
-    groundBody->CreateFixture(&groundBox,0);
+//    groundBox.Set(b2Vec2(0,s.height/32), b2Vec2(0,0));
+//    groundBody->CreateFixture(&groundBox,0);
 
     // right
-    groundBox.Set(b2Vec2(s.width/32,s.height/32), b2Vec2(s.width/32,0));
-    groundBody->CreateFixture(&groundBox,0);
+//    groundBox.Set(b2Vec2(s.width/32,s.height/32), b2Vec2(s.width/32,0));
+//    groundBody->CreateFixture(&groundBox,0);
 }
 
 void MyGame::draw()
@@ -152,7 +147,6 @@ void MyGame::draw()
     ccGLEnableVertexAttribs( kCCVertexAttribFlag_Position );
     kmGLPushMatrix();
     world->DrawDebugData();
-    wall->DrawDebugData();
 
     kmGLPopMatrix();
 }
@@ -163,6 +157,9 @@ void MyGame::addNewSpriteAtPosition(CCPoint p){
 
 void MyGame::update(float dt)
 {
+    setViewPointCenter(player->getSprite()->getPosition());
+    
+//    this->player->getSprite()->setPosition(ccp(this->getPosition().x + 850,this->getPosition().y + 150));
     CCNode *ex = this->getChildByTag(222);
     if(ex != NULL && ex->getChildByTag(1120) != NULL &&  ex->getChildByTag(1120)->getPosition().x < 50)
         ex->removeChildByTag(1120);
@@ -188,19 +185,9 @@ void MyGame::update(float dt)
     // Instruct the world to perform a single step of simulation. It is
     // generally best to keep the time step and iterations fixed.
     world->Step(dt, velocityIterations, positionIterations);
-    wall->Step(dt, velocityIterations, positionIterations);
 
     //Iterate over the bodies in the physics world
     for (b2Body* b = world->GetBodyList(); b; b = b->GetNext())
-    {
-        if (b->GetUserData() != NULL) {
-            //Synchronize the AtlasSprites position and rotation with the corresponding body
-            CCSprite* myActor = (CCSprite*)b->GetUserData();
-            myActor->setPosition( CCPointMake( b->GetPosition().x * 32, b->GetPosition().y * 32) );
-            myActor->setRotation( -1 * CC_RADIANS_TO_DEGREES(b->GetAngle()) );
-        }
-    }
-    for (b2Body* b = wall->GetBodyList(); b; b = b->GetNext())
     {
         if (b->GetUserData() != NULL) {
             //Synchronize the AtlasSprites position and rotation with the corresponding body
@@ -218,8 +205,9 @@ void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
     CCTouch *touch = (CCTouch*)touches->anyObject();
     this->touchBegin = this->getParent()->convertTouchToNodeSpace(touch);
     CCLOG("touch Begin : %f - %f", touchBegin.x, touchBegin.y);
+    CCLOG("this : %f - %f", this->getPosition().x, this->getPosition().y);
 
-    if(fabs(touchBegin.x - player->getLocation().x) < 100 && fabs(touchBegin.y - player->getLocation().y) < 100)
+    if(fabs(touchBegin.x - player->getSprite()->getPosition().x) < 100 && fabs(touchBegin.y - player->getSprite()->getPosition().y) < 100)
     {
         transfer = true;
         touchBool = false;
@@ -241,8 +229,8 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
         if(touchLoc.x > touchBegin.x && touchBegin.x > 0)
         {
             //player->getSprite()->runAction(CCMoveBy::create(1, ccp(90,0)));
-            player->movingPlayer(ccp(90,0));
-            mapPosition(ccp(90,0));
+            //mapPosition(ccp(-90,0));
+           // player->movingPlayer(ccp(-90,0));
             transfer = false;
             touchBegin = ccp(0,0);
 
@@ -250,8 +238,8 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
         else if(touchLoc.x < touchBegin.x && touchBegin.x > 0)
         {
             //player->getSprite()->runAction(CCMoveBy::create(1, ccp(-90,0)));
-            mapPosition(ccp(-90,0));
-            player->movingPlayer(ccp(-90,0));
+            //mapPosition(ccp(90,0));
+            //player->movingPlayer(ccp(90,0));
             transfer = false;
             touchBegin = ccp(0,0);
         }
@@ -346,6 +334,7 @@ void MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y,
     bodyDef.position.Set((p.x + (tileSize.width / 2.0f))/pixelsPerMeter,
                          (p.y + (tileSize.height / 2.0f))/pixelsPerMeter);
     b2Body *body = world->CreateBody(&bodyDef);
+    body->SetAngularDamping(33);
     // define the shape
     b2PolygonShape shape;
     shape.SetAsBox((tileSize.width / pixelsPerMeter) * 0.5f * width,
@@ -366,7 +355,7 @@ void MyGame::runAnimation()
 {
     checkRunAnimation = true;
     this->player->getSprite()->setVisible(false);
-    this->player->throwPlayer(this, player->getLocation());
+    this->player->throwPlayer(this, player->getSprite()->getPosition());
 }
 
 void MyGame::runBoot(float delta)
@@ -400,13 +389,16 @@ void MyGame::runBoot(float delta)
 void MyGame::throwBall()
 {
     Ball *ball = new Ball();
-    ball->createBall(this->world, "bong1.png", player->getLocation());
+    ball->createBall(this->world, "bong1.png", player->getSprite()->getPosition());
     this->addChild(ball, 10);
+    
     float prercent = timerBar->getPercentage();
-    float X = location.x - this->player->getLocation().x;
-    float Y = location.y - this->player->getLocation().y;
+    float X = location.x + this->getPosition().x - this->player->getSprite()->getPosition().x;
+    float Y = location.y - this->player->getSprite()->getPosition().y;
     float x = prercent/4 * X/(sqrt(X * X + Y * Y));
     float y = prercent/4 * Y/(sqrt(X * X + Y * Y));
+    CCLOG("player * %f , ... %f ",player->getSprite()->getPosition().x, player->getSprite()->getPosition().y);
+    CCLOG("touches  * %f .. %f ", location.x, location.y);
     b2Vec2 ex = b2Vec2();
     ex.Set(x, y);
     ball->throwBall(ex);
@@ -431,12 +423,14 @@ void MyGame::impactBall(){
     CCARRAY_FOREACH(this->arrBalls, obj)
     {
         Ball* ball = dynamic_cast<Ball*>(obj);
-        CCLOG("ball.x %f", ball->getBody()->GetPosition().x);
         if(ball != NULL && ball->getBody()->GetPosition().y > 350/32 && ball->getBody()->GetPosition().y < 440/32 && ball->getBody()->GetPosition().x > 330/32 && ball->getBody()->GetPosition().y < 410/32)
         {
             rf->getBody()->SetGravityScale(10);
+           // this->runAction(CCMoveTo::create(1, ccp(90,0)));
+            //player->movingPlayer(ccp(90,0));
+            arrBalls->removeAllObjects();
+            setViewPointCenter(player->getSprite()->getPosition());
         }
-
         if(ball->getBody()->GetPosition().y *32 < 10 && ball->getBody()->GetPosition().x *32 < 700)
         {
             arrBalls->removeObject(ball);
@@ -447,30 +441,18 @@ void MyGame::impactBall(){
 }
 
 void MyGame::mapPosition(CCPoint point){
-    this->runAction(CCMoveBy::create(1, point));
-
-
+    //this->runAction(CCMoveBy::create(1, point));
+    this->setPosition(player->getSprite()->getPosition());
 }
 
-//void MyGame::throwBall()
-//{
-//    Ball *ball = new Ball();
-//    ball->createBall(this->world, "bong1.png", player->getLocation());
-//    this->addChild(ball->getPhysicsSprite(), 10);
-//    float prercent = timerBar->getPercentage();
-//    float X = location.x - this->player->getLocation().x;
-//    float Y = location.y - this->player->getLocation().y;
-//    float x = prercent/4 * X/(sqrt(X * X + Y * Y));
-//    float y = prercent/4 * Y/(sqrt(X * X + Y * Y));
-//    b2Vec2 ex = b2Vec2();
-//    ex.Set(x, y);
-//    ball->throwBall(ex);
-//    time = 0;
-//    arrBalls->addObject(ball);
-//}
-//void MyGame::showShooter()
-//{
-//    this->player->getSprite()->setVisible(true);
-//    checkRunAnimation = false;
-//    timerBar->setPercentage(0);
-//}
+void MyGame::setViewPointCenter(CCPoint position) {
+    CCSize winSize = CCDirector::sharedDirector()->getWinSize();
+    int x = MAX(position.x, winSize.width/2);
+    int y = MAX(position.y, winSize.height/2);
+    x = MIN(x, (_tileMap->getMapSize().width * this->_tileMap->getTileSize().width) - winSize.width / 2);
+    y = MIN(y, (_tileMap->getMapSize().height * _tileMap->getTileSize().height) - winSize.height/2);
+    CCPoint actualPosition = ccp(x, y);
+    CCPoint centerOfView = ccp(winSize.width/2, winSize.height/2);
+    CCPoint viewPoint = ccpSub(centerOfView, actualPosition);
+    this->setPosition(viewPoint);
+}

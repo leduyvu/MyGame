@@ -45,8 +45,11 @@ public:
     void runBoot(float delta);
     void impactBall();
     void mapPosition(CCPoint point);
+    void setViewPointCenter(CCPoint position);
     
 private:
+    
+    CCLayer *map;
     CCPoint movingSwipePoint;
     bool swipeRecognized = false;
     bool spriteContained = false;

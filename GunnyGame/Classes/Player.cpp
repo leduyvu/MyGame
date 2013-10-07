@@ -16,6 +16,7 @@ Player::~Player(){
 void Player::createPlayer(b2World * world, string str, CCPoint location)
 {
     this->sprPlayer = CCSprite::create(str.c_str());
+    sprPlayer->setFlipX(true);
     this->location = location;
     sprPlayer->setPosition(location);
 }
@@ -29,6 +30,10 @@ CCSprite* Player::getSprite(){
 CCPoint Player::getLocation(){
     this->location = sprPlayer->getPosition();
     return this->location;
+}
+void Player::setLocation(CCPoint p)
+{
+    this->sprPlayer->setPosition(p);
 }
 void Player::throwPlayer(CCLayer* layer, CCPoint location){
     CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
@@ -44,6 +49,7 @@ void Player::throwPlayer(CCLayer* layer, CCPoint location){
     CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.3);
     CCSprite *popSprite = CCSprite::create();
     popSprite->setScale(0.3);
+    popSprite->setFlipX(true);
     popSprite->setPosition(location);
     animation->setLoops(1);
     layer->addChild(popSprite, 8);

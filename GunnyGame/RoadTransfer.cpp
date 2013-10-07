@@ -26,7 +26,7 @@ void RoadTransfer::createRoad(b2World* world, CCPoint point)
     bodyDef1.position.Set(point.x/32,(point.y)/32);
     this->body = world->CreateBody(&bodyDef1);
     b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(roadBar->getContentSize().width/64, roadBar->getContentSize().height/64);
+    dynamicBox.SetAsBox(roadBar->getContentSize().width/32, roadBar->getContentSize().height/64);
     b2FixtureDef fixtureDef1;
     fixtureDef1.shape = &dynamicBox;
     fixtureDef1.density = 900.0f;

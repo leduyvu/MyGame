@@ -24,6 +24,7 @@ public:
     void throwPlayer(CCLayer* layer, CCPoint location);
     CCPoint getLocation();
     CCSprite* getSprite();
+    void setLocation(CCPoint p);
 private:
     PhysicsSprite* sprPhysicPlayer;
     b2Body* body;
