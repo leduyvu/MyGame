@@ -13,6 +13,16 @@
 		CE1A032C17F95BE9003D1BFA /* PhysicsSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */; };
 		CE1AD9EE17FE5D9200C373DE /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1AD9ED17FE5D9200C373DE /* road.png */; };
 		CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE29B18F17F975B7009E20D5 /* Ball.cpp */; };
+		CE78EF3C180642E300FFBDDB /* TopScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE78EF3A180642E300FFBDDB /* TopScreen.cpp */; };
+		CE78EF3F1806446500FFBDDB /* MainScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE78EF3D1806446500FFBDDB /* MainScreen.cpp */; };
+		CE78EF411806699300FFBDDB /* connhen.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF401806699300FFBDDB /* connhen.png */; };
+		CE78EF441806874800FFBDDB /* Spider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE78EF421806874700FFBDDB /* Spider.cpp */; };
+		CE78EF461806A5CE00FFBDDB /* mapGame.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF451806A5CD00FFBDDB /* mapGame.tmx */; };
+		CE78EF481806A5DB00FFBDDB /* xetang.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF471806A5DB00FFBDDB /* xetang.jpeg */; };
+		CE78EF4A1806A75700FFBDDB /* mapGame1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF491806A75700FFBDDB /* mapGame1.tmx */; };
+		CE78EF4C1806AA6A00FFBDDB /* mapGame2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF4B1806AA6A00FFBDDB /* mapGame2.tmx */; };
+		CE78EF4E1806B43800FFBDDB /* roadWall.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF4D1806B43800FFBDDB /* roadWall.png */; };
+		CE78EF501806B59E00FFBDDB /* roadWall1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF4F1806B59E00FFBDDB /* roadWall1.png */; };
 		CE7F06AB17F588620058D0D0 /* MyContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F06A917F588620058D0D0 /* MyContactListener.cpp */; };
 		CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7F59C517F2910C00DB8E03 /* thanh.png */; };
 		CE7F59CC17F291E600DB8E03 /* RoadTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F59CA17F291E600DB8E03 /* RoadTransfer.cpp */; };
@@ -322,6 +332,19 @@
 		CE1AD9ED17FE5D9200C373DE /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = road.png; path = Resources/road.png; sourceTree = "<group>"; };
 		CE29B18F17F975B7009E20D5 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = Classes/Ball.cpp; sourceTree = "<group>"; };
 		CE29B19017F975B8009E20D5 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = Classes/Ball.h; sourceTree = "<group>"; };
+		CE78EF3A180642E300FFBDDB /* TopScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TopScreen.cpp; path = Classes/TopScreen.cpp; sourceTree = "<group>"; };
+		CE78EF3B180642E300FFBDDB /* TopScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopScreen.h; path = Classes/TopScreen.h; sourceTree = "<group>"; };
+		CE78EF3D1806446500FFBDDB /* MainScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScreen.cpp; path = Classes/MainScreen.cpp; sourceTree = "<group>"; };
+		CE78EF3E1806446500FFBDDB /* MainScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MainScreen.h; path = Classes/MainScreen.h; sourceTree = "<group>"; };
+		CE78EF401806699300FFBDDB /* connhen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = connhen.png; path = Resources/connhen.png; sourceTree = "<group>"; };
+		CE78EF421806874700FFBDDB /* Spider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Spider.cpp; path = Classes/Spider.cpp; sourceTree = "<group>"; };
+		CE78EF431806874800FFBDDB /* Spider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Spider.h; path = Classes/Spider.h; sourceTree = "<group>"; };
+		CE78EF451806A5CD00FFBDDB /* mapGame.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapGame.tmx; path = Resources/mapGame.tmx; sourceTree = "<group>"; };
+		CE78EF471806A5DB00FFBDDB /* xetang.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = xetang.jpeg; path = Resources/xetang.jpeg; sourceTree = "<group>"; };
+		CE78EF491806A75700FFBDDB /* mapGame1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapGame1.tmx; path = Resources/mapGame1.tmx; sourceTree = "<group>"; };
+		CE78EF4B1806AA6A00FFBDDB /* mapGame2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapGame2.tmx; path = Resources/mapGame2.tmx; sourceTree = "<group>"; };
+		CE78EF4D1806B43800FFBDDB /* roadWall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall.png; path = Resources/roadWall.png; sourceTree = "<group>"; };
+		CE78EF4F1806B59E00FFBDDB /* roadWall1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall1.png; path = Resources/roadWall1.png; sourceTree = "<group>"; };
 		CE7F06A917F588620058D0D0 /* MyContactListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyContactListener.cpp; path = Classes/MyContactListener.cpp; sourceTree = "<group>"; };
 		CE7F06AA17F588620058D0D0 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyContactListener.h; path = Classes/MyContactListener.h; sourceTree = "<group>"; };
 		CE7F59C517F2910C00DB8E03 /* thanh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thanh.png; path = Resources/thanh.png; sourceTree = "<group>"; };
@@ -1012,6 +1035,13 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE78EF4F1806B59E00FFBDDB /* roadWall1.png */,
+				CE78EF4D1806B43800FFBDDB /* roadWall.png */,
+				CE78EF4B1806AA6A00FFBDDB /* mapGame2.tmx */,
+				CE78EF491806A75700FFBDDB /* mapGame1.tmx */,
+				CE78EF471806A5DB00FFBDDB /* xetang.jpeg */,
+				CE78EF451806A5CD00FFBDDB /* mapGame.tmx */,
+				CE78EF401806699300FFBDDB /* connhen.png */,
 				CE1AD9ED17FE5D9200C373DE /* road.png */,
 				CE7F59C517F2910C00DB8E03 /* thanh.png */,
 				CE1431DC17F16F6A00F026C1 /* quaivat.plist */,
@@ -2172,6 +2202,12 @@
 				CE29B19017F975B8009E20D5 /* Ball.h */,
 				CEEF6251180263FF0041C709 /* Map.cpp */,
 				CEEF6252180263FF0041C709 /* Map.h */,
+				CE78EF3A180642E300FFBDDB /* TopScreen.cpp */,
+				CE78EF3B180642E300FFBDDB /* TopScreen.h */,
+				CE78EF3D1806446500FFBDDB /* MainScreen.cpp */,
+				CE78EF3E1806446500FFBDDB /* MainScreen.h */,
+				CE78EF421806874700FFBDDB /* Spider.cpp */,
+				CE78EF431806874800FFBDDB /* Spider.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2261,6 +2297,13 @@
 				CE1431DF17F16F6A00F026C1 /* quaivat.pvr.gz in Resources */,
 				CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */,
 				CE1AD9EE17FE5D9200C373DE /* road.png in Resources */,
+				CE78EF411806699300FFBDDB /* connhen.png in Resources */,
+				CE78EF461806A5CE00FFBDDB /* mapGame.tmx in Resources */,
+				CE78EF481806A5DB00FFBDDB /* xetang.jpeg in Resources */,
+				CE78EF4A1806A75700FFBDDB /* mapGame1.tmx in Resources */,
+				CE78EF4C1806AA6A00FFBDDB /* mapGame2.tmx in Resources */,
+				CE78EF4E1806B43800FFBDDB /* roadWall.png in Resources */,
+				CE78EF501806B59E00FFBDDB /* roadWall1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2529,6 +2572,9 @@
 				CE1A032C17F95BE9003D1BFA /* PhysicsSprite.cpp in Sources */,
 				CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */,
 				CEEF6253180263FF0041C709 /* Map.cpp in Sources */,
+				CE78EF3C180642E300FFBDDB /* TopScreen.cpp in Sources */,
+				CE78EF3F1806446500FFBDDB /* MainScreen.cpp in Sources */,
+				CE78EF441806874800FFBDDB /* Spider.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

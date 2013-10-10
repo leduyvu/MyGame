@@ -45,11 +45,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         timestampString = "403094800.701512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "332"
-         endingLineNumber = "332"
+         startingLineNumber = "390"
+         endingLineNumber = "390"
          landmarkName = "MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y, float width, float height)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -58,12 +58,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         timestampString = "403094800.701512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "407"
-         endingLineNumber = "407"
-         landmarkName = "MyGame::throwBall()"
+         startingLineNumber = "497"
+         endingLineNumber = "497"
+         landmarkName = "MyGame::showShooter()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -71,12 +71,12 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         timestampString = "403094800.701512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "405"
-         endingLineNumber = "405"
-         landmarkName = "MyGame::throwBall()"
+         startingLineNumber = "495"
+         endingLineNumber = "495"
+         landmarkName = "MyGame::showShooter()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -84,24 +84,22 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         timestampString = "403094800.701512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "402"
-         endingLineNumber = "402"
-         landmarkName = "MyGame::throwBall()"
-         landmarkType = "5">
+         startingLineNumber = "492"
+         endingLineNumber = "492">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         timestampString = "403094800.701512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "376"
-         endingLineNumber = "376"
+         startingLineNumber = "466"
+         endingLineNumber = "466"
          landmarkName = "MyGame::runBoot(float delta)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -110,11 +108,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         timestampString = "403094800.701512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "203"
-         endingLineNumber = "203"
+         startingLineNumber = "254"
+         endingLineNumber = "254"
          landmarkName = "MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)"
          landmarkType = "5">
       </FileBreakpoint>
@@ -122,77 +120,60 @@
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         filePath = "GunnyGame/Classes/MyGameScene.h"
+         timestampString = "403087342.956524"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "426"
-         endingLineNumber = "426"
-         landmarkName = "MyGame::impactBall()"
+         startingLineNumber = "57"
+         endingLineNumber = "57">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "GunnyGame/Classes/MyContactListener.cpp"
+         timestampString = "403070754.287078"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "51"
+         endingLineNumber = "51"
+         landmarkName = "MyContactListener::setResult(bool result)"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         filePath = "GunnyGame/Classes/MyContactListener.cpp"
+         timestampString = "403070754.287078"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "428"
-         endingLineNumber = "428"
-         landmarkName = "MyGame::impactBall()"
+         startingLineNumber = "47"
+         endingLineNumber = "47"
+         landmarkName = "MyContactListener::getResult()"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         filePath = "GunnyGame/Classes/MyGameScene.h"
+         timestampString = "403087342.956524"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "229"
-         endingLineNumber = "229"
-         landmarkName = "MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event)"
-         landmarkType = "5">
+         startingLineNumber = "60"
+         endingLineNumber = "60">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
+         timestampString = "403094800.701512"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "233"
-         endingLineNumber = "233"
-         landmarkName = "MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event)"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "430"
-         endingLineNumber = "430"
-         landmarkName = "MyGame::impactBall()"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         filePath = "GunnyGame/Classes/MyGameScene.cpp"
-         timestampString = "402834974.674099"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "431"
-         endingLineNumber = "431"
+         startingLineNumber = "525"
+         endingLineNumber = "525"
          landmarkName = "MyGame::impactBall()"
          landmarkType = "5">
       </FileBreakpoint>

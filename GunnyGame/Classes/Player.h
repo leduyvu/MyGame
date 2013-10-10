@@ -15,7 +15,7 @@
 
 USING_NS_CC;
 using namespace std;
-class Player : public cocos2d::CCObject {
+class Player : public PhysicsSprite{
 public:
     Player();
     ~Player();

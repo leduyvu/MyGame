@@ -9,13 +9,16 @@
 #define __HELLO_WORLD_H__
 
 // When you import this file, you import all the cocos2d classes
+#include "Spider.h"
 #include "cocos2d.h"
 #include "Box2D.h"
 #include "RoadTransfer.h"
 #include "PhysicsSprite.h"
 #include "Player.h"
 #include "Ball.h"
+#include "MyContactListener.h"
 USING_NS_CC;
+#define SWIPE_DISTANCE 15
 class MyGame : public cocos2d::CCLayer {
 public:
     ~MyGame();
@@ -46,10 +49,13 @@ public:
     void impactBall();
     void mapPosition(CCPoint point);
     void setViewPointCenter(CCPoint position);
+    void runningSpider();
     
 private:
-    
-    CCLayer *map;
+    CCArray* spiders;
+    CCSprite* connhen;
+    b2ContactListener* listener;
+    CCLayer* map;
     CCPoint movingSwipePoint;
     bool swipeRecognized = false;
     bool spriteContained = false;
@@ -59,8 +65,7 @@ private:
     bool swipeUp;
     bool swipeDown;
     CCArray* arrBalls, *arrWall;
-    Ball* ball;
-    Player *player;
+    Player* player;
     bool checkRoad;
     CCSprite* road;
     float deltaTime = 0;
@@ -68,9 +73,9 @@ private:
     bool transfer = false;
     CCPoint touchBegin;
     bool boom = false;
-    CCSprite *sprite;
-    CCTMXLayer *_background, *_background1;
-    CCTMXTiledMap *_tileMap;
+    CCSprite* sprite;
+    CCTMXLayer* _background, *_background1;
+    CCTMXTiledMap* _tileMap;
     bool checkRun = false;
     bool touchBool = false;
     float time = 0;
@@ -81,7 +86,7 @@ private:
     cocos2d::CCTexture2D* m_pSpriteTexture; // weak ref
     cocos2d::CCTexture2D* textture; // weak ref
     PhysicsSprite *throwBalls = new PhysicsSprite();
-    RoadTransfer *rf;
+    RoadTransfer *roadTransfer;
 
 };
 

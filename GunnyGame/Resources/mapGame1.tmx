@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="505" height="30" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="xetang" tilewidth="16" tileheight="16" spacing="1" margin="1">
+  <image source="xetang.jpeg" width="236" height="214"/>
+ </tileset>
+ <layer name="mapWall" width="505" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt3bEOhCAQRVE/fD/e0oYGYfbh5JxkWmJCcdECrwsAAAAAAAAAAAAAAKDWb2IAAAAAAAAAAAAAAAAAAAAAAPg298kAQE8aDwA9uScWAPpxHzwA9OT/LwDQ00zjK1s/s7azCAA8Rv170/eqnq6spfMAMKbxANDTjvf51a7ubrzeA8C+xr/t6mqLNR4Axioa/8/vAKlncY4A6OOUxqVbbOr2FoCME1qQbpWp2VcAsk5oQbpVpm5vAchJdyDdKFOzrwDk3Upfcpw=
+  </data>
+ </layer>
+</map>

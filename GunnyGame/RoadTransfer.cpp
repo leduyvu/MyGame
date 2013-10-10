@@ -15,8 +15,7 @@ RoadTransfer::RoadTransfer()
 
 void RoadTransfer::createRoad(b2World* world, CCPoint point)
 {
-    CCSize s = CCDirector::sharedDirector()->getWinSize();
-    this->roadBar = CCSprite::create("bong.png");
+    this->roadBar = CCSprite::create("roadWall1.png");
     this->roadBar->setPosition(point);
     this->initWithTexture(roadBar->getTexture());
     this->location = point;
@@ -26,7 +25,7 @@ void RoadTransfer::createRoad(b2World* world, CCPoint point)
     bodyDef1.position.Set(point.x/32,(point.y)/32);
     this->body = world->CreateBody(&bodyDef1);
     b2PolygonShape dynamicBox;
-    dynamicBox.SetAsBox(roadBar->getContentSize().width/32, roadBar->getContentSize().height/64);
+    dynamicBox.SetAsBox(roadBar->getContentSize().width/64, roadBar->getContentSize().height/64);
     b2FixtureDef fixtureDef1;
     fixtureDef1.shape = &dynamicBox;
     fixtureDef1.density = 900.0f;
@@ -35,7 +34,6 @@ void RoadTransfer::createRoad(b2World* world, CCPoint point)
     this->body->CreateFixture(&fixtureDef1);
     this->setPhysicsBody(body);
     this->body->SetGravityScale(0);
-    //body->SetType(b2_staticBody);
 }
 
 void RoadTransfer::swivelBar(int degree)
