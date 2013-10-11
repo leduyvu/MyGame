@@ -13,6 +13,7 @@
 #include "Player.h"
 #include "Ball.h"
 #include "Boot.h"
+#include "PointDeath.h"
 USING_NS_CC;
 MyGame::MyGame()
 {
@@ -25,8 +26,6 @@ MyGame::MyGame()
     _tileMap->initWithTMXFile("mapGame2.tmx");
     //setup Body where is mapWall
     _background = _tileMap->layerNamed("mapWall");
-    _background1 = _tileMap->layerNamed("mapRoad");
-    CCSize layerSizeRoad = _background->getLayerSize();
     CCSize layerSize = _background->getLayerSize();
     for( int y=0; y < layerSize.height; y++ )
     {
@@ -39,25 +38,25 @@ MyGame::MyGame()
                 this->createRectangularFixture(_background, x, y, 1.0f, 1.0f);
             }
         }
-    }
-    for( int y=0; y < layerSizeRoad.height; y++ )
-    {
-        for( int x=0; x < layerSize.width; x++ )
-        {
-            CCSprite* tileSprite = _background1->tileAt(ccp(x, y));
-            if( tileSprite )
-            {
-                //create static-Body
-                this->createDynamicFixture(_background, x, y, 1.0f, 1.0f);
-            }
-        }
-    }
-
-    
+    }    
     map->addChild(_tileMap);
     this->addChild(map);
 //================================================
 
+    
+//====================add point death ===================
+    PointDeath * pd1 = new PointDeath();
+    pd1->create(ccp(704, 120), ccp(960,120));
+    arrPointDeath->addObject(pd1);
+    
+    PointDeath * pd2 = new PointDeath();
+    pd2->create(ccp(1760, 120), ccp(2080,120));
+    arrPointDeath->addObject(pd2);
+    
+    PointDeath * pd3 = new PointDeath();
+    pd3->create(ccp(2530, 120), ccp(2810,120));
+    arrPointDeath->addObject(pd3);
+//================================================
 //====================add Player =================
     this->player->createPlayer(this->world, "nembong1.png", ccp(90, 120));
     this->addChild(player->getSprite(),9);
@@ -79,10 +78,22 @@ MyGame::MyGame()
 //=================================================
     
 //=============== road ================================
-    roadTransfer = new RoadTransfer();
-    roadTransfer->createRoad(world, ccp(830, 400));
-    this->addChild(roadTransfer,9);
-    CCLOG("Ball ,%f - %f", roadTransfer->getSprite()->getPosition().x, roadTransfer->getSprite()->getPosition().x);
+    CCObject *object;
+    CCARRAY_FOREACH(arrPointDeath, object){
+        PointDeath* pd = dynamic_cast<PointDeath*>(object);
+        RoadTransfer* rf = new RoadTransfer();
+        rf->createRoad(world, ccp((pd->getEndPoint().x + pd->getStartPoint().x)/2, 400), 8);
+        this->addChild(rf,9);
+        arrWall->addObject(rf);
+        
+//        CCLOG("Ball ,%f - %f", roadTransfer->getSprite()->getPosition().x, roadTransfer->getSprite()->getPosition().x);
+
+    }
+    
+//    roadTransfer = new RoadTransfer();
+//    roadTransfer->createRoad(world, ccp(830, 400), 8);
+//    this->addChild(roadTransfer,9);
+//    CCLOG("Ball ,%f - %f", roadTransfer->getSprite()->getPosition().x, roadTransfer->getSprite()->getPosition().x);
 
 //=====================================================
     scheduleUpdate();
@@ -98,6 +109,7 @@ MyGame::~MyGame()
 }
 
 bool MyGame::init(){
+    arrPointDeath = new CCArray();
     spiders = new CCArray();
     map = new CCLayer();
     arrWall = new CCArray();
@@ -171,6 +183,19 @@ void MyGame::addNewSpriteAtPosition(CCPoint p){
 
 void MyGame::update(float dt)
 {
+    CCLOG("player .x  %f ", player->getSprite()->getPosition().x);
+    CCObject *object;
+    CCARRAY_FOREACH(arrPointDeath, object){
+        PointDeath* pd = dynamic_cast<PointDeath*>(object);
+        if(pd->checkLocation(player->getSprite()->getPosition()) && !pd->getLife()){
+            player->getSprite()->runAction(CCSequence::create(CCMoveBy::create(2, ccp(0,-300)),
+                                                              CCCallFunc::create(this, callfunc_selector(MyGame::setPositionAgian)),
+                                                              NULL));
+//            player->getSprite()->setPosition(ccp(150 - this->getPosition().x, 150 - this->getPosition().y));
+            return;
+        }
+    }
+    
     setViewPointCenter(player->getSprite()->getPosition());
     timerBar->setPosition(this->getPosition());
     timerBar->getSprite()->setPosition(this->getPosition());
@@ -178,22 +203,6 @@ void MyGame::update(float dt)
     CCNode *ex = this->getChildByTag(222);
     if(ex != NULL && ex->getChildByTag(1120) != NULL &&  ex->getChildByTag(1120)->getPosition().x < 50)
         ex->removeChildByTag(1120);
-    if(touchBool)
-    {
-        time = time + dt;
-        timerBar->setPercentage(5 + time * 50);
-    }
-    if(checkRun && !checkRunAnimation)
-    {
-        this->runAction(CCSequence::create(
-                                           CCCallFunc::create(this, callfunc_selector(MyGame::runAnimation)),
-                                           CCDelayTime::create(1.6),
-                                           CCCallFunc::create(this, callfunc_selector(MyGame::throwBall)),
-                                           CCCallFunc::create(this, callfunc_selector(MyGame::showShooter)),
-                                           NULL));
-        checkRun = false;
-        boom = true;
-    }
     int velocityIterations = 8;
     int positionIterations = 1;
     
@@ -211,35 +220,77 @@ void MyGame::update(float dt)
             myActor->setRotation( -1 * CC_RADIANS_TO_DEGREES(b->GetAngle()) );
         }
     }
-    
-    if(swipeRight && swipeUp)
+    if(boolAnimaon)
     {
-        player->getSprite()->runAction(CCSequence::create(CCMoveBy::create(0.7, ccp(80, 100)),
-                                                          CCMoveBy::create(0.2, ccp(10, 0)),
-                                                          CCMoveBy::create(0.7, ccp(80, -100)), NULL));
-        swipeRight = false;
-        swipeUp = false;
+        if(swipeRight && swipeUp)
+        {
+            this->setTouchEnabled(false);
+            touchBool = false;
+            checkRun = false;
+            swipeRight =false;
+            swipeUp = false;
+            moving = true;
+            player->getSprite()->runAction(CCSequence::create(CCMoveBy::create(0.5, ccp(100, 100)),
+                                                              CCMoveBy::create(0.15, ccp(10, 0)),
+                                                              CCMoveBy::create(0.5, ccp(100, -100)),
+                                                              CCCallFunc::create(this, callfunc_selector(MyGame::relaxMoving)),
+                                                              NULL));
+        }
+        else if(swipeLeft && swipeUp)
+        {
+            this->setTouchEnabled(false);
+            touchBool = false;
+            checkRun = false;
+            swipeLeft =false;
+            swipeUp = false;
+            moving = true;
+            player->getSprite()->runAction(CCSequence::create(CCMoveBy::create(0.5, ccp(-100, 100)),
+                                                              CCMoveBy::create(0.15, ccp(-10, 0)),
+                                                              CCMoveBy::create(0.5, ccp(-100, -100)),
+                                                              CCCallFunc::create(this, callfunc_selector(MyGame::relaxMoving)),
+                                                              NULL));
+        }
+        else if(swipeRight)
+        {
+            this->setTouchEnabled(false);
+            touchBool = false;
+            checkRun = false;
+            swipeRight = false;
+            moving = true;
+            player->getSprite()->runAction(CCSequence::create(CCMoveBy::create(1, ccp(150, 0)),
+                                                              CCCallFunc::create(this, callfunc_selector(MyGame::relaxMoving)),
+                                                              NULL));
+        }
+        else if(swipeLeft)
+        {
+            this->setTouchEnabled(false);
+            touchBool = false;
+            checkRun = false;
+            swipeLeft = false;
+            moving = true;
+            player->getSprite()->runAction(CCSequence::create(CCMoveBy::create(1, ccp(-150, 0)),
+                                                              CCCallFunc::create(this, callfunc_selector(MyGame::relaxMoving)),
+                                                              NULL));
+        }
     }
-    else if(swipeLeft && swipeUp)
+    if(touchBool)
     {
-        player->getSprite()->runAction(CCSequence::create(CCMoveBy::create(0.7, ccp(-80, 100)),
-                                                          CCMoveBy::create(0.2, ccp(-10, 0)),
-                                                          CCMoveBy::create(0.7, ccp(-80, -100)), NULL));
-        swipeLeft = false;
-        swipeUp = false;
+        time = time + dt;
+        timerBar->setPercentage(5 + time * 50);
+    }
+    if(timerBar->getPercentage() > 30 && checkRun && !checkRunAnimation && boolAnimaon && !moving)
+    {
+        this->runAction(CCSequence::create(
+                                           CCCallFunc::create(this, callfunc_selector(MyGame::relaxMoving)),
+                                           CCCallFunc::create(this, callfunc_selector(MyGame::runAnimation)),
+                                           CCDelayTime::create(1.6),
+                                           CCCallFunc::create(this, callfunc_selector(MyGame::throwBall)),
+                                           CCCallFunc::create(this, callfunc_selector(MyGame::showShooter)),
+                                           NULL));
+        checkRun = false;
+        boom = true;
+    }
 
-    }
-    else if(swipeRight)
-    {
-        player->movingPlayer(ccp(100, 0));
-        swipeRight = false;
-    }
-    else if(swipeLeft)
-    {
-        player->movingPlayer(ccp(-100, 0));
-        swipeLeft = false;
-    }
-    
     
 }
 
@@ -259,7 +310,7 @@ void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
         swipeRecognized = false;
         spriteContained = true;
     }
-    else  if(!checkRunAnimation)
+    else  if(!checkRunAnimation && !moving)
     {
         touchBool = true;
         transfer = false;
@@ -327,9 +378,6 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
                      && !touchRect.intersectsRect(swipeUpRect) && !touchRect.intersectsRect(swipeDownRect))
             {
                 swipeRecognized = true;
-                swipeRight = true;
-                swipeUp = true;
-
                 CCLOG("5");
             }
         }
@@ -417,7 +465,7 @@ void MyGame::createDynamicFixture(CCTMXLayer* layer, int x, int y,
     bodyDef.position.Set((p.x + (tileSize.width / 2.0f))/pixelsPerMeter,
                          (p.y + (tileSize.height / 2.0f))/pixelsPerMeter);
     b2Body *body = world->CreateBody(&bodyDef);
-    //body->SetGravityScale(0);
+    body->SetGravityScale(0);
     // define the shape
     b2PolygonShape shape;
     shape.SetAsBox((tileSize.width / pixelsPerMeter) * 0.5f * width,
@@ -426,17 +474,21 @@ void MyGame::createDynamicFixture(CCTMXLayer* layer, int x, int y,
     // create the fixture
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
-    fixtureDef.density = 1000000;
+    fixtureDef.density = 100;
     fixtureDef.friction = 1.0f;
     fixtureDef.restitution = 0.0f;
     //    fixtureDef.filter.categoryBits = kFilterCategoryLevel;
-    fixtureDef.filter.maskBits = 0xffff;
+    //fixtureDef.filter.maskBits = 0xffff;
     body->CreateFixture(&fixtureDef);
+    body->GetFixtureList()->SetSensor(false);
 }
 
 
 void MyGame::runAnimation()
 {
+    this->setTouchEnabled(false);
+    boolAnimaon = false;
+    player->pauseSchedulerAndActions();
     checkRunAnimation = true;
     this->player->getSprite()->setVisible(false);
     this->player->throwPlayer(this, player->getSprite()->getPosition());
@@ -466,15 +518,13 @@ void MyGame::runBoot(float delta)
     popSprite->runAction(CCSequence::create(CCAnimate::create(animation),
                                             CCRemoveSelf::create(),
                                             NULL));
-    
 }
-
 
 void MyGame::throwBall()
 {
     Ball *ball = new Ball();
     ball->createBall(this->world, "bong1.png", player->getSprite()->getPosition());
-    this->addChild(ball, 10);
+    this->addChild(ball, 20);
     
     float prercent = timerBar->getPercentage();
     float X = location.x - this->getPosition().x - this->player->getSprite()->getPosition().x;
@@ -491,9 +541,12 @@ void MyGame::throwBall()
 }
 void MyGame::showShooter()
 {
+    this->setTouchEnabled(true);
     this->player->getSprite()->setVisible(true);
     checkRunAnimation = false;
     timerBar->setPercentage(0);
+    player->resumeSchedulerAndActions();
+    boolAnimaon = true;
 }
 
 void MyGame::impactBall(){
@@ -510,13 +563,13 @@ void MyGame::impactBall(){
         MyContactListener* listenImpact = dynamic_cast<MyContactListener*>(listener);
         if(listenImpact->getResult())
         {
-            CCLOG("daddadadadd");
-            //roadTransfer->setPosition(ccp(0, 0));
-            //player->movingPlayer(ccp(890,0));
+            listenImpact->setResult(false);
+            if(arrPointDeath->count() > 0){
+                arrPointDeath->removeObjectAtIndex(0);
+            }
+            world->DestroyBody(ball->getBody());
             arrBalls->removeAllObjects();
-            this->removeChild(ball);
-            listener = new MyContactListener();
-            //insert spider
+            //this->removeChild(ball);
             Spider* spider = new Spider();
             spider->create(this->world, "connhen.png",
                            ccp(this->getPosition().x + 50, this->getPosition().y + 70),
@@ -552,4 +605,24 @@ void MyGame::setViewPointCenter(CCPoint position) {
     CCPoint centerOfView = ccp(winSize.width/2, winSize.height/2);
     CCPoint viewPoint = ccpSub(centerOfView, actualPosition);
     this->setPosition(viewPoint);
+}
+void MyGame::relaxMoving(){
+    this->setTouchEnabled(true);
+    swipeRight = false;
+    swipeLeft = false;
+    swipeUp = false;
+    swipeDown = false;
+    swipeRight = false;
+    transfer = false;
+    touchBool = false;
+    moving = false;
+}
+
+void  MyGame::setPositionAgian()
+{
+    CCPoint p = ccp(120 - this->getPosition().x, 120);
+    this->removeChild(player->getSprite());
+    player->getSprite()->setPosition(p);
+    this->addChild(player->getSprite(),10);
+
 }

@@ -22,7 +22,14 @@
 		CE78EF4A1806A75700FFBDDB /* mapGame1.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF491806A75700FFBDDB /* mapGame1.tmx */; };
 		CE78EF4C1806AA6A00FFBDDB /* mapGame2.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF4B1806AA6A00FFBDDB /* mapGame2.tmx */; };
 		CE78EF4E1806B43800FFBDDB /* roadWall.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF4D1806B43800FFBDDB /* roadWall.png */; };
-		CE78EF501806B59E00FFBDDB /* roadWall1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF4F1806B59E00FFBDDB /* roadWall1.png */; };
+		CE78EF501806B59E00FFBDDB /* roadWall8.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF4F1806B59E00FFBDDB /* roadWall8.png */; };
+		CE7AA47D1807CEE5008E88B3 /* PointDeath.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA47B1807CEE4008E88B3 /* PointDeath.cpp */; };
+		CE7AA4841807E17B008E88B3 /* roadWall2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA47E1807E17B008E88B3 /* roadWall2.png */; };
+		CE7AA4851807E17B008E88B3 /* roadWall3.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA47F1807E17B008E88B3 /* roadWall3.png */; };
+		CE7AA4861807E17B008E88B3 /* roadWall4.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA4801807E17B008E88B3 /* roadWall4.png */; };
+		CE7AA4871807E17B008E88B3 /* roadWall5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA4811807E17B008E88B3 /* roadWall5.png */; };
+		CE7AA4881807E17B008E88B3 /* roadWall6.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA4821807E17B008E88B3 /* roadWall6.png */; };
+		CE7AA4891807E17B008E88B3 /* roadWall7.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA4831807E17B008E88B3 /* roadWall7.png */; };
 		CE7F06AB17F588620058D0D0 /* MyContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F06A917F588620058D0D0 /* MyContactListener.cpp */; };
 		CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7F59C517F2910C00DB8E03 /* thanh.png */; };
 		CE7F59CC17F291E600DB8E03 /* RoadTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F59CA17F291E600DB8E03 /* RoadTransfer.cpp */; };
@@ -344,7 +351,15 @@
 		CE78EF491806A75700FFBDDB /* mapGame1.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapGame1.tmx; path = Resources/mapGame1.tmx; sourceTree = "<group>"; };
 		CE78EF4B1806AA6A00FFBDDB /* mapGame2.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapGame2.tmx; path = Resources/mapGame2.tmx; sourceTree = "<group>"; };
 		CE78EF4D1806B43800FFBDDB /* roadWall.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall.png; path = Resources/roadWall.png; sourceTree = "<group>"; };
-		CE78EF4F1806B59E00FFBDDB /* roadWall1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall1.png; path = Resources/roadWall1.png; sourceTree = "<group>"; };
+		CE78EF4F1806B59E00FFBDDB /* roadWall8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall8.png; path = Resources/roadWall8.png; sourceTree = "<group>"; };
+		CE7AA47B1807CEE4008E88B3 /* PointDeath.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PointDeath.cpp; path = Resources/PointDeath.cpp; sourceTree = "<group>"; };
+		CE7AA47C1807CEE4008E88B3 /* PointDeath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PointDeath.h; path = Resources/PointDeath.h; sourceTree = "<group>"; };
+		CE7AA47E1807E17B008E88B3 /* roadWall2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall2.png; path = Resources/roadWall2.png; sourceTree = "<group>"; };
+		CE7AA47F1807E17B008E88B3 /* roadWall3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall3.png; path = Resources/roadWall3.png; sourceTree = "<group>"; };
+		CE7AA4801807E17B008E88B3 /* roadWall4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall4.png; path = Resources/roadWall4.png; sourceTree = "<group>"; };
+		CE7AA4811807E17B008E88B3 /* roadWall5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall5.png; path = Resources/roadWall5.png; sourceTree = "<group>"; };
+		CE7AA4821807E17B008E88B3 /* roadWall6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall6.png; path = Resources/roadWall6.png; sourceTree = "<group>"; };
+		CE7AA4831807E17B008E88B3 /* roadWall7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall7.png; path = Resources/roadWall7.png; sourceTree = "<group>"; };
 		CE7F06A917F588620058D0D0 /* MyContactListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyContactListener.cpp; path = Classes/MyContactListener.cpp; sourceTree = "<group>"; };
 		CE7F06AA17F588620058D0D0 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyContactListener.h; path = Classes/MyContactListener.h; sourceTree = "<group>"; };
 		CE7F59C517F2910C00DB8E03 /* thanh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thanh.png; path = Resources/thanh.png; sourceTree = "<group>"; };
@@ -1035,7 +1050,13 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CE78EF4F1806B59E00FFBDDB /* roadWall1.png */,
+				CE7AA47E1807E17B008E88B3 /* roadWall2.png */,
+				CE7AA47F1807E17B008E88B3 /* roadWall3.png */,
+				CE7AA4801807E17B008E88B3 /* roadWall4.png */,
+				CE7AA4811807E17B008E88B3 /* roadWall5.png */,
+				CE7AA4821807E17B008E88B3 /* roadWall6.png */,
+				CE7AA4831807E17B008E88B3 /* roadWall7.png */,
+				CE78EF4F1806B59E00FFBDDB /* roadWall8.png */,
 				CE78EF4D1806B43800FFBDDB /* roadWall.png */,
 				CE78EF4B1806AA6A00FFBDDB /* mapGame2.tmx */,
 				CE78EF491806A75700FFBDDB /* mapGame1.tmx */,
@@ -2208,6 +2229,8 @@
 				CE78EF3E1806446500FFBDDB /* MainScreen.h */,
 				CE78EF421806874700FFBDDB /* Spider.cpp */,
 				CE78EF431806874800FFBDDB /* Spider.h */,
+				CE7AA47B1807CEE4008E88B3 /* PointDeath.cpp */,
+				CE7AA47C1807CEE4008E88B3 /* PointDeath.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2303,7 +2326,13 @@
 				CE78EF4A1806A75700FFBDDB /* mapGame1.tmx in Resources */,
 				CE78EF4C1806AA6A00FFBDDB /* mapGame2.tmx in Resources */,
 				CE78EF4E1806B43800FFBDDB /* roadWall.png in Resources */,
-				CE78EF501806B59E00FFBDDB /* roadWall1.png in Resources */,
+				CE78EF501806B59E00FFBDDB /* roadWall8.png in Resources */,
+				CE7AA4841807E17B008E88B3 /* roadWall2.png in Resources */,
+				CE7AA4851807E17B008E88B3 /* roadWall3.png in Resources */,
+				CE7AA4861807E17B008E88B3 /* roadWall4.png in Resources */,
+				CE7AA4871807E17B008E88B3 /* roadWall5.png in Resources */,
+				CE7AA4881807E17B008E88B3 /* roadWall6.png in Resources */,
+				CE7AA4891807E17B008E88B3 /* roadWall7.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2575,6 +2604,7 @@
 				CE78EF3C180642E300FFBDDB /* TopScreen.cpp in Sources */,
 				CE78EF3F1806446500FFBDDB /* MainScreen.cpp in Sources */,
 				CE78EF441806874800FFBDDB /* Spider.cpp in Sources */,
+				CE7AA47D1807CEE5008E88B3 /* PointDeath.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

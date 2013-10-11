@@ -50,8 +50,14 @@ public:
     void mapPosition(CCPoint point);
     void setViewPointCenter(CCPoint position);
     void runningSpider();
+    void relaxMoving();
+    void setPositionAgian();
     
 private:
+    int  i=0;
+    CCArray* arrPointDeath;
+    bool boolAnimaon = true;
+    bool moving = false;
     CCArray* spiders;
     CCSprite* connhen;
     b2ContactListener* listener;

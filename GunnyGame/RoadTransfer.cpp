@@ -13,9 +13,11 @@ RoadTransfer::RoadTransfer()
     
 }
 
-void RoadTransfer::createRoad(b2World* world, CCPoint point)
+void RoadTransfer::createRoad(b2World* world, CCPoint point, int number)
 {
-    this->roadBar = CCSprite::create("roadWall1.png");
+    string str = static_cast<ostringstream*>( &(ostringstream() << number) )->str();
+    str = "roadWall" + str + ".png";
+    this->roadBar = CCSprite::create(str.c_str());
     this->roadBar->setPosition(point);
     this->initWithTexture(roadBar->getTexture());
     this->location = point;
