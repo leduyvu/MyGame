@@ -23,21 +23,13 @@ void MyContactListener::EndContact(b2Contact* contact){
         if (myContact.fixtureA->GetBody()->GetType() == b2_dynamicBody) {
             if (myContact.fixtureB->GetBody()->GetType() == b2_dynamicBody)
             {
-                myContact.fixtureA->GetBody()->SetGravityScale(10);
-                myContact.fixtureB->GetBody()->SetGravityScale(100);
+                if(myContact.fixtureA->GetBody()->GetAngularDamping() != 10)
+                    myContact.fixtureA->GetBody()->SetGravityScale(100);
+                if(myContact.fixtureB->GetBody()->GetAngularDamping() != 10)
+                    myContact.fixtureB->GetBody()->SetGravityScale(100);
                 result = true;
             }
         }
-//        if (myContact.fixtureA->GetBody()->GetType() == b2_staticBody || myContact.fixtureB->GetBody()->GetType() == b2_staticBody) {
-//            if(myContact.fixtureA->GetBody()->GetType() == b2_dynamicBody){
-//                myContact.fixtureA->GetBody()->GetWorld()->DestroyBody(myContact.fixtureA->GetBody());
-//            }
-//            if(myContact.fixtureB->GetBody()->GetType() == b2_dynamicBody)
-//            {
-//                myContact.fixtureB->GetBody()->GetWorld()->DestroyBody(myContact.fixtureB->GetBody());
-//
-//            }
-//        }
     }
 }
 void MyContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold){}

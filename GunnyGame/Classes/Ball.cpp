@@ -27,10 +27,13 @@ void Ball::createBall(b2World * world, string str, CCPoint location)
     dynamicBox.m_radius = 0.3f;
     b2FixtureDef fixtureDef1;
     fixtureDef1.shape = &dynamicBox;
-    fixtureDef1.density = 1.0f;
+    fixtureDef1.density = 0.5f;
     fixtureDef1.friction = 0.3f;
     fixtureDef1.restitution = 1;
     body->CreateFixture(&fixtureDef1);
+    b2Filter filter;
+    filter.groupIndex = -1;
+    body->GetFixtureList()[0].SetFilterData(filter);
     this->setPhysicsBody(body);
 }
 void Ball::throwBall(b2Vec2 vectorV){

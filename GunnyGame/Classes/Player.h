@@ -20,16 +20,11 @@ public:
     Player();
     ~Player();
     void createPlayer(b2World * world, string str, CCPoint location);
-    void movingPlayer(CCPoint location);
+    void movingPlayer(b2Vec2 ex);
     void throwPlayer(CCLayer* layer, CCPoint location);
-    CCPoint getLocation();
     CCSprite* getSprite();
     void setLocation(CCPoint p);
 private:
-    PhysicsSprite* sprPhysicPlayer;
-    b2Body* body;
-    CCSprite* sprPlayer;
-    CCPoint location;
-    
+    CCSprite* sprPlayer;    
 };
 #endif /* defined(__GunnyGame__Player__) */

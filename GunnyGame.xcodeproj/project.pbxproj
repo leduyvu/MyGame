@@ -30,6 +30,7 @@
 		CE7AA4871807E17B008E88B3 /* roadWall5.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA4811807E17B008E88B3 /* roadWall5.png */; };
 		CE7AA4881807E17B008E88B3 /* roadWall6.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA4821807E17B008E88B3 /* roadWall6.png */; };
 		CE7AA4891807E17B008E88B3 /* roadWall7.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA4831807E17B008E88B3 /* roadWall7.png */; };
+		CE7BC7DC180B87A4003BA8A5 /* player.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7BC7DB180B87A4003BA8A5 /* player.png */; };
 		CE7F06AB17F588620058D0D0 /* MyContactListener.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F06A917F588620058D0D0 /* MyContactListener.cpp */; };
 		CE7F59C617F2910C00DB8E03 /* thanh.png in Resources */ = {isa = PBXBuildFile; fileRef = CE7F59C517F2910C00DB8E03 /* thanh.png */; };
 		CE7F59CC17F291E600DB8E03 /* RoadTransfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE7F59CA17F291E600DB8E03 /* RoadTransfer.cpp */; };
@@ -360,6 +361,7 @@
 		CE7AA4811807E17B008E88B3 /* roadWall5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall5.png; path = Resources/roadWall5.png; sourceTree = "<group>"; };
 		CE7AA4821807E17B008E88B3 /* roadWall6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall6.png; path = Resources/roadWall6.png; sourceTree = "<group>"; };
 		CE7AA4831807E17B008E88B3 /* roadWall7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = roadWall7.png; path = Resources/roadWall7.png; sourceTree = "<group>"; };
+		CE7BC7DB180B87A4003BA8A5 /* player.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = player.png; path = Resources/player.png; sourceTree = "<group>"; };
 		CE7F06A917F588620058D0D0 /* MyContactListener.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MyContactListener.cpp; path = Classes/MyContactListener.cpp; sourceTree = "<group>"; };
 		CE7F06AA17F588620058D0D0 /* MyContactListener.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MyContactListener.h; path = Classes/MyContactListener.h; sourceTree = "<group>"; };
 		CE7F59C517F2910C00DB8E03 /* thanh.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = thanh.png; path = Resources/thanh.png; sourceTree = "<group>"; };
@@ -1050,6 +1052,7 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE7BC7DB180B87A4003BA8A5 /* player.png */,
 				CE7AA47E1807E17B008E88B3 /* roadWall2.png */,
 				CE7AA47F1807E17B008E88B3 /* roadWall3.png */,
 				CE7AA4801807E17B008E88B3 /* roadWall4.png */,
@@ -2333,6 +2336,7 @@
 				CE7AA4871807E17B008E88B3 /* roadWall5.png in Resources */,
 				CE7AA4881807E17B008E88B3 /* roadWall6.png in Resources */,
 				CE7AA4891807E17B008E88B3 /* roadWall7.png in Resources */,
+				CE7BC7DC180B87A4003BA8A5 /* player.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
