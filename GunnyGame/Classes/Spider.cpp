@@ -19,23 +19,6 @@ void Spider::create(b2World * world, string str, CCPoint location, CCPoint start
     spider->setPosition(location);
     this->startPoint = startPoint;
     this->endPoint = endPoint;
-    //spider->setScale(0.2);
-//    this->initWithTexture(spider->getTexture());
-//    this->setScale(0.2);
-//    this->setPosition(location);
-//    b2BodyDef bodyDef1;
-//    bodyDef1.type = b2_dynamicBody;
-//    bodyDef1.position.Set(location.x/32, location.y/32);
-//    b2Body* body = world->CreateBody(&bodyDef1);
-//    b2PolygonShape dynamicBox;
-//    dynamicBox.SetAsBox(spider->getContentSize().width/3.5/64, spider->getContentSize().height/64);
-//    b2FixtureDef fixtureDef1;
-//    fixtureDef1.shape = &dynamicBox;
-//    fixtureDef1.density = 1.0f;
-//    fixtureDef1.friction = 0;
-//    fixtureDef1.restitution = 0;
-//    body->CreateFixture(&fixtureDef1);
-//    this->setPhysicsBody(body);
 }
 void Spider::running()
 {

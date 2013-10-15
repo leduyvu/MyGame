@@ -27,7 +27,7 @@ void Player::createPlayer(b2World * world, string str, CCPoint location)
     b2PolygonShape dynamicBox;
     dynamicBox.SetAsBox(sprPlayer->getContentSize().width/64, sprPlayer->getContentSize().height/64);
     fixtureDef1.shape = &dynamicBox;
-    fixtureDef1.density = 1.0f;
+    fixtureDef1.density = 2.0f;
     fixtureDef1.friction = 1.0f;
     fixtureDef1.restitution = 0;
     body->CreateFixture(&fixtureDef1);
@@ -35,14 +35,19 @@ void Player::createPlayer(b2World * world, string str, CCPoint location)
     b2Filter filter;
     filter.groupIndex = -1;
     body->GetFixtureList()[0].SetFilterData(filter);
-    body->SetAngularDamping(10);
+    body->SetAngularDamping(0.02);
     this->setPhysicsBody(body);
     this->setFlipX(true);
 }
 void Player::movingPlayer(b2Vec2 ex){
     this->getBody()->SetLinearVelocity(ex);
 }
-
+int Player::getHeart(){
+    return this->heart;
+}
+void Player::setHeart(int heart){
+    this->heart = heart;
+}
 CCSprite* Player::getSprite(){
     return this->sprPlayer;
 }

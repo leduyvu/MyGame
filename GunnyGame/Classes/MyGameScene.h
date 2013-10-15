@@ -9,6 +9,8 @@
 #define __HELLO_WORLD_H__
 
 // When you import this file, you import all the cocos2d classes
+#include "Bullet.h"
+#include "Turtle.h"
 #include "Spider.h"
 #include "cocos2d.h"
 #include "Box2D.h"
@@ -17,6 +19,13 @@
 #include "Player.h"
 #include "Ball.h"
 #include "MyContactListener.h"
+#include "MyGameScene.h"
+#include "SimpleAudioEngine.h"
+#include "PhysicsSprite.h"
+#include "math.h"
+#include "Boot.h"
+#include "PointDeath.h"
+USING_NS_CC;
 USING_NS_CC;
 #define SWIPE_DISTANCE 15
 class MyGame : public cocos2d::CCLayer {
@@ -52,13 +61,20 @@ public:
     void runningSpider();
     void relaxMoving();
     void setPositionAgian();
+    void impactBoot();
+    void gunShoot();
     
 private:
     int  i=0;
+    CCArray* arrBullet;
+    CCArray* arrGun;
+    CCArray* arrTurtle;
     CCArray* arrPointDeath;
+    CCArray* arrBalls;
+    CCArray* arrWall;
+    CCArray* arrSpider;
     bool boolAnimaon = true;
     bool moving = false;
-    CCArray* spiders;
     CCSprite* connhen;
     b2ContactListener* listener;
     CCLayer* map;
@@ -70,7 +86,6 @@ private:
     bool swipeLeft;
     bool swipeUp;
     bool swipeDown;
-    CCArray* arrBalls, *arrWall;
     Player* player;
     bool checkRoad;
     CCSprite* road;

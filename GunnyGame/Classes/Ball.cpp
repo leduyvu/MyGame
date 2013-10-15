@@ -34,6 +34,7 @@ void Ball::createBall(b2World * world, string str, CCPoint location)
     b2Filter filter;
     filter.groupIndex = -1;
     body->GetFixtureList()[0].SetFilterData(filter);
+    body->SetLinearDamping(0.01);
     this->setPhysicsBody(body);
 }
 void Ball::throwBall(b2Vec2 vectorV){

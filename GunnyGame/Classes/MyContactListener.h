@@ -13,11 +13,10 @@ struct MyContact {
         return (fixtureA == other.fixtureA) && (fixtureB == other.fixtureB);
     }
 };
-    
 class MyContactListener : public b2ContactListener {
 public:
     std::vector<MyContact> _contacts;
-    MyContactListener();
+    MyContactListener(b2World* world);
     ~MyContactListener();
 
     virtual void BeginContact(b2Contact* contact);
@@ -25,9 +24,9 @@ public:
     virtual void PreSolve(b2Contact* contact, const b2Manifold* oldManifold);
     virtual void PostSolve(b2Contact* contact, const b2ContactImpulse* impulse);
     bool getResult();
-    
     void setResult(bool result);
 private:
+    b2World* world;
     bool result;
     CC_SYNTHESIZE(int, _numberBegin, NumberBegin);
     CC_SYNTHESIZE(int, _numberEnd, NumberEnd);

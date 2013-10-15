@@ -24,7 +24,10 @@ public:
     void throwPlayer(CCLayer* layer, CCPoint location);
     CCSprite* getSprite();
     void setLocation(CCPoint p);
+    void setHeart(int heart);
+    int getHeart();
 private:
+    int heart = 100;
     CCSprite* sprPlayer;    
 };
 #endif /* defined(__GunnyGame__Player__) */

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE04B1E6180D133F00EE0E62 /* TouchHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE04B1E4180D133E00EE0E62 /* TouchHandler.cpp */; };
+		CE04B1E9180D146300EE0E62 /* ImpactHandler.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE04B1E7180D146200EE0E62 /* ImpactHandler.cpp */; };
+		CE04B1EC180D14DC00EE0E62 /* Animation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE04B1EA180D14DB00EE0E62 /* Animation.cpp */; };
+		CE04B1EE180D26DB00EE0E62 /* rua2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE04B1ED180D26DB00EE0E62 /* rua2.png */; };
+		CE04B1F2180D2BD200EE0E62 /* rua1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE04B1F1180D2BD200EE0E62 /* rua1.png */; };
+		CE04B1F8180D2CB500EE0E62 /* Turtle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE04B1F6180D2CB300EE0E62 /* Turtle.cpp */; };
+		CE04B1FC180D37E000EE0E62 /* bullet1.png in Resources */ = {isa = PBXBuildFile; fileRef = CE04B1F9180D37DF00EE0E62 /* bullet1.png */; };
+		CE04B1FD180D37E000EE0E62 /* bullet2.png in Resources */ = {isa = PBXBuildFile; fileRef = CE04B1FA180D37DF00EE0E62 /* bullet2.png */; };
+		CE04B1FE180D37E000EE0E62 /* gun.png in Resources */ = {isa = PBXBuildFile; fileRef = CE04B1FB180D37DF00EE0E62 /* gun.png */; };
+		CE04B204180D386100EE0E62 /* Bullet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE04B202180D385D00EE0E62 /* Bullet.cpp */; };
 		CE1431DE17F16F6A00F026C1 /* quaivat.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE1431DC17F16F6A00F026C1 /* quaivat.plist */; };
 		CE1431DF17F16F6A00F026C1 /* quaivat.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */; };
 		CE1A032917F959BB003D1BFA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032717F959BB003D1BFA /* Player.cpp */; };
@@ -331,6 +341,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CE04B1E4180D133E00EE0E62 /* TouchHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TouchHandler.cpp; path = Resources/TouchHandler.cpp; sourceTree = "<group>"; };
+		CE04B1E7180D146200EE0E62 /* ImpactHandler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ImpactHandler.cpp; path = Resources/ImpactHandler.cpp; sourceTree = "<group>"; };
+		CE04B1EA180D14DB00EE0E62 /* Animation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Animation.cpp; path = Resources/Animation.cpp; sourceTree = "<group>"; };
+		CE04B1ED180D26DB00EE0E62 /* rua2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rua2.png; path = Resources/rua2.png; sourceTree = "<group>"; };
+		CE04B1F1180D2BD200EE0E62 /* rua1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = rua1.png; path = Resources/rua1.png; sourceTree = "<group>"; };
+		CE04B1F6180D2CB300EE0E62 /* Turtle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Turtle.cpp; path = Classes/Turtle.cpp; sourceTree = "<group>"; };
+		CE04B1F7180D2CB400EE0E62 /* Turtle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Turtle.h; path = Classes/Turtle.h; sourceTree = "<group>"; };
+		CE04B1F9180D37DF00EE0E62 /* bullet1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bullet1.png; path = Resources/bullet1.png; sourceTree = "<group>"; };
+		CE04B1FA180D37DF00EE0E62 /* bullet2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bullet2.png; path = Resources/bullet2.png; sourceTree = "<group>"; };
+		CE04B1FB180D37DF00EE0E62 /* gun.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = gun.png; path = Resources/gun.png; sourceTree = "<group>"; };
+		CE04B202180D385D00EE0E62 /* Bullet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Bullet.cpp; path = Classes/Bullet.cpp; sourceTree = "<group>"; };
+		CE04B203180D385E00EE0E62 /* Bullet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Bullet.h; path = Classes/Bullet.h; sourceTree = "<group>"; };
 		CE1431DC17F16F6A00F026C1 /* quaivat.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = quaivat.plist; path = Resources/quaivat.plist; sourceTree = "<group>"; };
 		CE1431DD17F16F6A00F026C1 /* quaivat.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = quaivat.pvr.gz; path = Resources/quaivat.pvr.gz; sourceTree = "<group>"; };
 		CE1A032717F959BB003D1BFA /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Player.cpp; path = Classes/Player.cpp; sourceTree = "<group>"; };
@@ -981,7 +1003,6 @@
 		CEEBCDD917F02BFD00328D60 /* bong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong.png; path = Resources/bong.png; sourceTree = "<group>"; };
 		CEEBCDDB17F044F200328D60 /* bong1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bong1.png; path = Resources/bong1.png; sourceTree = "<group>"; };
 		CEEF6251180263FF0041C709 /* Map.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Map.cpp; sourceTree = "<group>"; };
-		CEEF6252180263FF0041C709 /* Map.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Map.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1052,6 +1073,11 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE04B1F9180D37DF00EE0E62 /* bullet1.png */,
+				CE04B1FA180D37DF00EE0E62 /* bullet2.png */,
+				CE04B1FB180D37DF00EE0E62 /* gun.png */,
+				CE04B1F1180D2BD200EE0E62 /* rua1.png */,
+				CE04B1ED180D26DB00EE0E62 /* rua2.png */,
 				CE7BC7DB180B87A4003BA8A5 /* player.png */,
 				CE7AA47E1807E17B008E88B3 /* roadWall2.png */,
 				CE7AA47F1807E17B008E88B3 /* roadWall3.png */,
@@ -2225,7 +2251,6 @@
 				CE29B18F17F975B7009E20D5 /* Ball.cpp */,
 				CE29B19017F975B8009E20D5 /* Ball.h */,
 				CEEF6251180263FF0041C709 /* Map.cpp */,
-				CEEF6252180263FF0041C709 /* Map.h */,
 				CE78EF3A180642E300FFBDDB /* TopScreen.cpp */,
 				CE78EF3B180642E300FFBDDB /* TopScreen.h */,
 				CE78EF3D1806446500FFBDDB /* MainScreen.cpp */,
@@ -2234,6 +2259,13 @@
 				CE78EF431806874800FFBDDB /* Spider.h */,
 				CE7AA47B1807CEE4008E88B3 /* PointDeath.cpp */,
 				CE7AA47C1807CEE4008E88B3 /* PointDeath.h */,
+				CE04B1E4180D133E00EE0E62 /* TouchHandler.cpp */,
+				CE04B1E7180D146200EE0E62 /* ImpactHandler.cpp */,
+				CE04B1EA180D14DB00EE0E62 /* Animation.cpp */,
+				CE04B1F6180D2CB300EE0E62 /* Turtle.cpp */,
+				CE04B1F7180D2CB400EE0E62 /* Turtle.h */,
+				CE04B202180D385D00EE0E62 /* Bullet.cpp */,
+				CE04B203180D385E00EE0E62 /* Bullet.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2337,6 +2369,11 @@
 				CE7AA4881807E17B008E88B3 /* roadWall6.png in Resources */,
 				CE7AA4891807E17B008E88B3 /* roadWall7.png in Resources */,
 				CE7BC7DC180B87A4003BA8A5 /* player.png in Resources */,
+				CE04B1EE180D26DB00EE0E62 /* rua2.png in Resources */,
+				CE04B1F2180D2BD200EE0E62 /* rua1.png in Resources */,
+				CE04B1FC180D37E000EE0E62 /* bullet1.png in Resources */,
+				CE04B1FD180D37E000EE0E62 /* bullet2.png in Resources */,
+				CE04B1FE180D37E000EE0E62 /* gun.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2609,6 +2646,11 @@
 				CE78EF3F1806446500FFBDDB /* MainScreen.cpp in Sources */,
 				CE78EF441806874800FFBDDB /* Spider.cpp in Sources */,
 				CE7AA47D1807CEE5008E88B3 /* PointDeath.cpp in Sources */,
+				CE04B1E6180D133F00EE0E62 /* TouchHandler.cpp in Sources */,
+				CE04B1E9180D146300EE0E62 /* ImpactHandler.cpp in Sources */,
+				CE04B1EC180D14DC00EE0E62 /* Animation.cpp in Sources */,
+				CE04B1F8180D2CB500EE0E62 /* Turtle.cpp in Sources */,
+				CE04B204180D386100EE0E62 /* Bullet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
