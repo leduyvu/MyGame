@@ -27,7 +27,7 @@ void MyGame::runningSpider()
 
 void MyGame::runAnimation()
 {
-    boolAnimaon = false;
+    boolAnimaon = true;
     checkRunAnimation = true;
     this->player->throwPlayer(this, ccp(player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32));
 }

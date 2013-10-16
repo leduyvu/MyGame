@@ -22,10 +22,10 @@ void Bullet::create(b2World * world, string str, CCPoint location, bool turnRigh
 void Bullet::running()
 {
     if(turnRight){
-        this->bullet->runAction(CCMoveBy::create(10, ccp(3200, 0)));
+        this->bullet->runAction(CCMoveBy::create(15, ccp(3200, 0)));
     }
     else{
-        this->bullet->runAction(CCMoveBy::create(10, ccp(-3200, 0)));
+        this->bullet->runAction(CCMoveBy::create(15, ccp(-3200, 0)));
     }
 }
 

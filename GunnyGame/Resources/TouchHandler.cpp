@@ -15,29 +15,37 @@ void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
     CCTouch *touch = (CCTouch*)touches->anyObject();
     this->touchBegin = this->getParent()->convertTouchToNodeSpace(touch);
     touchBool = true;
-    
-    
-    
-    if(touchBegin.y <= player->getBody()->GetPosition().y * 32 + 50)
-    {
-        transfer = true;
-        touchBool = false;
-        if (touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32 > 50)
-        {
-            b2Vec2 ex = b2Vec2();
-            float x = touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32;
-            ex.Set(sqrt(0.5 * fabs(x)), 01);
-            player->movingPlayer(ex);
-        }
-        if(player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x) > 50){
-            b2Vec2 ex = b2Vec2();
-            float x = 0;
-            if(player->getBody() != NULL)
-                x =  player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x);
-            ex.Set(sqrt(0.5 * fabs(x)) * (-1), 01);
-            player->movingPlayer(ex);
-        }
-    }
+  //    if(touchBegin.y <= player->getBody()->GetPosition().y * 32 + 50)
+//    {
+//        transfer = true;
+//        touchBool = false;
+//        if(!movingUp || (movingUp && firstMovingUp)){
+//            if (touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32 > 50)
+//            {
+//                b2Vec2 ex = b2Vec2();
+//                float x = touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32;
+//                if(!movingUp)
+//                    ex.Set(sqrt(0.5 * fabs(x)), 02);
+//                else if(movingUp && firstMovingUp)
+//                    ex.Set(3, 0.5);
+//                player->movingPlayer(ex);
+//                firstMovingUp = false;
+//            }
+//            if(player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x) > 50){
+//                b2Vec2 ex = b2Vec2();
+//                float x = 0;
+//                if(player->getBody() != NULL)
+//                    x =  player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x);
+//                if(!movingUp)
+//                    ex.Set(sqrt(0.5 * fabs(x)) * (-1), 02);
+//                else if(movingUp && firstMovingUp)
+//                    ex.Set(-3, 0.5);
+//                player->movingPlayer(ex);
+//                firstMovingUp = false;
+//
+//            }
+//        }
+//    }
 }
 
 void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
@@ -46,27 +54,70 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
     CCRect touchRect = CCRect(touchLoc.x - this->getPosition().x, touchLoc.y - this->getPosition().y, 30, 30);
     CCRect swipeUpRect = CCRectMake(player->getBody()->GetPosition().x * 32 - 20, player->getBody()->GetPosition().y * 32 + 40, 20, 150);
     CCRect swipeUpRightRect = CCRectMake(player->getBody()->GetPosition().x * 32 + 20, player->getBody()->GetPosition().y * 32 + 40, 20, 150);
-    if (touchRect.intersectsRect(swipeUpRect) && touchRect.intersectsRect(swipeUpRightRect)){
-        b2Vec2 ex = b2Vec2();
-        ex.Set(0, 10);
-        player->movingPlayer(ex);
-        touchBool = false;
-        return;
+    if(!movingUp)
+    {
+        if (touchRect.intersectsRect(swipeUpRect) && touchRect.intersectsRect(swipeUpRightRect)){
+            b2Vec2 ex = b2Vec2();
+            ex.Set(0, 12);
+            player->movingPlayer(ex);
+            touchBool = false;
+            time = 0;
+            firstMovingUp = true;
+            return;
+        }
+        if ((touchRect.intersectsRect(swipeUpRect))){
+            b2Vec2 ex = b2Vec2();
+            ex.Set(-2, 12);
+            player->movingPlayer(ex);
+            touchBool = false;
+            time = 0;
+            firstMovingUp = true;
+            return;
+        }
+        if ((touchRect.intersectsRect(swipeUpRightRect))){
+            b2Vec2 ex = b2Vec2();
+            ex.Set(2, 12);
+            player->movingPlayer(ex);
+            touchBool = false;
+            time = 0;
+            firstMovingUp = true;
+
+            return;
+        }
+        //firstMovingUp = true;
     }
-    if ((touchRect.intersectsRect(swipeUpRect))){
-        b2Vec2 ex = b2Vec2();
-        ex.Set(-3, 10);
-        player->movingPlayer(ex);
-        touchBool = false;
-        return;
-    }
-    if ((touchRect.intersectsRect(swipeUpRightRect))){
-        b2Vec2 ex = b2Vec2();
-        ex.Set(3, 10);
-        player->movingPlayer(ex);
-        touchBool = false;
-        return;
-    }
+//    else{
+//        if(firstMovingUp)
+//        {
+//            firstMovingUp = false;
+//            if (touchRect.intersectsRect(swipeUpRect) && touchRect.intersectsRect(swipeUpRightRect)){
+//                b2Vec2 ex = b2Vec2();
+//                ex.Set(0, 3);
+//                player->movingPlayer(ex);
+//                touchBool = false;
+//                time = 0;
+//                
+//                return;
+//            }
+//            if ((touchRect.intersectsRect(swipeUpRect))){
+//                b2Vec2 ex = b2Vec2();
+//                ex.Set(-2, 3);
+//                player->movingPlayer(ex);
+//                touchBool = false;
+//                time = 0;
+//                return;
+//            }
+//            if ((touchRect.intersectsRect(swipeUpRightRect))){
+//                b2Vec2 ex = b2Vec2();
+//                ex.Set(2, 3);
+//                player->movingPlayer(ex);
+//                touchBool = false;
+//                time = 0;
+//                return;
+//            }
+//        
+//        }
+//    }
 }
 
 void MyGame::ccTouchesEnded(CCSet* touches, CCEvent* event)
@@ -86,4 +137,6 @@ void MyGame::ccTouchesEnded(CCSet* touches, CCEvent* event)
         checkRun = false;
         transfer =false;
     }
+    touchBool = false;
+    touchBegin.setPoint(0, 10000);
 }

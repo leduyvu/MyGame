@@ -22,20 +22,20 @@ void MyGame::impactBall(){
         MyContactListener* listenImpact = dynamic_cast<MyContactListener*>(listener);
         if(listenImpact->getResult())
         {
-            listenImpact->setResult(false);
-            if(arrPointDeath->count() > 0){
-                arrPointDeath->removeObjectAtIndex(0);
-            }
-            world->DestroyBody(ball->getBody());
-            arrBalls->removeAllObjects();
-            //this->removeChild(ball);
-            Spider* spider = new Spider();
-            spider->create(this->world, "connhen.png",
-                           ccp(this->getPosition().x + 50, this->getPosition().y + 70),
-                           ccp(200,200),
-                           ccp(500, 200));
-            this->addChild(spider->getSprite(), 10);
-            arrSpider->addObject(spider);
+//            listenImpact->setResult(false);
+//            if(arrPointDeath->count() > 0){
+//                arrPointDeath->removeObjectAtIndex(0);
+//            }
+//            world->DestroyBody(ball->getBody());
+//            arrBalls->removeAllObjects();
+//            //this->removeChild(ball);
+//            Spider* spider = new Spider();
+//            spider->create(this->world, "connhen.png",
+//                           ccp(this->getPosition().x + 50, this->getPosition().y + 70),
+//                           ccp(200,200),
+//                           ccp(500, 200));
+//            this->addChild(spider->getSprite(), 10);
+//            arrSpider->addObject(spider);
         }
     }
 }
@@ -49,6 +49,7 @@ void MyGame::impactBoot(){
         b2Filter filter;
         filter.groupIndex = -2;
         player->getBody()->GetFixtureList()[0].SetFilterData(filter);
+        player->getBody()->GetFixtureList()[0].SetSensor(true);
     }
     CCARRAY_FOREACH(this->arrSpider, objSprider){
         Spider* sprider = dynamic_cast<Spider*>(objSprider);
@@ -82,6 +83,11 @@ void MyGame::impactBoot(){
         Bullet* bullet = dynamic_cast<Bullet*>(objBullet);
         if(fabs(bullet->getSprite()->getPosition().x - player->getBody()->GetPosition().x * 32) < 10 && fabs(bullet->getSprite()->getPosition().y - player->getBody()->GetPosition().y * 32) < 50){
             this->player->setHeart(this->player->getHeart() - 20);
+        }
+        if(bullet->getSprite()->getPosition().x < this->player->getBody()->GetPosition().x - 1000){
+            this->removeChild(bullet->getSprite());
+            arrBullet->removeObject(bullet);
+            bullet->autorelease();
         }
     }
 }

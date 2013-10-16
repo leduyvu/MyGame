@@ -25,19 +25,25 @@ void MyContactListener::EndContact(b2Contact* contact){
         if (myContact.fixtureA->GetBody()->GetType() == b2_dynamicBody) {
             if (myContact.fixtureB->GetBody()->GetType() == b2_dynamicBody)
             {
-                if(myContact.fixtureA->GetBody()->GetAngularDamping() < 0.015)
+                if(myContact.fixtureA->GetDensity() == 900)
                     myContact.fixtureA->GetBody()->SetGravityScale(100);
-                if(myContact.fixtureB->GetBody()->GetAngularDamping() < 0.015)
+                if(myContact.fixtureB->GetDensity() == 900)
                     myContact.fixtureB->GetBody()->SetGravityScale(100);
                 result = true;
             }
-            if (myContact.fixtureB->GetBody()->GetType() == b2_staticBody)
-            {
-                if(myContact.fixtureA->GetBody()->GetAngularDamping() == 11)
-                    this->world->DestroyBody(myContact.fixtureA->GetBody());
-                //result = true;
-            }
         }
+//        if (myContact.fixtureB->GetBody()->GetType() == b2_staticBody || myContact.fixtureA->GetBody()->GetType() == b2_staticBody)
+//        {
+//            if(myContact.fixtureB->GetDensity() == 0.5)
+//                if(myContact.fixtureB->GetBody() != NULL)
+//                    //world->DestroyBody(myContact.fixtureB->GetBody());
+//            if(myContact.fixtureA->GetDensity() == 0.5)
+//                if(myContact.fixtureA->GetBody() != NULL)
+//                   // world->DestroyBody(myContact.fixtureA->GetBody());
+//            
+//            //result = true;
+//        }
+        
     }
 }
 void MyContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold){}

@@ -35,7 +35,7 @@ void Player::createPlayer(b2World * world, string str, CCPoint location)
     b2Filter filter;
     filter.groupIndex = -1;
     body->GetFixtureList()[0].SetFilterData(filter);
-    body->SetAngularDamping(0.02);
+    body->SetAngularDamping(1);
     this->setPhysicsBody(body);
     this->setFlipX(true);
 }
@@ -57,6 +57,7 @@ void Player::setLocation(CCPoint p)
     this->sprPlayer->setPosition(p);
 }
 void Player::throwPlayer(CCLayer* layer, CCPoint location){
+    this->setVisible(false);
     CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("nembong.plist");
     CCArray* animFrames = new CCArray;
@@ -67,7 +68,7 @@ void Player::throwPlayer(CCLayer* layer, CCPoint location){
         CCSpriteFrame* frame = cache->spriteFrameByName( str );
         animFrames->addObject(frame);
     }
-    CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.3);
+    CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.2);
     CCSprite *popSprite = CCSprite::create();
     popSprite->setScale(0.2);
     popSprite->setFlipX(true);

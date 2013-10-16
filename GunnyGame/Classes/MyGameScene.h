@@ -73,8 +73,11 @@ private:
     CCArray* arrBalls;
     CCArray* arrWall;
     CCArray* arrSpider;
-    bool boolAnimaon = true;
+    bool firstMovingUp = true;
+    bool boolAnimaon = false;
+    bool movingUp = false;
     bool moving = false;
+    bool animationCreate = true;
     CCSprite* connhen;
     b2ContactListener* listener;
     CCLayer* map;

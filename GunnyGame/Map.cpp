@@ -9,10 +9,12 @@
 #include "MyGameScene.h"
 void MyGame::showShooter()
 {
+    this->player->setVisible(true);
+    time = 0;
     checkRunAnimation = false;
     timerBar->setPercentage(0);
     player->resumeSchedulerAndActions();
-    boolAnimaon = true;
+    boolAnimaon = false;
 }
 
 void MyGame::setViewPointCenter(CCPoint position) {
@@ -51,7 +53,7 @@ void MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y,
     // create the body
     b2BodyDef bodyDef;
     bodyDef.type = b2_staticBody;
-    bodyDef.position.Set((p.x + (tileSize.width / 2.0f))/pixelsPerMeter,
+    bodyDef.position.Set((p.x + (tileSize.width / 1.7f))/pixelsPerMeter,
                          (p.y + (tileSize.height / 2.0f))/pixelsPerMeter);
     b2Body *body = world->CreateBody(&bodyDef);
     body->SetAngularDamping(33);
@@ -64,11 +66,12 @@ void MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y,
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
     fixtureDef.density = 1.0f;
-    fixtureDef.friction = 1.0f;
+    fixtureDef.friction = 0.5f;
     fixtureDef.restitution = 0.0f;
     //    fixtureDef.filter.categoryBits = kFilterCategoryLevel;
     fixtureDef.filter.maskBits = 0xffff;
     body->CreateFixture(&fixtureDef);
+    body->SetAngularDamping(1);
     b2Filter filter;
     filter.groupIndex = -2;
     body->GetFixtureList()[0].SetFilterData(filter);
