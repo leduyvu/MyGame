@@ -21,7 +21,10 @@ public:
     void create(b2World * world, string str, CCPoint location, bool turnRight);
     void running();
     CCSprite* getSprite();
+    bool getShoot();
+    void setShoot(bool shoot);
 private:
+    bool shoot = true;
     bool turnRight;
     bool checkrunning = false;
     CCSprite* bullet;

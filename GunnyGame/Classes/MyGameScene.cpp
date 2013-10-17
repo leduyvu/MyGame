@@ -11,6 +11,7 @@
 USING_NS_CC;
 MyGame::MyGame()
 {
+    CCSize s = CCDirector::sharedDirector()->getWinSize();
     MyGame::init();
     this->initPhysics();
     setTouchEnabled( true );
@@ -50,9 +51,13 @@ MyGame::MyGame()
     PointDeath * pd3 = new PointDeath();
     pd3->create(ccp(2530, 120), ccp(2810,120));
     arrPointDeath->addObject(pd3);
+    
+    PointDeath * pd4 = new PointDeath();
+    pd4->create(ccp(4530, 120), ccp(4810,120));
+    arrPointDeath->addObject(pd4);
 //================================================
 //====================add Player =================
-    this->player->createPlayer(this->world, "player.png", ccp(90, 120));
+    this->player->createPlayer(this->world, "player.png", ccp(2900, 120));
     this->addChild(player, 9);
 //    player->getSprite()->setScale(0.3);
     //player->getSprite()->runAction(CCMoveBy::create(4, ccp(300,0)));
@@ -70,6 +75,20 @@ MyGame::MyGame()
     this->addChild(timerBar, 10);
     timerBar->setPercentage(0);
 //=================================================
+    
+//============heartBar===========================
+    CCSprite *hearts = CCSprite::create("heart.png");
+    hearts->setAnchorPoint(ccp(0, 0));
+    hearts->setScale(4);
+    heartBar = CCProgressTimer::create(timer);
+    heartBar->setType(kCCProgressTimerTypeBar);
+    heartBar->setAnchorPoint(ccp(0, 0));
+    heartBar->setPosition(ccp(0, s.height/1.3));
+    heartBar->setMidpoint(ccp(0,0));
+    heartBar->setBarChangeRate(ccp(1, 0));
+    this->addChild(heartBar, 10);
+    heartBar->setPercentage(100);
+//==============================================
     
 //=============== road ================================
     CCObject *object;
@@ -91,7 +110,7 @@ MyGame::MyGame()
 
 //=====================================================
     Turtle * turtle = new Turtle();
-    turtle->create(this->world, "rua1.png", ccp(900,170), ccp(1000,170), ccp(800,170));
+    turtle->create(this->world, "rua2.png", ccp(2400,170), ccp(2100,170), ccp(800,2470));
     arrTurtle->addObject(turtle);
     Turtle * turtle2 = new Turtle();
     turtle2->create(this->world, "rua2.png", ccp(600,190), ccp(800,190), ccp(500,190));
@@ -100,9 +119,13 @@ MyGame::MyGame()
     this->addChild(turtle2->getSprite(), 10);
     
     CCSprite* gun = CCSprite::create("gun.png");
+    gun->setTag(1122);
     gun->setPosition(ccp(1400, 100));
-    arrGun->addObject(gun);
-    this->addChild(gun);
+    CCSprite* gun2 = CCSprite::create("gun.png");
+    gun2->setTag(1122);
+    gun2->setPosition(ccp(4100, 250));
+    arrGun->addObject(gun2);
+    this->addChild(gun2);
     
     
     //================= spider===================
@@ -117,6 +140,12 @@ MyGame::MyGame()
 
     
     //===========================================
+    
+    
+    
+//    CCParticleGalaxy* pr = CCParticleGalaxy::create();
+//    pr->setPosition(ccp(700, 120));
+//    _tileMap->addChild(pr, 12);
     scheduleUpdate();
     //this->schedule(schedule_selector(MyGame::runBoot), 2.55);
     this->schedule(schedule_selector(MyGame::impactBall));
@@ -131,7 +160,6 @@ MyGame::~MyGame()
     delete world;
     world = NULL;
 }
-
 bool MyGame::init(){
     this->map = new CCLayer();
     touchBegin = ccp(0, 10000);
@@ -211,6 +239,9 @@ void MyGame::addNewSpriteAtPosition(CCPoint p){
 }
 void MyGame::update(float dt)
 {
+    CCLOG("player * %f , ... %f ",player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32);
+    MyGame::handlerPlayer();
+        
     if(fabs(player->getBody()->GetLinearVelocity().x) <= 0.01 && fabs(player->getBody()->GetLinearVelocity().y) <= 0.01)
     {
         animationCreate = true;
@@ -225,17 +256,10 @@ void MyGame::update(float dt)
     else{
         movingUp = true;
     }
-
-
-    
-    //player->setPosition(ccp(player->getBody()->GetPosition().x, player->getBody()->GetPosition().y));
-    if(player->getBody()->GetPosition().y * 32 < -150)
-    {
-        setPositionAgian();
-    }
-    
     setViewPointCenter(ccp(player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32));
     timerBar->setPosition(ccp(this->getPosition().x * (-1), this->getPosition().y));
+    heartBar->setPosition(ccp(this->getPosition().x * (-1), 500));
+
     //timerBar->getSprite()->setPosition(this->getPosition());
 
     CCNode *ex = this->getChildByTag(222);
@@ -275,50 +299,13 @@ void MyGame::update(float dt)
                                            CCCallFunc::create(this, callfunc_selector(MyGame::showShooter)),
                                            NULL));
     }
-
-    
     if(boolAnimaon){
         this->setTouchEnabled(false);
     }
     else{
         this->setTouchEnabled(true);
     }
-    
-    
-    if(touchBegin.y <= player->getBody()->GetPosition().y * 32 + 70)
-    {
-        transfer = true;
-        touchBool = false;
-        if(!movingUp || (movingUp && firstMovingUp)){
-            if (touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32 > 50)
-            {
-                b2Vec2 ex = b2Vec2();
-                float x = touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32;
-                if(!movingUp)
-                    ex.Set(sqrt(0.5 * fabs(x)), 02);
-                else if(movingUp && firstMovingUp)
-                    ex.Set(4, 0.5);
-                ex.Set(5, 1);
-                player->movingPlayer(ex);
-                firstMovingUp = false;
-            }
-            if(player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x) > 50){
-                b2Vec2 ex = b2Vec2();
-                float x = 0;
-                if(player->getBody() != NULL)
-                    x =  player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x);
-                if(!movingUp)
-                    ex.Set(sqrt(0.5 * fabs(x)) * (-1), 02);
-                else if(movingUp && firstMovingUp)
-                    ex.Set(-3, 0.5);
-                ex.Set(-5, 1);
-                player->movingPlayer(ex);
-                firstMovingUp = false;
-                
-            }
-        }
-    }
-
+    MyGame::movingVer();
 }
 
 CCScene* MyGame::scene()
@@ -348,7 +335,6 @@ void MyGame::throwBall()
         float Y = location.y - this->player->getBody()->GetPosition().y * 32;
         float x = prercent/4 * X/(sqrt(X * X + Y * Y));
         float y = prercent/4 * Y/(sqrt(X * X + Y * Y));
-        CCLOG("player * %f , ... %f ",player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32);
         CCLOG("touches  * %f .. %f ", location.x, location.y);
         b2Vec2 ex = b2Vec2();
         ex.Set(x, y);
@@ -384,10 +370,61 @@ void MyGame::gunShoot(){
         bulletRight->create(this->world, "bullet1.png", gun->getPosition(), true);
         Bullet* bulletLeft = new Bullet();
         bulletLeft->create(this->world, "bullet2.png", gun->getPosition(), false);
-        this->addChild(bulletRight->getSprite(), 10);
-        this->addChild(bulletLeft->getSprite(), 10);
+        this->addChild(bulletRight->getSprite(), 12);
+        this->addChild(bulletLeft->getSprite(), 11);
         arrBullet->addObject(bulletRight);
         arrBullet->addObject(bulletLeft);
     }
 }
+void MyGame::handlerPlayer(){
+    if(heartBar->getPercentage() == 0){
+        player->getBody()->GetFixtureList()[0].SetSensor(true);
+    }
+    if((player->getBody()->GetPosition().x * 32 <= 4150 && player->getBody()->GetPosition().x * 32 >= 3540 && player->getBody()->GetPosition().y * 32 < 300) || (player->getBody()->GetPosition().x * 32 <= 5535 && player->getBody()->GetPosition().x * 32 >= 4150 && player->getBody()->GetPosition().y * 32 < 350))
+    {
+        heartBar->setPercentage(heartBar->getPercentage() - 0.3);
+    }else
+        heartBar->setPercentage(100);
+    
+    if(player->getBody()->GetPosition().y * 32 < -150)
+    {
+        setPositionAgian();
+        heartBar->setPercentage(100);
+    }
 
+}
+void MyGame::movingVer(){
+    if(touchBegin.y <= player->getBody()->GetPosition().y * 32 + 70)
+    {
+        transfer = true;
+        touchBool = false;
+        if(!movingUp || (movingUp && firstMovingUp)){
+            if (touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32 > 50)
+            {
+                b2Vec2 ex = b2Vec2();
+                float x = touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32;
+                if(!movingUp)
+                    ex.Set(sqrt(0.5 * fabs(x)), 02);
+                else if(movingUp && firstMovingUp)
+                    ex.Set(4, 0.5);
+                ex.Set(5, 1);
+                player->movingPlayer(ex);
+                firstMovingUp = false;
+            }
+            if(player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x) > 50){
+                b2Vec2 ex = b2Vec2();
+                float x = 0;
+                if(player->getBody() != NULL)
+                    x =  player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x);
+                if(!movingUp)
+                    ex.Set(sqrt(0.5 * fabs(x)) * (-1), 02);
+                else if(movingUp && firstMovingUp)
+                    ex.Set(-3, 0.5);
+                ex.Set(-5, 1);
+                player->movingPlayer(ex);
+                firstMovingUp = false;
+                
+            }
+        }
+    }
+}

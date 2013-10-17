@@ -63,7 +63,8 @@ public:
     void setPositionAgian();
     void impactBoot();
     void gunShoot();
-    
+    void handlerPlayer();
+    void movingVer();
 private:
     int  i=0;
     CCArray* arrBullet;
@@ -105,6 +106,7 @@ private:
     float time = 0;
     CCPoint location;
     CCProgressTimer* timerBar;
+    CCProgressTimer* heartBar;
     b2World* world;
     b2World* wall;
     cocos2d::CCTexture2D* m_pSpriteTexture; // weak ref

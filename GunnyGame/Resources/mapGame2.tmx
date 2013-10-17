@@ -3,9 +3,17 @@
  <tileset firstgid="1" name="xetang" tilewidth="32" tileheight="32" spacing="1" margin="1">
   <image source="xetang.jpeg" width="520" height="471"/>
  </tileset>
+ <tileset firstgid="211" name="water" tilewidth="32" tileheight="32" spacing="1" margin="1">
+  <image source="water.jpeg" width="640" height="400"/>
+ </tileset>
  <layer name="mapWall" width="200" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt2kEKgCAQBVDvf4c8a6tAiiGT1Mj34KMrG1KzhSkxW55dAAAA8MgWBABWEZ2FzkgAAACYJxdJyX0UOOQggP3xZdHcmKdxvHdWF6133yVWEa3taO07t1lFzX9qS+jv6V2ft+4E9Xru6Dpqx84NY9/tj5Zay/bcl7GJ/K2OXmO/tS/KOsv23JdrdhtoFGc=
+   eJzt2jEOgCAQBED+/wd5q63NRTQcCM4k2yJR17OgFGarszcAAAA8cgQBgL+IZqEZCQDwbf7dIKYf7KBeUkq/8yj6wepqkB70g9Xpx3dlPRfaZfYDVue7zh9E3/5oNkRzw/xgN3fv+pswxtOzPr3OBGVdd/Q+WteuL9a+68ioeyg5iey2j6y19WJ+TtETL1Y=
+  </data>
+ </layer>
+ <layer name="water" width="200" height="20">
+  <data encoding="base64" compression="zlib">
+   eJzt1mkOgjAQhmF6Jbcb4HIDFW7gwrGMFzMew0m0SVOnCxUMP94n+RI7MOVPB6kqAAAAAAAAAAAAAAAAxDwnmpv5DvBvtZy7tWQj2Up2kplkbt7X7PXaqS8kS8nq0zdGmA/EPAZIDm0+3Frot713rPm4KwGsvfk9Qz/nIDlKGmXdKrXQ2U/t3TIfSDiZcXKWXCRXSdejr2Q+bM2Ptrffy3wgRjvLnXLOtHvctVtvlfh7hN7nqb4u0Jszp9r8MR+IyXnfhuqx2fETOquphP6LSnuZD/SR+03kn+2S76vSb64he/018wEAmLIXoa/a9g==
   </data>
  </layer>
 </map>

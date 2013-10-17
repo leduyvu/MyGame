@@ -81,10 +81,11 @@ void MyGame::impactBoot(){
     }
     CCARRAY_FOREACH(this->arrBullet, objBullet){
         Bullet* bullet = dynamic_cast<Bullet*>(objBullet);
-        if(fabs(bullet->getSprite()->getPosition().x - player->getBody()->GetPosition().x * 32) < 10 && fabs(bullet->getSprite()->getPosition().y - player->getBody()->GetPosition().y * 32) < 50){
+        if(fabs(bullet->getSprite()->getPosition().x - player->getBody()->GetPosition().x * 32) < 10 && fabs(bullet->getSprite()->getPosition().y - player->getBody()->GetPosition().y * 32) < 50 && bullet->getShoot()){
             this->player->setHeart(this->player->getHeart() - 20);
+            bullet->setShoot(false);
         }
-        if(bullet->getSprite()->getPosition().x < this->player->getBody()->GetPosition().x - 1000){
+        if(bullet->getSprite()->getPosition().x < this->getPosition().x * (-1) || bullet->getSprite()->getPosition().x < this->getPosition().x * (-1) + 1200){
             this->removeChild(bullet->getSprite());
             arrBullet->removeObject(bullet);
             bullet->autorelease();

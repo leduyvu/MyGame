@@ -31,7 +31,7 @@ void RoadTransfer::createRoad(b2World* world, CCPoint point, int number)
     b2FixtureDef fixtureDef1;
     fixtureDef1.shape = &dynamicBox;
     fixtureDef1.density = 900.0f;
-    fixtureDef1.friction = 0.0f;
+    fixtureDef1.friction = 0.2f;
     fixtureDef1.restitution = 0;
     this->body->CreateFixture(&fixtureDef1);
     b2Filter filter;

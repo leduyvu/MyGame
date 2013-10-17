@@ -32,7 +32,7 @@ void MyGame::setViewPointCenter(CCPoint position) {
 void  MyGame::setPositionAgian()
 {
     this->setTouchEnabled(true);
-    CCPoint p = ccp(150 - this->getPosition().x, 120);
+    CCPoint p = ccp(150 - this->getPosition().x, 420);
     this->removeChild(player);
     //    player->setPosition(p);
     //    this->addChild(player, 10);

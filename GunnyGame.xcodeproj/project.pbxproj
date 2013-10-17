@@ -22,6 +22,18 @@
 		CE1A032917F959BB003D1BFA /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032717F959BB003D1BFA /* Player.cpp */; };
 		CE1A032C17F95BE9003D1BFA /* PhysicsSprite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */; };
 		CE1AD9EE17FE5D9200C373DE /* road.png in Resources */ = {isa = PBXBuildFile; fileRef = CE1AD9ED17FE5D9200C373DE /* road.png */; };
+		CE245039180F86EB0014B63D /* Laze.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE245037180F86EB0014B63D /* Laze.cpp */; };
+		CE245042180FBF3A0014B63D /* vat__000.png in Resources */ = {isa = PBXBuildFile; fileRef = CE24503B180FBF3A0014B63D /* vat__000.png */; };
+		CE245043180FBF3A0014B63D /* vat__001.png in Resources */ = {isa = PBXBuildFile; fileRef = CE24503C180FBF3A0014B63D /* vat__001.png */; };
+		CE245044180FBF3A0014B63D /* vat__002.png in Resources */ = {isa = PBXBuildFile; fileRef = CE24503D180FBF3A0014B63D /* vat__002.png */; };
+		CE245045180FBF3A0014B63D /* vat__003.png in Resources */ = {isa = PBXBuildFile; fileRef = CE24503E180FBF3A0014B63D /* vat__003.png */; };
+		CE245046180FBF3A0014B63D /* vat__004.png in Resources */ = {isa = PBXBuildFile; fileRef = CE24503F180FBF3A0014B63D /* vat__004.png */; };
+		CE245047180FBF3A0014B63D /* vat__005.png in Resources */ = {isa = PBXBuildFile; fileRef = CE245040180FBF3A0014B63D /* vat__005.png */; };
+		CE245048180FBF3A0014B63D /* vat__006.png in Resources */ = {isa = PBXBuildFile; fileRef = CE245041180FBF3A0014B63D /* vat__006.png */; };
+		CE24504A180FC0780014B63D /* quai.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE245049180FC0780014B63D /* quai.plist */; };
+		CE24504C180FC4A40014B63D /* water.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE24504B180FC4A40014B63D /* water.jpeg */; };
+		CE24504E180FC7C10014B63D /* mapGame4.tmx in Resources */ = {isa = PBXBuildFile; fileRef = CE24504D180FC7C10014B63D /* mapGame4.tmx */; };
+		CE245052180FCC410014B63D /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = CE245051180FCC410014B63D /* heart.png */; };
 		CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE29B18F17F975B7009E20D5 /* Ball.cpp */; };
 		CE78EF3C180642E300FFBDDB /* TopScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE78EF3A180642E300FFBDDB /* TopScreen.cpp */; };
 		CE78EF3F1806446500FFBDDB /* MainScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE78EF3D1806446500FFBDDB /* MainScreen.cpp */; };
@@ -360,6 +372,19 @@
 		CE1A032A17F95BE9003D1BFA /* PhysicsSprite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PhysicsSprite.cpp; sourceTree = "<group>"; };
 		CE1A032B17F95BE9003D1BFA /* PhysicsSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhysicsSprite.h; sourceTree = "<group>"; };
 		CE1AD9ED17FE5D9200C373DE /* road.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = road.png; path = Resources/road.png; sourceTree = "<group>"; };
+		CE245037180F86EB0014B63D /* Laze.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Laze.cpp; path = Classes/Laze.cpp; sourceTree = "<group>"; };
+		CE245038180F86EB0014B63D /* Laze.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Laze.h; path = Classes/Laze.h; sourceTree = "<group>"; };
+		CE24503B180FBF3A0014B63D /* vat__000.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vat__000.png; sourceTree = "<group>"; };
+		CE24503C180FBF3A0014B63D /* vat__001.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vat__001.png; sourceTree = "<group>"; };
+		CE24503D180FBF3A0014B63D /* vat__002.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vat__002.png; sourceTree = "<group>"; };
+		CE24503E180FBF3A0014B63D /* vat__003.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vat__003.png; sourceTree = "<group>"; };
+		CE24503F180FBF3A0014B63D /* vat__004.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vat__004.png; sourceTree = "<group>"; };
+		CE245040180FBF3A0014B63D /* vat__005.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vat__005.png; sourceTree = "<group>"; };
+		CE245041180FBF3A0014B63D /* vat__006.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vat__006.png; sourceTree = "<group>"; };
+		CE245049180FC0780014B63D /* quai.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = quai.plist; path = Resources/quai.plist; sourceTree = "<group>"; };
+		CE24504B180FC4A40014B63D /* water.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = water.jpeg; path = Resources/water.jpeg; sourceTree = "<group>"; };
+		CE24504D180FC7C10014B63D /* mapGame4.tmx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = mapGame4.tmx; path = Resources/mapGame4.tmx; sourceTree = "<group>"; };
+		CE245051180FCC410014B63D /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = heart.png; path = Resources/heart.png; sourceTree = "<group>"; };
 		CE29B18F17F975B7009E20D5 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = Classes/Ball.cpp; sourceTree = "<group>"; };
 		CE29B19017F975B8009E20D5 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = Classes/Ball.h; sourceTree = "<group>"; };
 		CE78EF3A180642E300FFBDDB /* TopScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TopScreen.cpp; path = Classes/TopScreen.cpp; sourceTree = "<group>"; };
@@ -1026,6 +1051,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE24503A180FBF3A0014B63D /* quai */ = {
+			isa = PBXGroup;
+			children = (
+				CE24503B180FBF3A0014B63D /* vat__000.png */,
+				CE24503C180FBF3A0014B63D /* vat__001.png */,
+				CE24503D180FBF3A0014B63D /* vat__002.png */,
+				CE24503E180FBF3A0014B63D /* vat__003.png */,
+				CE24503F180FBF3A0014B63D /* vat__004.png */,
+				CE245040180FBF3A0014B63D /* vat__005.png */,
+				CE245041180FBF3A0014B63D /* vat__006.png */,
+			);
+			name = quai;
+			path = Resources/quai;
+			sourceTree = "<group>";
+		};
 		CE7FD02617EAA3C10038B094 = {
 			isa = PBXGroup;
 			children = (
@@ -1073,6 +1113,11 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE245051180FCC410014B63D /* heart.png */,
+				CE24504D180FC7C10014B63D /* mapGame4.tmx */,
+				CE24504B180FC4A40014B63D /* water.jpeg */,
+				CE245049180FC0780014B63D /* quai.plist */,
+				CE24503A180FBF3A0014B63D /* quai */,
 				CE04B1F9180D37DF00EE0E62 /* bullet1.png */,
 				CE04B1FA180D37DF00EE0E62 /* bullet2.png */,
 				CE04B1FB180D37DF00EE0E62 /* gun.png */,
@@ -2266,6 +2311,8 @@
 				CE04B1F7180D2CB400EE0E62 /* Turtle.h */,
 				CE04B202180D385D00EE0E62 /* Bullet.cpp */,
 				CE04B203180D385E00EE0E62 /* Bullet.h */,
+				CE245037180F86EB0014B63D /* Laze.cpp */,
+				CE245038180F86EB0014B63D /* Laze.h */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -2374,6 +2421,17 @@
 				CE04B1FC180D37E000EE0E62 /* bullet1.png in Resources */,
 				CE04B1FD180D37E000EE0E62 /* bullet2.png in Resources */,
 				CE04B1FE180D37E000EE0E62 /* gun.png in Resources */,
+				CE245042180FBF3A0014B63D /* vat__000.png in Resources */,
+				CE245043180FBF3A0014B63D /* vat__001.png in Resources */,
+				CE245044180FBF3A0014B63D /* vat__002.png in Resources */,
+				CE245045180FBF3A0014B63D /* vat__003.png in Resources */,
+				CE245046180FBF3A0014B63D /* vat__004.png in Resources */,
+				CE245047180FBF3A0014B63D /* vat__005.png in Resources */,
+				CE245048180FBF3A0014B63D /* vat__006.png in Resources */,
+				CE24504A180FC0780014B63D /* quai.plist in Resources */,
+				CE24504C180FC4A40014B63D /* water.jpeg in Resources */,
+				CE24504E180FC7C10014B63D /* mapGame4.tmx in Resources */,
+				CE245052180FCC410014B63D /* heart.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2651,6 +2709,7 @@
 				CE04B1EC180D14DC00EE0E62 /* Animation.cpp in Sources */,
 				CE04B1F8180D2CB500EE0E62 /* Turtle.cpp in Sources */,
 				CE04B204180D386100EE0E62 /* Bullet.cpp in Sources */,
+				CE245039180F86EB0014B63D /* Laze.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
