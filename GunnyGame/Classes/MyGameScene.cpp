@@ -55,9 +55,17 @@ MyGame::MyGame()
     PointDeath * pd4 = new PointDeath();
     pd4->create(ccp(4530, 120), ccp(4810,120));
     arrPointDeath->addObject(pd4);
+    
+    PointDeath * pd5 = new PointDeath();
+    pd5->create(ccp(5250, 120), ccp(5470,120));
+    arrPointDeath->addObject(pd5);
+    
+    PointDeath * pd6 = new PointDeath();
+    pd6->create(ccp(6180, 120), ccp(6350,120));
+    arrPointDeath->addObject(pd6);
 //================================================
 //====================add Player =================
-    this->player->createPlayer(this->world, "player.png", ccp(2900, 120));
+    this->player->createPlayer(this->world, "player.png", ccp(5900, 120));
     this->addChild(player, 9);
 //    player->getSprite()->setScale(0.3);
     //player->getSprite()->runAction(CCMoveBy::create(4, ccp(300,0)));
@@ -127,7 +135,23 @@ MyGame::MyGame()
     arrGun->addObject(gun2);
     this->addChild(gun2);
     
+//====================== Octopus ==============
+    Octopus *ocp =new Octopus();
+    ocp->create(this->world, "octopus.png", ccp(3900, 140), ccp(3900, 140), ccp(4100, 120));
+    this->addChild(ocp->getSprite(), 10);
+    arrOctopus->addObject(ocp);
     
+    Octopus *ocp1 =new Octopus();
+    ocp1->create(this->world, "octopus.png", ccp(4650, 140), ccp(4500, 120), ccp(4650, 120));
+    this->addChild(ocp1->getSprite(), 10);
+    arrOctopus->addObject(ocp1);
+    
+    Octopus *ocp2 =new Octopus();
+    ocp2->create(this->world, "octopus.png", ccp(5020, 140), ccp(5020, 140), ccp(5150, 120));
+    this->addChild(ocp2->getSprite(), 10);
+    arrOctopus->addObject(ocp2);
+
+    //===================================
     //================= spider===================
     Spider* spider = new Spider();
     spider->create(this->world,
@@ -146,13 +170,26 @@ MyGame::MyGame()
 //    CCParticleGalaxy* pr = CCParticleGalaxy::create();
 //    pr->setPosition(ccp(700, 120));
 //    _tileMap->addChild(pr, 12);
+    
+    
+    
+    //chim
+    mainboot = new MainBoot();
+    mainboot->create("chim1.png", pd6->getEndPoint(), true);
+    this->addChild(mainboot->getSprite(),19);
+    
+    //shootRect
+    shootButton = CCSprite::create("eges.png");
+    shootButton->setScale(3);
+    shootButton->setPosition(this->getPosition());
+    this->addChild(shootButton, 11);
     scheduleUpdate();
     //this->schedule(schedule_selector(MyGame::runBoot), 2.55);
     this->schedule(schedule_selector(MyGame::impactBall));
     this->schedule(schedule_selector(MyGame::runningSpider), 1);
     this->schedule(schedule_selector(MyGame::impactBoot));
     this->schedule(schedule_selector(MyGame::gunShoot), 4);
-
+    
 }
 
 MyGame::~MyGame()
@@ -163,6 +200,8 @@ MyGame::~MyGame()
 bool MyGame::init(){
     this->map = new CCLayer();
     touchBegin = ccp(0, 10000);
+    this->arrMainBullet = new CCArray();
+    this->arrOctopus = new CCArray();
     this->arrBullet = new CCArray();
     this->arrGun = new CCArray();
     this->arrTurtle = new CCArray();
@@ -189,7 +228,7 @@ bool MyGame::init(){
 }
 void MyGame::initPhysics()
 {
-    listener = new MyContactListener(this->world);
+    listener = new MyContactListener(this->world, this);
     CCSize s = CCDirector::sharedDirector()->getWinSize();
     b2Vec2 gravity;
     gravity.Set(0.0f, -10.0f);
@@ -258,6 +297,13 @@ void MyGame::update(float dt)
     }
     setViewPointCenter(ccp(player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32));
     timerBar->setPosition(ccp(this->getPosition().x * (-1), this->getPosition().y));
+    //================shootButton==================
+    shootButton->setPosition(ccp(this->getPosition().x * (-1) + 100, this->getPosition().y + 300));
+    if(player->getBody()->GetPosition().x *32 >= 5630)
+        shootButton->setVisible(true);
+    else
+        shootButton->setVisible(false);
+    //=============================================
     heartBar->setPosition(ccp(this->getPosition().x * (-1), 500));
 
     //timerBar->getSprite()->setPosition(this->getPosition());
@@ -288,7 +334,7 @@ void MyGame::update(float dt)
         timerBar->setPercentage(5 + time * 50);
     }
     
-    if(animationCreate && arrBalls->count() <= 1 && timerBar->getPercentage() > 20 && checkRun)
+    if(animationCreate && arrBalls->count() < 1 && timerBar->getPercentage() > 20 && checkRun)
     {
         checkRun =false;
         this->runAction(CCSequence::create(
@@ -327,7 +373,7 @@ void MyGame::throwBall()
         Ball *ball = new Ball();
     //    ball->createBall(this->world, "bong1.png", ccp(player->getBody()->GetPosition().x, player->getBody()->GetPosition().y + 50));
         ball->createBall(this->world, "bong1.png", ccp(player->getBody()->GetPosition().x *32 , player->getBody()->GetPosition().y * 32 + 30));
-        
+        ball->setTag(11111);
         this->addChild(ball, 20);
         
         float prercent = timerBar->getPercentage();
@@ -363,6 +409,9 @@ void MyGame::relaxMoving(){
 }
 
 void MyGame::gunShoot(){
+    //shoot by the gun
+    
+    
     CCObject* obj;
     CCARRAY_FOREACH(arrGun, obj){
         CCSprite* gun = dynamic_cast<CCSprite*>(obj);
@@ -375,6 +424,22 @@ void MyGame::gunShoot(){
         arrBullet->addObject(bulletRight);
         arrBullet->addObject(bulletLeft);
     }
+    // Octopus running
+    CCObject* objectOctopus;
+    CCLOG("dsdsdsd %d", arrOctopus->count());
+    CCARRAY_FOREACH(arrOctopus, objectOctopus){
+        Octopus* ocp = dynamic_cast<Octopus*>(objectOctopus);
+        ocp->running();
+    }
+    //MainBoot running
+    mainboot->running();
+    CCSprite * mainBullet = CCSprite::create("ege.png");
+    
+    mainBullet->setPosition(ccp(mainboot->getSprite()->getPosition().x - mainboot->getSprite()->getContentSize().width/2, mainboot->getSprite()->getPosition().y + mainboot->getSprite()->getContentSize().width/2));
+    this->addChild(mainBullet, 8);
+    mainBullet->runAction(CCMoveBy::create(2, ccp(-1500,0)));
+    
+    
 }
 void MyGame::handlerPlayer(){
     if(heartBar->getPercentage() == 0){
@@ -382,7 +447,7 @@ void MyGame::handlerPlayer(){
     }
     if((player->getBody()->GetPosition().x * 32 <= 4150 && player->getBody()->GetPosition().x * 32 >= 3540 && player->getBody()->GetPosition().y * 32 < 300) || (player->getBody()->GetPosition().x * 32 <= 5535 && player->getBody()->GetPosition().x * 32 >= 4150 && player->getBody()->GetPosition().y * 32 < 350))
     {
-        heartBar->setPercentage(heartBar->getPercentage() - 0.3);
+        heartBar->setPercentage(heartBar->getPercentage() - 0.1);
     }else
         heartBar->setPercentage(100);
     
@@ -428,3 +493,4 @@ void MyGame::movingVer(){
         }
     }
 }
+

@@ -30,6 +30,5 @@ private:
     CCSprite* bullet;
 };
 
-#include <iostream>
 
 #endif /* defined(__GunnyGame__Bullet__) */

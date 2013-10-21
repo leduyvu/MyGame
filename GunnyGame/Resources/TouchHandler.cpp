@@ -11,41 +11,45 @@ USING_NS_CC;
 void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
 {
     time = 0;
+    checkRun = false;
     CCSetIterator it;
     CCTouch *touch = (CCTouch*)touches->anyObject();
     this->touchBegin = this->getParent()->convertTouchToNodeSpace(touch);
     touchBool = true;
-  //    if(touchBegin.y <= player->getBody()->GetPosition().y * 32 + 50)
-//    {
-//        transfer = true;
-//        touchBool = false;
-//        if(!movingUp || (movingUp && firstMovingUp)){
-//            if (touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32 > 50)
-//            {
-//                b2Vec2 ex = b2Vec2();
-//                float x = touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32;
-//                if(!movingUp)
-//                    ex.Set(sqrt(0.5 * fabs(x)), 02);
-//                else if(movingUp && firstMovingUp)
-//                    ex.Set(3, 0.5);
-//                player->movingPlayer(ex);
-//                firstMovingUp = false;
-//            }
-//            if(player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x) > 50){
-//                b2Vec2 ex = b2Vec2();
-//                float x = 0;
-//                if(player->getBody() != NULL)
-//                    x =  player->getBody()->GetPosition().x * 32 - (touchBegin.x - this->getPosition().x);
-//                if(!movingUp)
-//                    ex.Set(sqrt(0.5 * fabs(x)) * (-1), 02);
-//                else if(movingUp && firstMovingUp)
-//                    ex.Set(-3, 0.5);
-//                player->movingPlayer(ex);
-//                firstMovingUp = false;
-//
-//            }
-//        }
-//    }
+    
+    if(player->getBody()->GetPosition().x *32 >= 5630){
+        CCRect touchRect = CCRect(touchBegin.x - this->getPosition().x, touchBegin.y - this->getPosition().y, 40, 40);
+        CCRect shootRect = CCRectMake(shootButton->getPosition().x, shootButton->getPosition().y, shootButton->getContentSize().width, shootButton->getContentSize().height);
+        if (touchRect.intersectsRect(shootRect))
+        {
+            CCObject* objBall;
+            CCARRAY_FOREACH(arrBalls, objBall){
+                Ball* ball = dynamic_cast<Ball*>(objBall);
+                Arrow* arrow = new Arrow();
+                arrow->create("ten.png", ccp(ball->getBody()->GetPosition().x * 32, ball->getBody()->GetPosition().y * 32), true);
+                this->addChild(arrow->getSprite(), 12);
+                arrBalls->removeObject(ball);
+                this->removeChild(ball);
+                ball->autorelease();
+                world->DestroyBody(ball->getBody());
+                touchBegin = ccp(player->getBody()->GetPosition().x *32,1000000);
+                touchBool = false;
+                transfer =true;
+                //return;
+            }
+        }
+    }
+    
+    if(player->getBody()->GetPosition().x * 32 - flipPlayer && touchBegin.x + this->getPosition().x > 50 )
+    {
+        player->setFlipX(false);
+        flipPlayer = false;
+    }
+    if(!flipPlayer && touchBegin.x - this->getPosition().x - player->getBody()->GetPosition().x * 32 > 50)
+    {
+        player->setFlipX(true);
+        flipPlayer = true;
+    }
 }
 
 void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
@@ -61,6 +65,7 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
             ex.Set(0, 12);
             player->movingPlayer(ex);
             touchBool = false;
+            transfer =true;
             time = 0;
             firstMovingUp = true;
             return;
@@ -70,6 +75,7 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
             ex.Set(-2, 12);
             player->movingPlayer(ex);
             touchBool = false;
+            transfer =true;
             time = 0;
             firstMovingUp = true;
             return;
@@ -79,6 +85,7 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
             ex.Set(2, 12);
             player->movingPlayer(ex);
             touchBool = false;
+            transfer =true;
             time = 0;
             firstMovingUp = true;
 
@@ -86,38 +93,7 @@ void MyGame::ccTouchesMoved (CCSet *touches, CCEvent *event) {
         }
         //firstMovingUp = true;
     }
-//    else{
-//        if(firstMovingUp)
-//        {
-//            firstMovingUp = false;
-//            if (touchRect.intersectsRect(swipeUpRect) && touchRect.intersectsRect(swipeUpRightRect)){
-//                b2Vec2 ex = b2Vec2();
-//                ex.Set(0, 3);
-//                player->movingPlayer(ex);
-//                touchBool = false;
-//                time = 0;
-//                
-//                return;
-//            }
-//            if ((touchRect.intersectsRect(swipeUpRect))){
-//                b2Vec2 ex = b2Vec2();
-//                ex.Set(-2, 3);
-//                player->movingPlayer(ex);
-//                touchBool = false;
-//                time = 0;
-//                return;
-//            }
-//            if ((touchRect.intersectsRect(swipeUpRightRect))){
-//                b2Vec2 ex = b2Vec2();
-//                ex.Set(2, 3);
-//                player->movingPlayer(ex);
-//                touchBool = false;
-//                time = 0;
-//                return;
-//            }
-//        
-//        }
-//    }
+
 }
 
 void MyGame::ccTouchesEnded(CCSet* touches, CCEvent* event)
@@ -139,4 +115,23 @@ void MyGame::ccTouchesEnded(CCSet* touches, CCEvent* event)
     }
     touchBool = false;
     touchBegin.setPoint(0, 10000);
+    
+//    CCRect touchRect = CCRect(location.x - this->getPosition().x, location.y - this->getPosition().y, 30, 30);
+//    CCRect shootRect = CCRectMake(shootButton->getPosition().x, shootButton->getPosition().y, shootButton->getContentSize().width, shootButton->getContentSize().height);
+//    if (touchRect.intersectsRect(shootRect))
+//        return;
+    
+    
+    if(flipPlayer && location.x - this->getPosition().x < player->getBody()->GetPosition().x * 32)
+    {
+        player->setFlipX(false);
+        flipPlayer = false;
+    }
+    if(!flipPlayer && location.x - this->getPosition().x > player->getBody()->GetPosition().x * 32)
+    {
+        player->setFlipX(true);
+        flipPlayer = true;
+    }
+
+    
 }

@@ -85,10 +85,17 @@ void MyGame::impactBoot(){
             this->player->setHeart(this->player->getHeart() - 20);
             bullet->setShoot(false);
         }
-        if(bullet->getSprite()->getPosition().x < this->getPosition().x * (-1) || bullet->getSprite()->getPosition().x < this->getPosition().x * (-1) + 1200){
-            this->removeChild(bullet->getSprite());
-            arrBullet->removeObject(bullet);
-            bullet->autorelease();
+//        if(bullet->getSprite()->getPosition().x < this->getPosition().x * (-1) || bullet->getSprite()->getPosition().x < this->getPosition().x * (-1) + 1200){
+//            this->removeChild(bullet->getSprite());
+//            arrBullet->removeObject(bullet);
+//            bullet->autorelease();
+//        }
+    }
+    CCObject* objectOctopus;
+    CCARRAY_FOREACH(this->arrOctopus, objectOctopus){
+        Octopus* octopus = dynamic_cast<Octopus*>(objectOctopus);
+        if(fabs(octopus->getSprite()->getPosition().x - player->getBody()->GetPosition().x * 32) < 30 && fabs(octopus->getSprite()->getPosition().y - player->getBody()->GetPosition().y * 32) < 30){
+            this->player->setHeart(this->player->getHeart() - 20);
         }
     }
 }

@@ -16,7 +16,7 @@ struct MyContact {
 class MyContactListener : public b2ContactListener {
 public:
     std::vector<MyContact> _contacts;
-    MyContactListener(b2World* world);
+    MyContactListener(b2World* world, CCLayer* layer);
     ~MyContactListener();
 
     virtual void BeginContact(b2Contact* contact);
@@ -26,6 +26,7 @@ public:
     bool getResult();
     void setResult(bool result);
 private:
+    CCLayer* layer;
     b2World* world;
     bool result;
     CC_SYNTHESIZE(int, _numberBegin, NumberBegin);

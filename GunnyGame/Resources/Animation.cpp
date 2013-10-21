@@ -29,7 +29,7 @@ void MyGame::runAnimation()
 {
     boolAnimaon = true;
     checkRunAnimation = true;
-    this->player->throwPlayer(this, ccp(player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32));
+    this->player->throwPlayer(this, ccp(player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32), flipPlayer);
 }
 
 void MyGame::runBoot(float delta)

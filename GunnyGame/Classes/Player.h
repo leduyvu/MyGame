@@ -21,7 +21,7 @@ public:
     ~Player();
     void createPlayer(b2World * world, string str, CCPoint location);
     void movingPlayer(b2Vec2 ex);
-    void throwPlayer(CCLayer* layer, CCPoint location);
+    void throwPlayer(CCLayer* layer, CCPoint location,  bool flipPlayer);
     CCSprite* getSprite();
     void setLocation(CCPoint p);
     void setHeart(int heart);

@@ -28,7 +28,7 @@ void Player::createPlayer(b2World * world, string str, CCPoint location)
     dynamicBox.SetAsBox(sprPlayer->getContentSize().width/64, sprPlayer->getContentSize().height/64);
     fixtureDef1.shape = &dynamicBox;
     fixtureDef1.density = 2.0f;
-    fixtureDef1.friction = 0.7f;
+    fixtureDef1.friction = 0.1f;
     fixtureDef1.restitution = 0;
     body->CreateFixture(&fixtureDef1);
     body->SetFixedRotation(true);
@@ -56,7 +56,7 @@ void Player::setLocation(CCPoint p)
 {
     this->sprPlayer->setPosition(p);
 }
-void Player::throwPlayer(CCLayer* layer, CCPoint location){
+void Player::throwPlayer(CCLayer* layer, CCPoint location, bool flipPlayer){
     this->setVisible(false);
     CCSpriteFrameCache* cache = CCSpriteFrameCache::sharedSpriteFrameCache();
     cache->addSpriteFramesWithFile("nembong.plist");
@@ -71,7 +71,7 @@ void Player::throwPlayer(CCLayer* layer, CCPoint location){
     CCAnimation* animation = CCAnimation::createWithSpriteFrames(animFrames, 0.2);
     CCSprite *popSprite = CCSprite::create();
     popSprite->setScale(0.2);
-    popSprite->setFlipX(true);
+    popSprite->setFlipX(flipPlayer);
     popSprite->setPosition(location);
     animation->setLoops(1);
     layer->addChild(popSprite, 18);

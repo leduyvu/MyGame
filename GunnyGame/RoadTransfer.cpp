@@ -35,7 +35,7 @@ void RoadTransfer::createRoad(b2World* world, CCPoint point, int number)
     fixtureDef1.restitution = 0;
     this->body->CreateFixture(&fixtureDef1);
     b2Filter filter;
-    filter.groupIndex = -3;
+    filter.groupIndex = -1;
     body->GetFixtureList()[0].SetFilterData(filter);
     this->setPhysicsBody(body);
     this->body->SetGravityScale(0);

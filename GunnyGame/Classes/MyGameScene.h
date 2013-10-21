@@ -10,6 +10,9 @@
 
 // When you import this file, you import all the cocos2d classes
 #include "Bullet.h"
+#include "Arrow.h"
+#include "MainBoot.h"
+#include "Octopus.h"
 #include "Turtle.h"
 #include "Spider.h"
 #include "cocos2d.h"
@@ -66,7 +69,12 @@ public:
     void handlerPlayer();
     void movingVer();
 private:
+    MainBoot* mainboot;
+    CCSprite* shootButton;
+    bool flipPlayer = true;
     int  i=0;
+    CCArray* arrMainBullet;
+    CCArray* arrOctopus;
     CCArray* arrBullet;
     CCArray* arrGun;
     CCArray* arrTurtle;

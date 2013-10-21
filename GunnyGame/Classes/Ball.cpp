@@ -32,7 +32,7 @@ void Ball::createBall(b2World * world, string str, CCPoint location)
     fixtureDef1.restitution = 1;
     body->CreateFixture(&fixtureDef1);
     b2Filter filter;
-    filter.groupIndex = -1;
+    filter.groupIndex = -3;
     body->GetFixtureList()[0].SetFilterData(filter);
     body->SetLinearDamping(0.01);
     this->setPhysicsBody(body);
