@@ -28,7 +28,7 @@ void Player::createPlayer(b2World * world, string str, CCPoint location)
     dynamicBox.SetAsBox(sprPlayer->getContentSize().width/64, sprPlayer->getContentSize().height/64);
     fixtureDef1.shape = &dynamicBox;
     fixtureDef1.density = 2.0f;
-    fixtureDef1.friction = 0.1f;
+    fixtureDef1.friction = 0.9f;
     fixtureDef1.restitution = 0;
     body->CreateFixture(&fixtureDef1);
     body->SetFixedRotation(true);

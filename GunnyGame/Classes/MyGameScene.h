@@ -73,6 +73,7 @@ private:
     CCSprite* shootButton;
     bool flipPlayer = true;
     int  i=0;
+    CCArray* arrArrow;
     CCArray* arrMainBullet;
     CCArray* arrOctopus;
     CCArray* arrBullet;

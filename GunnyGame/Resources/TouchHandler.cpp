@@ -30,6 +30,7 @@ void MyGame::ccTouchesBegan(CCSet* touches, CCEvent* event)
                 this->addChild(arrow->getSprite(), 12);
                 arrBalls->removeObject(ball);
                 this->removeChild(ball);
+                this->arrArrow->addObject(arrow);
                 ball->autorelease();
                 world->DestroyBody(ball->getBody());
                 touchBegin = ccp(player->getBody()->GetPosition().x *32,1000000);

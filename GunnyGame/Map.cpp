@@ -66,12 +66,12 @@ void MyGame::createRectangularFixture(CCTMXLayer* layer, int x, int y,
     b2FixtureDef fixtureDef;
     fixtureDef.shape = &shape;
     fixtureDef.density = 1.0f;
-    fixtureDef.friction = 0.5f;
+    fixtureDef.friction = 0.7f;
     fixtureDef.restitution = 0.0f;
     //    fixtureDef.filter.categoryBits = kFilterCategoryLevel;
     fixtureDef.filter.maskBits = 0xffff;
     body->CreateFixture(&fixtureDef);
-    body->SetAngularDamping(1);
+    //body->SetAngularDamping(1);
     b2Filter filter;
     filter.groupIndex = -2;
     body->GetFixtureList()[0].SetFilterData(filter);

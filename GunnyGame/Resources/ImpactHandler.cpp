@@ -98,4 +98,45 @@ void MyGame::impactBoot(){
             this->player->setHeart(this->player->getHeart() - 20);
         }
     }
+    CCObject* objMainBullet;
+    if(arrMainBullet->count() > 0)
+    CCARRAY_FOREACH(arrMainBullet, objMainBullet){
+        CCSprite* mainBullet = dynamic_cast<CCSprite*>(objMainBullet);
+        if(mainBullet != NULL)
+        if(fabs(mainBullet->getPosition().x - player->getBody()->GetPosition().x * 32) < 30 && fabs(mainBullet->getPosition().y - player->getBody()->GetPosition().y * 32) < 30){
+            this->player->setHeart(this->player->getHeart() - 20);
+            arrMainBullet->removeObject(mainBullet);
+        }
+        if(mainBullet != NULL && fabs(mainBullet->getPosition().x - mainboot->getSprite()->getPosition().x) > 700){
+            arrMainBullet->removeObject(mainBullet);
+            this->removeChild(mainBullet);
+        }
+    }
+    
+    //arrow
+    CCObject* objArrow;
+    CCARRAY_FOREACH(arrArrow, objArrow){
+        Arrow* arrow = dynamic_cast<Arrow*>(objArrow);
+        if (arrow != NULL && fabs(arrow->getSprite()->getPosition().x - mainboot->getSprite()->getPosition().x) < 50 && fabs(arrow->getSprite()->getPosition().y - mainboot->getSprite()->getPosition().y) < 70){
+            this->arrArrow->removeObject(arrow);
+            
+            CCParticleFireworks* particle = CCParticleFireworks::create();
+            particle->setPosition(arrow->getSprite()->getPosition());
+            particle->setRadialAccel(32);
+            particle->setLife(1);
+            particle->setAtlasIndex(1);
+            particle->setLifeVar(1);
+            particle->setEndSpin(1);
+            particle->setDuration(0.5);
+            this->addChild(particle, 10);
+            arrow->autorelease();
+            this->removeChild(arrow->getSprite());
+            mainboot->setHeart(mainboot->getHeart() - 20);
+        
+        }
+    }
+    if(mainboot->getHeart() < 5){
+        mainboot->death();
+    }
+    
 }

@@ -25,7 +25,11 @@ public:
     void setLoction(int location);
     int getLoction();
     void setLife(bool life);
+    int getHeart();
+    void setHeart(int heart);
+    void death();
 private:
+    int heart = 100;
     bool runLeft = true;
     bool life = true;
     int location = 1;

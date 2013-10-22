@@ -36,6 +36,11 @@
 		CE245052180FCC410014B63D /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = CE245051180FCC410014B63D /* heart.png */; };
 		CE29B19117F975B8009E20D5 /* Ball.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE29B18F17F975B7009E20D5 /* Ball.cpp */; };
 		CE3422FE1814D8890016E6DC /* octopus.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3422FD1814D8890016E6DC /* octopus.png */; };
+		CE3AE72F1816589B006F6AF4 /* BG.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3AE72B1816589B006F6AF4 /* BG.png */; };
+		CE3AE7301816589B006F6AF4 /* foret.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE3AE72C1816589B006F6AF4 /* foret.jpeg */; };
+		CE3AE7311816589B006F6AF4 /* foret2.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = CE3AE72D1816589B006F6AF4 /* foret2.jpeg */; };
+		CE3AE7321816589B006F6AF4 /* go.jpg in Resources */ = {isa = PBXBuildFile; fileRef = CE3AE72E1816589B006F6AF4 /* go.jpg */; };
+		CE3AE734181666E6006F6AF4 /* BG8.png in Resources */ = {isa = PBXBuildFile; fileRef = CE3AE733181666E6006F6AF4 /* BG8.png */; };
 		CE78EF3C180642E300FFBDDB /* TopScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE78EF3A180642E300FFBDDB /* TopScreen.cpp */; };
 		CE78EF3F1806446500FFBDDB /* MainScreen.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CE78EF3D1806446500FFBDDB /* MainScreen.cpp */; };
 		CE78EF411806699300FFBDDB /* connhen.png in Resources */ = {isa = PBXBuildFile; fileRef = CE78EF401806699300FFBDDB /* connhen.png */; };
@@ -396,6 +401,11 @@
 		CE29B18F17F975B7009E20D5 /* Ball.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Ball.cpp; path = Classes/Ball.cpp; sourceTree = "<group>"; };
 		CE29B19017F975B8009E20D5 /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Ball.h; path = Classes/Ball.h; sourceTree = "<group>"; };
 		CE3422FD1814D8890016E6DC /* octopus.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = octopus.png; path = Resources/octopus.png; sourceTree = "<group>"; };
+		CE3AE72B1816589B006F6AF4 /* BG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG.png; path = Resources/BG.png; sourceTree = "<group>"; };
+		CE3AE72C1816589B006F6AF4 /* foret.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = foret.jpeg; path = Resources/foret.jpeg; sourceTree = "<group>"; };
+		CE3AE72D1816589B006F6AF4 /* foret2.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = foret2.jpeg; path = Resources/foret2.jpeg; sourceTree = "<group>"; };
+		CE3AE72E1816589B006F6AF4 /* go.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = go.jpg; path = Resources/go.jpg; sourceTree = "<group>"; };
+		CE3AE733181666E6006F6AF4 /* BG8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BG8.png; path = Resources/BG8.png; sourceTree = "<group>"; };
 		CE78EF3A180642E300FFBDDB /* TopScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TopScreen.cpp; path = Classes/TopScreen.cpp; sourceTree = "<group>"; };
 		CE78EF3B180642E300FFBDDB /* TopScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopScreen.h; path = Classes/TopScreen.h; sourceTree = "<group>"; };
 		CE78EF3D1806446500FFBDDB /* MainScreen.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = MainScreen.cpp; path = Classes/MainScreen.cpp; sourceTree = "<group>"; };
@@ -1132,6 +1142,11 @@
 		CE7FD04317EAA3C20038B094 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CE3AE733181666E6006F6AF4 /* BG8.png */,
+				CE3AE72B1816589B006F6AF4 /* BG.png */,
+				CE3AE72C1816589B006F6AF4 /* foret.jpeg */,
+				CE3AE72D1816589B006F6AF4 /* foret2.jpeg */,
+				CE3AE72E1816589B006F6AF4 /* go.jpg */,
 				CEB6038818153BBA00D8AF6C /* ege.png */,
 				CEB60386181524E100D8AF6C /* ten.png */,
 				CEB60379181510DE00D8AF6C /* chim1.png */,
@@ -2467,6 +2482,11 @@
 				CEB6037C181510DE00D8AF6C /* chim2.png in Resources */,
 				CEB60387181524E100D8AF6C /* ten.png in Resources */,
 				CEB6038918153BC500D8AF6C /* ege.png in Resources */,
+				CE3AE72F1816589B006F6AF4 /* BG.png in Resources */,
+				CE3AE7301816589B006F6AF4 /* foret.jpeg in Resources */,
+				CE3AE7311816589B006F6AF4 /* foret2.jpeg in Resources */,
+				CE3AE7321816589B006F6AF4 /* go.jpg in Resources */,
+				CE3AE734181666E6006F6AF4 /* BG8.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

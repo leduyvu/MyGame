@@ -60,12 +60,12 @@ MyGame::MyGame()
     pd5->create(ccp(5250, 120), ccp(5470,120));
     arrPointDeath->addObject(pd5);
     
-    PointDeath * pd6 = new PointDeath();
-    pd6->create(ccp(6180, 120), ccp(6350,120));
-    arrPointDeath->addObject(pd6);
+//    PointDeath * pd6 = new PointDeath();
+//    pd6->create(ccp(6180, 120), ccp(6350,120));
+//    arrPointDeath->addObject(pd6);
 //================================================
 //====================add Player =================
-    this->player->createPlayer(this->world, "player.png", ccp(5900, 120));
+    this->player->createPlayer(this->world, "player.png", ccp(6100, 120));
     this->addChild(player, 9);
 //    player->getSprite()->setScale(0.3);
     //player->getSprite()->runAction(CCMoveBy::create(4, ccp(300,0)));
@@ -175,9 +175,8 @@ MyGame::MyGame()
     
     //chim
     mainboot = new MainBoot();
-    mainboot->create("chim1.png", pd6->getEndPoint(), true);
+    mainboot->create("chim1.png", ccp(6250,120), true);
     this->addChild(mainboot->getSprite(),19);
-    
     //shootRect
     shootButton = CCSprite::create("eges.png");
     shootButton->setScale(3);
@@ -200,6 +199,7 @@ MyGame::~MyGame()
 bool MyGame::init(){
     this->map = new CCLayer();
     touchBegin = ccp(0, 10000);
+    this->arrArrow = new CCArray();
     this->arrMainBullet = new CCArray();
     this->arrOctopus = new CCArray();
     this->arrBullet = new CCArray();
@@ -295,8 +295,12 @@ void MyGame::update(float dt)
     else{
         movingUp = true;
     }
+    //if(player->getBody()->GetPosition().x * 32 <= 5630)
     setViewPointCenter(ccp(player->getBody()->GetPosition().x * 32, player->getBody()->GetPosition().y * 32));
+    
+    //=================== shoot Power=======================
     timerBar->setPosition(ccp(this->getPosition().x * (-1), this->getPosition().y));
+    //=====================================================
     //================shootButton==================
     shootButton->setPosition(ccp(this->getPosition().x * (-1) + 100, this->getPosition().y + 300));
     if(player->getBody()->GetPosition().x *32 >= 5630)
@@ -437,7 +441,8 @@ void MyGame::gunShoot(){
     
     mainBullet->setPosition(ccp(mainboot->getSprite()->getPosition().x - mainboot->getSprite()->getContentSize().width/2, mainboot->getSprite()->getPosition().y + mainboot->getSprite()->getContentSize().width/2));
     this->addChild(mainBullet, 8);
-    mainBullet->runAction(CCMoveBy::create(2, ccp(-1500,0)));
+    arrMainBullet->addObject(mainBullet);
+    mainBullet->runAction(CCMoveTo::create(3, ccp(player->getBody()->GetPosition().x * 32,player->getBody()->GetPosition().y * 32)));
     
     
 }

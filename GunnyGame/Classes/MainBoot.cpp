@@ -66,3 +66,12 @@ int MainBoot::getLoction(){
 void MainBoot::setLife(bool life){
     this->life = life;
 }
+int MainBoot::getHeart(){
+    return this->heart;
+}
+void MainBoot::setHeart(int heart){
+    this->heart = heart;
+}
+void MainBoot::death(){
+    this->mainBoot->runAction(CCMoveBy::create(2, ccp(0, -700)));
+}
