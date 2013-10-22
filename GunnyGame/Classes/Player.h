@@ -11,21 +11,23 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "PhysicsSprite.h"
 
 USING_NS_CC;
 using namespace std;
-class Player : public cocos2d::CCNode {
+class Player : public PhysicsSprite{
 public:
     Player();
     ~Player();
-    void createPlayer(string str, CCPoint location);
-    void movingPlayer(CCPoint location);
-    void throwPlayer(CCPoint location);
-    CCPoint getLocation();
+    void createPlayer(b2World * world, string str, CCPoint location);
+    void movingPlayer(b2Vec2 ex);
+    void throwPlayer(CCLayer* layer, CCPoint location,  bool flipPlayer);
     CCSprite* getSprite();
+    void setLocation(CCPoint p);
+    void setHeart(int heart);
+    int getHeart();
 private:
-    CCSprite* sprPlayer;
-    CCPoint location;
-    
+    int heart = 100;
+    CCSprite* sprPlayer;    
 };
 #endif /* defined(__GunnyGame__Player__) */

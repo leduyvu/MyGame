@@ -10,6 +10,7 @@
 
 #include "cocos2d.h"
 #include "SimpleAudioEngine.h"
+#include "MainScreen.h"
 #include "MyGameScene.h"
 
 USING_NS_CC;

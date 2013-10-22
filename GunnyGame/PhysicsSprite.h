@@ -1,10 +1,3 @@
-//
-//  PhysicsSprite.h
-//  GunnyGame
-//
-//  Created by macbook_006 on 13/09/30.
-//
-//
 
 #ifndef __GunnyGame__PhysicsSprite__
 #define __GunnyGame__PhysicsSprite__

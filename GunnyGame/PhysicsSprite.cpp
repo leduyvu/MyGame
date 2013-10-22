@@ -1,10 +1,3 @@
-//
-//  PhysicsSprite.cpp
-//  GunnyGame
-//
-//  Created by macbook_006 on 13/09/30.
-//
-//
 
 #include "PhysicsSprite.h"
 #include "SimpleAudioEngine.h"

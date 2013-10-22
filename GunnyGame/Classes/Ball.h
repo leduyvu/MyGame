@@ -15,22 +15,15 @@
 #include "PhysicsSprite.h"
 USING_NS_CC;
 using namespace std;
-class Ball : public cocos2d::CCNode{
+class Ball : public PhysicsSprite{
 public:
     Ball();
     ~Ball();
     void createBall(b2World * world, string str, CCPoint location);
     void throwBall(b2Vec2 vector);
-    void setLocation(CCPoint location);
-
-    CCPoint getLocation();
     CCSprite* getSprite();
-    b2Body* getBody();
 private:
-    PhysicsSprite* sprBall;
-    b2Body *body;
-    CCPoint location;
-    
+    CCSprite* sprBall;    
 };
 
 #endif /* defined(__GunnyGame__Ball__) */

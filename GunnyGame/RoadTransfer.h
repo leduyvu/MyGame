@@ -11,17 +11,22 @@
 
 #include <iostream>
 #include "cocos2d.h"
+#include "PhysicsSprite.h"
+#include "PointDeath.h"
 USING_NS_CC;
-class RoadTransfer : public cocos2d::CCLayer {
+class RoadTransfer : public PhysicsSprite {
 public:
     ~RoadTransfer();
     RoadTransfer();
-    void createBar(CCPoint point);
+    void createRoad(b2World* world, CCPoint point, int number);
     void swivelBar(int degree);
     CCSprite* getSprite();
+    void setScales(b2World* world);
 private:
+    int number;
     CCSprite* roadBar;
     CCPoint location;
+    b2Body* body;
     
 };
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="505" height="30" tilewidth="16" tileheight="16">
+ <tileset firstgid="1" name="xetang" tilewidth="16" tileheight="16" spacing="1" margin="1">
+  <image source="../../../xetang.jpeg" width="236" height="214"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="505" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt3c1qKzEMBtA+eB6+i2xS6JDMRB79+Bwwd1MajT9b4iaB/vwAAAAAAADQ1SO7AABI8Hizppj0LADAX+Y8AMxlzhNl4vtdAN3pyUQz6wFgtnffZ5n6fRcAiFZ1Tu7wPVZgH3oXGaqdO7McmEhPI0O1c2fGAxPpaWSocu68Nw9MVqGX6an7qZi3OT+LPKHGuXf/9tMlbzOij0+ykiXcz53bT/W8zYI+ruYkW7jHmTuq79Z1JpcOGTpr9X2Tj2zhHp/2Uv+3qutsJp0y9J28eiIykCHUor/WNO190nd/0/HdYp3IPZYVu6newyrUwF8dPwuter55uisbWVOF/qMPVzTls1CzPt+d+y5fqtF39N9qdvgs1Oxf6649lR/VOZ/z7mnn94ojauzwnEc6ZVXR6r3rdp+g43m9es/++9kqc7BKHZmmPvOn30XZOfsoK/ZOLhypdnen9JXo+ivsQ8c8juq8Un+H5/2GOb/e4+XfK/t5Vw4ynqPDva1c25Ho3lghoyszILrus783asZH/mx2/hE5druPFZw5r6v6xtlcZdxfh3tbubYj0T2yQkYVZkKHGR/l2300l5+q7MHra1/JNuu+cWxFJhF9Nnp9U+8nsp/POp/ZKlE1Z+9P5utnn5+d14os/rO6bp6i9zP7fF7JP7s26968V4qsOXt/sjO05qxIq3//NNGZZZ+lK2csuzbr3rxXyX7m6P3JrtGqezZerXy9iPp29wvaAwU+
+  </data>
+ </layer>
+</map>
